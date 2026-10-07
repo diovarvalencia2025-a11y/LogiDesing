@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <color name="bg_main">#F8FAFD</color>
+    <color name="bg_gradient_top">#F3F8FD</color>
+    <color name="bg_gradient_bottom">#F9F6FD</color>
+    
+    <color name="brand_cyan">#0EA5E9</color>
+    <color name="brand_cyan_light">#E0F2FE</color>
+    <color name="brand_purple">#8B5CF6</color>
+    <color name="brand_purple_light">#F3E8FF</color>
+    <color name="brand_purple_dark">#6D28D9</color>
+    
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_placeholder">#94A3B8</color>
+    <color name="text_sub_tag">#0284C7</color>
+    
+    <color name="card_bg">#FFFFFF</color>
+    <color name="card_stroke">#E2E8F0</color>
+    <color name="banner_bg">#F1F5F9</color>
+    <color name="banner_text">#1E293B</color>
+    <color name="banner_pro_link">#7C3AED</color>
+    
+    <color name="pill_bg">#F1F5F9</color>
+    <color name="pill_text">#1E293B</color>
+    <color name="pill_stroke">#E2E8F0</color>
+    <color name="voice_btn_bg">#0F172A</color>
+    <color name="voice_btn_purple">#7C3AED</color>
+    <color name="icon_tint_dark">#334155</color>
+</resources>

@@ -1,0 +1,56 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    
+    <!-- Group 1: 0 and 180 degrees -->
+    <path
+        android:fillColor="@color/brand_cyan"
+        android:pathData="M 46,14 C 46,11 54,11 54,14 L 54,86 C 54,89 46,89 46,86 Z" />
+        
+    <!-- Group 2: 90 and 270 degrees -->
+    <path
+        android:fillColor="@color/brand_purple"
+        android:pathData="M 14,46 C 11,46 11,54 14,54 L 86,54 C 89,54 89,46 86,46 Z" />
+        
+    <!-- Group 3: 30 degrees (rotated) -->
+    <group
+        android:pivotX="50"
+        android:pivotY="50"
+        android:rotation="30">
+        <path
+            android:fillColor="@color/brand_cyan"
+            android:pathData="M 46,16 C 46,13 54,13 54,16 L 54,84 C 54,87 46,87 46,84 Z" />
+    </group>
+    
+    <!-- Group 4: 60 degrees -->
+    <group
+        android:pivotX="50"
+        android:pivotY="50"
+        android:rotation="60">
+        <path
+            android:fillColor="@color/brand_purple"
+            android:pathData="M 46,16 C 46,13 54,13 54,16 L 54,84 C 54,87 46,87 46,84 Z" />
+    </group>
+
+    <!-- Group 5: 120 degrees -->
+    <group
+        android:pivotX="50"
+        android:pivotY="50"
+        android:rotation="120">
+        <path
+            android:fillColor="@color/brand_cyan"
+            android:pathData="M 46,16 C 46,13 54,13 54,16 L 54,84 C 54,87 46,87 46,84 Z" />
+    </group>
+
+    <!-- Group 6: 150 degrees -->
+    <group
+        android:pivotX="50"
+        android:pivotY="50"
+        android:rotation="150">
+        <path
+            android:fillColor="@color/brand_purple"
+            android:pathData="M 46,16 C 46,13 54,13 54,16 L 54,84 C 54,87 46,87 46,84 Z" />
+    </group>
+</vector>
