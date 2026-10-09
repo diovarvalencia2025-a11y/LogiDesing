@@ -20,7 +20,8 @@ import okhttp3.Response;
 public class GeminiService {
 
 
-    private static final String ENDPOINT_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" ;
+    private static final String API_KEY = BuildConfig.GEMINI_API_KEY;
+    private static final String ENDPOINT_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" + API_KEY;
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
     private final OkHttpClient httpClient;
