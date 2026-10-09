@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NOMBRE_NEGOCIO}} • Calidad y Salud Dental</title>
+  <meta name="description" content="Servicios dentales profesionales de vanguardia. Clínica dental de confianza en {{DIRECCION}}.">
+
+  <!-- Fonts: Open Sauce One -->
+  <link href="https://db.onlinewebfonts.com/c/1cd1e7d71e048159076fd90b39846902?family=Open+Sauce+One" rel="stylesheet">
+  <link href="https://db.onlinewebfonts.com/c/42acf9aa4a6dc2f2886a3f682e337ead?family=Open+Sauce+One+Bold" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html, body, #root {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Open Sauce One', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    /* Staggered Reveal Transitions */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Hamburger Animation */
+    .burger-span {
+      transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- =========================================================================
+       SPLASH SCREEN (0 -> 100 over 2000ms at Bottom-Left)
+       ========================================================================= -->
+  <div id="splash-screen" class="fixed inset-0 z-[100] bg-white flex items-end justify-start transition-opacity duration-700">
+    <div id="splash-counter" class="text-7xl md:text-9xl font-bold tabular-nums p-6 md:p-10 leading-none text-black select-none">
+      0
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       NAVBAR (Fixed Top)
+       ========================================================================= -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-2 md:py-3 bg-white/80 backdrop-blur-md">
+    
+    <!-- Logo (Left Side) -->
+    <a href="#" class="flex flex-col select-none">
+      <span class="text-xl md:text-2xl font-extrabold uppercase tracking-tight leading-none">{{NOMBRE_NEGOCIO}}</span>
+      <span class="text-[8px] md:text-[9px] font-medium leading-none mt-1.5 md:mt-2 text-neutral-600">CLÍNICA DENTAL</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex items-center gap-6">
+      <button onclick="toggleMobileMenu()" class="px-6 py-3 bg-white rounded-full border border-black text-sm font-semibold hover:bg-black hover:text-white transition-colors duration-200 cursor-pointer">
+        Menú
+      </button>
+      <a href="tel:{{TELEFONO}}" class="text-sm font-semibold text-black hover:underline flex items-center gap-1.5">
+        <span>Urgencias / Citas:</span>
+        <span class="font-bold">{{TELEFONO}}</span>
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger Button -->
+    <button id="mobile-burger-btn" onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center relative cursor-pointer" aria-label="Toggle Navigation">
+      <span id="burger-top" class="burger-span absolute h-0.5 w-6 bg-black rounded-full -translate-y-2"></span>
+      <span id="burger-mid" class="burger-span absolute h-0.5 w-6 bg-black rounded-full opacity-100 scale-x-100"></span>
+      <span id="burger-bot" class="burger-span absolute h-0.5 w-6 bg-black rounded-full translate-y-2"></span>
+    </button>
+
+  </nav>
+
+  <!-- =========================================================================
+       MOBILE MENU DRAWER OVERLAY
+       ========================================================================= -->
+  <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 z-40 pointer-events-none transition-all duration-500">
+    <!-- Backdrop -->
+    <div id="menu-backdrop" onclick="toggleMobileMenu()" class="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+    
+    <!-- Slide-in Panel -->
+    <div id="menu-panel" class="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] flex flex-col justify-center px-8 gap-1">
+      <div class="flex flex-col gap-4 my-auto">
+        <a href="#section-1" onclick="toggleMobileMenu()" class="text-4xl font-bold text-black hover:text-neutral-500 transition-colors">Inicio</a>
+        <a href="#section-2" onclick="toggleMobileMenu()" class="text-4xl font-bold text-black hover:text-neutral-500 transition-colors">Tratamientos</a>
+        <a href="#section-3" onclick="toggleMobileMenu()" class="text-4xl font-bold text-black hover:text-neutral-500 transition-colors">Implantes</a>
+        <a href="#ubicacion" onclick="toggleMobileMenu()" class="text-4xl font-bold text-black hover:text-neutral-500 transition-colors">Contacto</a>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-neutral-200">
+        <a href="tel:{{TELEFONO}}" class="block text-sm font-semibold text-black mb-4">
+          Llamar: {{TELEFONO}}
+        </a>
+        <a href="{{ENLACE_WHATSAPP}}" target="_blank" onclick="toggleMobileMenu();" class="block text-center w-full px-6 py-4 bg-black rounded-full text-white text-sm font-semibold hover:bg-neutral-800 transition-colors duration-200">
+          Pedir Cita por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECTION 1: HERO
+       ========================================================================= -->
+  <section id="section-1" class="relative h-screen w-full overflow-hidden flex flex-col pt-24 md:pt-24 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2">
+    
+    <!-- 3 Feature Bars -->
+    <div class="reveal-item w-full h-14 md:h-20 shrink-0 rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm"
+         style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_113640_ccf3cf97-d447-425b-a134-d7b09fc743fc.png&w=1280&q=85'); background-size: cover; background-position: center 10%;">
+      <span class="flex items-center justify-center h-full text-black text-lg md:text-3xl font-bold text-center relative z-10 bg-white/40 backdrop-blur-xs">
+        Odontología de Precisión
+      </span>
+    </div>
+
+    <div class="reveal-item w-full h-14 md:h-20 shrink-0 rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm"
+         style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_113640_ccf3cf97-d447-425b-a134-d7b09fc743fc.png&w=1280&q=85'); background-size: cover; background-position: center 25%;">
+      <span class="flex items-center justify-center h-full text-black text-lg md:text-3xl font-bold text-center relative z-10 bg-white/40 backdrop-blur-xs">
+        Equipamiento de Última Generación
+      </span>
+    </div>
+
+    <div class="reveal-item w-full h-14 md:h-20 shrink-0 rounded-xl md:rounded-2xl overflow-hidden relative shadow-sm"
+         style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_113640_ccf3cf97-d447-425b-a134-d7b09fc743fc.png&w=1280&q=85'); background-size: cover; background-position: center 40%;">
+      <span class="flex items-center justify-center h-full text-black text-lg md:text-3xl font-bold text-center relative z-10 bg-white/40 backdrop-blur-xs">
+        Atención Cercana y Personalizada
+      </span>
+    </div>
+
+    <!-- Main Hero Card -->
+    <div class="reveal-item w-full flex-1 min-h-0 rounded-xl md:rounded-2xl overflow-hidden relative shadow-md"
+         style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_113640_ccf3cf97-d447-425b-a134-d7b09fc743fc.png&w=1280&q=85'); background-size: cover; background-position: center 65%;">
+      
+      <!-- Top-Left Text -->
+      <div class="absolute top-4 left-4 md:top-7 md:left-7 text-black text-xs md:text-sm font-semibold leading-4 md:leading-5 max-w-[200px] md:max-w-[300px] z-10">
+        Tratamientos avanzados y máxima tecnología para el cuidado de tu salud bucodental.
+      </div>
+
+      <!-- Bottom-Left Block -->
+      <div class="absolute bottom-5 left-3 md:bottom-8 md:left-4 z-10">
+        <span class="block text-black text-xs md:text-sm font-semibold mb-1 md:mb-2">{{DIRECCION}}</span>
+        <h1 class="text-black text-[clamp(2.5rem,8vw,7rem)] font-bold leading-[0.88] tracking-tight">
+          {{NOMBRE_NEGOCIO}}
+        </h1>
+      </div>
+
+      <!-- Bottom-Right Text -->
+      <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="absolute bottom-6 right-4 md:bottom-10 md:right-8 text-black md:text-white text-xs md:text-sm font-semibold z-10 hover:underline">
+        Primera Consulta Gratuita →
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 2: SMILE GALLERY & SERVICIOS
+       ========================================================================= -->
+  <section id="section-2" class="relative min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2">
+    
+    <div class="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 grid-rows-[auto_auto_auto_auto] md:grid-rows-[1fr_1fr_0.8fr] gap-1.5 md:gap-2">
+      
+      <!-- Card 0 - Top Left -->
+      <div class="reveal-item rounded-xl md:rounded-2xl overflow-hidden relative min-h-[160px] md:min-h-0 shadow-sm"
+           style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_114219_414dfe80-f15c-4e25-bf52-b13721f4bd88.png&w=1280&q=85'); background-size: cover; background-position: left top;">
+        <h2 class="absolute top-4 left-5 md:top-6 md:left-7 text-white md:text-black text-2xl md:text-3xl font-bold z-10">Estética Dental</h2>
+        <span class="absolute bottom-4 left-5 md:bottom-6 md:left-7 text-white md:text-black text-xs md:text-sm font-semibold z-10">Sonrisas naturales y perfectas</span>
+      </div>
+
+      <!-- Card 1 - Top Right -->
+      <div class="reveal-item md:row-span-2 rounded-xl md:rounded-2xl overflow-hidden relative min-h-[200px] md:min-h-0 shadow-sm"
+           style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_114219_414dfe80-f15c-4e25-bf52-b13721f4bd88.png&w=1280&q=85'); background-size: cover; background-position: right top;">
+        <div class="absolute bottom-16 left-5 md:bottom-20 md:left-7 text-white text-xs md:text-sm font-semibold leading-4 md:leading-5 z-10">
+          ¿Deseas renovar tu sonrisa?<br>Llámanos o consulta por WhatsApp para una valoración.
+        </div>
+        <a href="tel:{{TELEFONO}}" class="absolute bottom-4 right-4 md:bottom-6 md:right-6 px-5 py-3 md:px-8 md:py-5 bg-white rounded-full text-black text-base md:text-xl font-bold z-10 hover:scale-105 transition-transform cursor-pointer shadow-lg">
+          Llamar Ahora
+        </a>
+      </div>
+
+      <!-- Card 2 - Bottom Left -->
+      <div class="reveal-item rounded-xl md:rounded-2xl overflow-hidden relative min-h-[160px] md:min-h-0 shadow-sm"
+           style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_114219_414dfe80-f15c-4e25-bf52-b13721f4bd88.png&w=1280&q=85'); background-size: cover; background-position: left center;">
+        <h3 class="absolute top-4 left-5 md:top-6 md:left-7 text-white md:text-black text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.9] z-10">
+          Diseño de<br>Sonrisa
+        </h3>
+      </div>
+
+      <!-- Card 3 - Bottom Full Width (Especialidades / Servicios) -->
+      <div class="reveal-item col-span-1 md:col-span-2 rounded-xl md:rounded-2xl overflow-hidden relative min-h-[200px] md:min-h-0 shadow-sm"
+           style="background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_114219_414dfe80-f15c-4e25-bf52-b13721f4bd88.png&w=1280&q=85'); background-size: cover; background-position: center bottom;">
+        <div class="absolute inset-0 z-10 flex flex-wrap md:flex-nowrap gap-1.5 md:gap-2 p-2 md:p-3 overflow-x-auto">
+          {{SERVICIOS}}
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 3: IMPLANTES & RESTAURACIÓN
+       ========================================================================= -->
+  <section id="section-3" class="relative min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2">
+    
+    <div class="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-2">
+      
+      <!-- LEFT COLUMN -->
+      <div class="flex flex-col gap-1.5 md:gap-2">
+        
+        <!-- 1. Heading Card -->
+        <div class="reveal-item rounded-xl md:rounded-2xl bg-stone-50 p-5 md:p-7 flex flex-col justify-between flex-[1.2] min-h-[180px] md:min-h-0 shadow-sm">
+          <h2 class="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] text-black">
+            Implantes &<br>Cirugía
+          </h2>
+          <p class="text-xs md:text-sm font-semibold text-black">Recupera la funcionalidad y belleza de tus dientes</p>
+        </div>
+
+        <!-- 2. Two Image Cards -->
+        <div class="reveal-item flex gap-1.5 md:gap-2 flex-1 min-h-[140px] md:min-h-0">
+          <div class="flex-1 rounded-xl md:rounded-2xl overflow-hidden shadow-sm">
+            <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_115253_c19ab167-8dd5-48b4-967d-b9f0d9d6e8fb.png&w=1280&q=85" alt="Procedimiento de implante dental" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 rounded-xl md:rounded-2xl overflow-hidden shadow-sm">
+            <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_115237_fc519057-6e87-4abf-999a-9610b8b085b4.png&w=1280&q=85" alt="Restauración dental" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <!-- 3. Consultation Card -->
+        <div class="reveal-item rounded-xl md:rounded-2xl bg-zinc-200 p-5 md:p-7 flex items-end justify-between flex-[0.8] min-h-[160px] md:min-h-0 shadow-sm">
+          <div>
+            <p class="text-xs md:text-sm font-semibold text-black mb-2 md:mb-3">Valoración Online</p>
+            <h3 class="text-xl md:text-3xl font-bold text-black leading-6 md:leading-8">
+              Servicios de<br>Restauración<br>Dental
+            </h3>
+          </div>
+          <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="px-5 py-3 md:px-8 md:py-5 bg-white rounded-full text-black text-base md:text-xl font-bold hover:scale-105 transition-transform cursor-pointer shadow-md inline-block">
+            Pedir Cita
+          </a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Single Tall Image Card -->
+      <div class="reveal-item rounded-xl md:rounded-2xl overflow-hidden relative min-h-[350px] md:min-h-0 shadow-md">
+        <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_114355_752ba9e6-0942-4abb-9047-5d9bb16632e9.png&w=1280&q=85" alt="Paciente sonriendo" class="w-full h-full object-cover">
+        
+        <!-- Bottom Overlay Cards -->
+        <div class="absolute bottom-3 left-3 right-3 md:bottom-5 md:left-5 md:right-5 flex gap-1.5 md:gap-2">
+          
+          <div class="flex-1 bg-white rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between h-36 md:h-52 shadow-md">
+            <h4 class="text-lg md:text-2xl font-bold text-black leading-5 md:leading-7">
+              Proceso de<br>Colocación de<br>Implantes
+            </h4>
+            <div class="self-end w-9 h-9 md:w-12 md:h-12 rounded-full border border-black flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="rotate-[-45deg]">
+                <path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="flex-1 bg-white/20 backdrop-blur-xl rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between h-36 md:h-52 shadow-md">
+            <h4 class="text-lg md:text-2xl font-bold text-white leading-5 md:leading-7">
+              Cuidado y<br>Mantenimiento<br>Continuo
+            </h4>
+            <div class="self-end w-9 h-9 md:w-12 md:h-12 rounded-full border border-white text-white flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="rotate-[-45deg]">
+                <path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       FOOTER & UBICACIÓN
+       ========================================================================= -->
+  <footer id="ubicacion" class="bg-neutral-950 text-white py-14 px-6 md:px-12 border-t border-neutral-800">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+      <div>
+        <h3 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight mb-2">{{NOMBRE_NEGOCIO}}</h3>
+        <p class="text-neutral-400 text-sm max-w-sm mb-4">Atención odontológica integral, estética dental y tecnología avanzada para tu mejor sonrisa.</p>
+        <p class="text-neutral-300 text-xs sm:text-sm flex items-center gap-2 mb-2">
+          📍 <span>{{DIRECCION}}</span>
+        </p>
+        <p class="text-neutral-300 text-xs sm:text-sm flex items-center gap-2">
+          📞 <a href="tel:{{TELEFONO}}" class="text-white hover:underline font-semibold">{{TELEFONO}}</a>
+        </p>
+      </div>
+      <div class="flex flex-col items-center md:items-end gap-4">
+        <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-full transition shadow-lg flex items-center gap-2 text-sm">
+          <span>Reservar Cita por WhatsApp</span>
+        </a>
+        <p class="text-neutral-500 text-xs">© 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a href="{{ENLACE_WHATSAPP}}" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all" aria-label="Contactar por WhatsApp">
+    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <!-- =========================================================================
+       SCRIPTS: SPLASH SCREEN, INTERSECTION OBSERVER, & MENU
+       ========================================================================= -->
+  <script>
+    // 1. Splash Screen 0 -> 100 Counter
+    const splashScreen = document.getElementById('splash-screen');
+    const splashCounter = document.getElementById('splash-counter');
+    let count = 0;
+
+    const countInterval = setInterval(() => {
+      count++;
+      splashCounter.innerText = count;
+      if (count >= 100) {
+        clearInterval(countInterval);
+        setTimeout(() => {
+          splashScreen.classList.add('opacity-0', 'pointer-events-none');
+          setTimeout(() => {
+            splashScreen.remove();
+          }, 700);
+        }, 200);
+      }
+    }, 20);
+
+    // 2. IntersectionObserver Staggered Reveal Animation
+    const revealItems = document.querySelectorAll('.reveal-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealItems.forEach(item => observer.observe(item));
+
+    // 3. Mobile Menu Toggle
+    let isMenuOpen = false;
+    const overlay = document.getElementById('mobile-menu-overlay');
+    const backdrop = document.getElementById('menu-backdrop');
+    const panel = document.getElementById('menu-panel');
+    const bTop = document.getElementById('burger-top');
+    const bMid = document.getElementById('burger-mid');
+    const bBot = document.getElementById('burger-bot');
+
+    function toggleMobileMenu() {
+      isMenuOpen = !isMenuOpen;
+      document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+
+      if (isMenuOpen) {
+        overlay.classList.remove('pointer-events-none');
+        overlay.classList.add('pointer-events-auto');
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('translate-x-full');
+        panel.classList.add('translate-x-0');
+
+        bTop.classList.remove('-translate-y-2');
+        bTop.classList.add('rotate-45', 'translate-y-0');
+        bMid.classList.remove('opacity-100', 'scale-x-100');
+        bMid.classList.add('opacity-0', 'scale-x-0');
+        bBot.classList.remove('translate-y-2');
+        bBot.classList.add('-rotate-45', 'translate-y-0');
+      } else {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        panel.classList.remove('translate-x-0');
+        panel.classList.add('translate-x-full');
+
+        bTop.classList.remove('rotate-45', 'translate-y-0');
+        bTop.classList.add('-translate-y-2');
+        bMid.classList.remove('opacity-0', 'scale-x-0');
+        bMid.classList.add('opacity-100', 'scale-x-100');
+        bBot.classList.remove('-rotate-45', 'translate-y-0');
+        bBot.classList.add('translate-y-2');
+
+        setTimeout(() => {
+          if (!isMenuOpen) {
+            overlay.classList.remove('pointer-events-auto');
+            overlay.classList.add('pointer-events-none');
+          }
+        }, 500);
+      }
+    }
+  </script>
+</body>
+</html>

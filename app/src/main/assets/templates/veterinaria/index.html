@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLÍNICA VETERINARIA SAN ANTÓN • Cuidado Integral y Medicina Preventiva</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+    
+    :root {
+      --brand-emerald: #059669;
+      --brand-emerald-dark: #065f46;
+      --brand-teal: #0d9488;
+    }
+
+    body { 
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    .hero-vet {
+      background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(6, 78, 59, 0.88)), 
+                  url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1600&q=80') center/cover;
+    }
+  
+    /* 🛡️ BLINDAJE ANTI-DESBORDAMIENTO DE ICONOS SVG EN MÓVILES */
+    svg {
+      max-width: 100%;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    svg.w-3\.5 { width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; }
+    svg.w-4 { width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; }
+    svg.w-5 { width: 20px !important; height: 20px !important; min-width: 20px !important; max-width: 20px !important; }
+    svg.w-6 { width: 24px !important; height: 24px !important; min-width: 24px !important; max-width: 24px !important; }
+    svg.w-7 { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
+    svg.w-8 { width: 32px !important; height: 32px !important; min-width: 32px !important; max-width: 32px !important; }
+    svg.w-9 { width: 36px !important; height: 36px !important; min-width: 36px !important; max-width: 36px !important; }
+    svg.w-10 { width: 40px !important; height: 40px !important; min-width: 40px !important; max-width: 40px !important; }
+    svg.w-12 { width: 48px !important; height: 48px !important; min-width: 48px !important; max-width: 48px !important; }
+    svg.w-14 { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; }
+    svg.w-16 { width: 64px !important; height: 64px !important; min-width: 64px !important; max-width: 64px !important; }
+    svg:not([class*="w-"]) { max-width: 24px !important; max-height: 24px !important; }
+
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- 1. BARRA SUPERIOR DE HORARIOS Y URGENCIAS -->
+  <div class="bg-emerald-950 text-emerald-100 text-xs py-2.5 px-4 border-b border-emerald-900">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+        <span class="flex items-center gap-1.5 text-emerald-200">
+          <svg width="14" height="14" class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Lun - Vie: 9:00 - 20:30 | Sáb: 10:00 - 14:00
+        </span>
+        <span class="hidden md:flex items-center gap-1.5 text-emerald-300">
+          <svg width="14" height="14" class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Atención Telefónica y Cita Previa: +34 362 54 74 79
+        </span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-amber-300 font-bold flex items-center gap-1 text-[11px] sm:text-xs">
+          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current text-amber-400" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.9 en Reseñas de Propietarios
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. NAVEGACIÓN PRINCIPAL -->
+  <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-emerald-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
+      
+      <!-- LOGO / IDENTIDAD -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-600/20">
+          <svg width="24" height="24" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight block leading-tight">VET SAN ANTÓN</span>
+          <span class="text-[10px] text-emerald-700 font-extrabold uppercase tracking-widest block">Clínica Veterinaria &amp; Diagnóstico</span>
+        </div>
+      </div>
+
+      <!-- BOTONES DE CONTACTO -->
+      <div class="flex items-center gap-3">
+        <a href="tel:+34362547479" class="hidden sm:inline-flex items-center gap-2 text-slate-700 hover:text-emerald-700 font-bold text-xs px-3 py-2 rounded-lg transition">
+          <svg width="16" height="16" class="w-4 h-4 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Llamar a Clínica</span>
+        </a>
+
+        <a href="#cita" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-emerald-600/25 flex items-center gap-2 transition transform active:scale-95 min-h-[44px]">
+          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>Pedir Cita</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. HERO PRINCIPAL -->
+  <section class="hero-vet text-white py-16 sm:py-24 px-4 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      
+      <div class="inline-flex items-center gap-2 bg-emerald-500/25 text-emerald-200 border border-emerald-400/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+        <svg width="14" height="14" class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Medicina Veterinaria Preventiva &amp; Quirófano Equipado
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
+        Cuidamos de la Salud y Bienestar de tu Mascota con <span class="text-emerald-300">Vocación y Cariño</span>.
+      </h1>
+
+      <p class="text-emerald-100 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+        Consultas generales, vacunación, diagnóstico por imagen, cirugía de tejidos blandos y asesoramiento nutricional en un entorno libre de estrés para perros y gatos.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
+        <a href="#cita" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-8 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-500/30 transition transform hover:-translate-y-0.5 min-h-[48px]">
+          <svg width="20" height="20" class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>Pedir Cita Veterinaria</span>
+        </a>
+
+        <a href="tel:+34362547479" class="w-full sm:w-auto bg-slate-900/90 hover:bg-slate-800 text-white border border-slate-700 font-bold px-6 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 transition min-h-[48px]">
+          <svg width="16" height="16" class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Llamar a la Clínica</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. BLOQUE DE CONFIANZA Y BIENESTAR ANIMAL -->
+  <section class="py-10 bg-white border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-emerald-50/50 border border-emerald-100">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Trato Sin Estrés</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Protocolos de manejo amable para reducir la ansiedad de tu compañero.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-emerald-50/50 border border-emerald-100">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Veterinarios Titulados</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Formación continua en medicina interna, anestesia y cirugía.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-emerald-50/50 border border-emerald-100">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Diagnóstico Rápido</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Analíticas clínicas, ecografía y radiología digital en la propia clínica.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-emerald-50/50 border border-emerald-100">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Plena Transparencia</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Te explicamos el diagnóstico y opciones de tratamiento con claridad.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SECCIÓN: SERVICIOS VETERINARIOS COMPLETOS -->
+  <section class="py-16 px-4 max-w-6xl mx-auto" id="servicios">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest">Especialidades Clínicas</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Servicios Médicos para tu Mascota</h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-2">Atención integral desde la prevención hasta tratamientos especializados.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- SERVICIO 1: CONSULTA Y PREVENCIÓN -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=600&q=80" alt="Veterinaria examinando a un perro con estetoscopio" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 -mt-11 relative z-10 shadow-md">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Consulta General &amp; Vacunación</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Revisiones periódicas de salud, cartilla oficial de vacunación, implantación de microchip, desparasitación interna/externa y chequeos geriátricos.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#cita" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+            Pedir cita preventiva →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 2: DIAGNÓSTICO Y RADIOGRAFÍA -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=80" alt="Veterinario realizando revisión médica a perro" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 -mt-11 relative z-10 shadow-md">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Diagnóstico por Imagen &amp; Laboratorio</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Ecografía abdominal de alta resolución, radiografía digital directa y análisis de sangre/orina en el mismo día para diagnósticos precisos.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#cita" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+            Consultar pruebas diagnósticas →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 3: CIRUGÍA Y QUIRÓFANO -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=600&q=80" alt="Instalaciones veterinarias y cuidado médico" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 -mt-11 relative z-10 shadow-md">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Cirugía General &amp; Esterilización</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Quirófano con monitorización multiparamétrica, anestesia inhalatoria segura, esterilizaciones preventivas y cirugía de tejidos blandos.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#cita" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+            Información sobre cirugías →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 4: ODONTOLOGÍA VETERINARIA -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80" alt="Perro con sonrisa y dientes sanos" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 -mt-11 relative z-10 shadow-md">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Odontología &amp; Limpieza Dental</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Limpiezas dentales por ultrasonidos, pulido dental, extracción de piezas dañadas y prevención del sarro y la gingivitis felina/canina.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#cita" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+            Revisión bucodental →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 5: DERMATOLOGÍA Y NUTRICIÓN -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" alt="Gato con pelaje sano y cuidado" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 -mt-11 relative z-10 shadow-md">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Dermatología &amp; Asesoría Nutricional</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Diagnóstico de alergias cutáneas, picores, otitis recurrentes, dietas veterinarias personalizadas para control de peso o patologías renales.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#cita" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+            Consultar dermatología →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 6: PELUQUERÍA Y ESTÉTICA HIGIÉNICA -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?auto=format&fit=crop&w=600&q=80" alt="Perro en sesión de baño y peluquería" class="w-full h-44 object-cover">
+          <div class="p-6">
+            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 -mt-11 relative z-10 shadow-md">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="4" y2="15.88"/><line x1="14.47" x2="20" y1="14.48" y2="20"/><line x1="8.12" x2="12" y1="8.12" y2="12"/></svg>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Peluquería Canina &amp; Baños Terapéuticos</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Cortes de raza, deslanado higiénico, corte de uñas, limpieza de oídos y baños con champús dermatológicos respetando la piel de tu mascota.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#cita" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+            Reservar peluquería canina →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. MÓDULO RESPONSABLE DE URGENCIAS / ATENCIÓN RÁPIDA -->
+  <section class="py-12 bg-amber-500/10 border-y border-amber-500/20 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/20 font-black">
+          <svg width="24" height="24" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        </div>
+        <div>
+          <span class="text-[11px] font-black text-amber-800 bg-amber-200/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Atención de Urgencia en Horario Clínico</span>
+          <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">¿Tu mascota necesita atención urgente?</h3>
+          <p class="text-slate-700 text-xs sm:text-sm mt-0.5 max-w-xl leading-relaxed">
+            Llámanos de inmediato antes de acudir para que nuestro equipo veterinario tenga preparado el box de urgencias y el material necesario a tu llegada.
+          </p>
+        </div>
+      </div>
+
+      <div class="shrink-0 w-full md:w-auto">
+        <a href="tel:+34362547479" class="w-full md:w-auto inline-flex items-center justify-center gap-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm px-6 py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition min-h-[48px]">
+          <svg width="20" height="20" class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Llamar por Urgencia: +34 362 54 74 79</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. EQUIPO VETERINARIO (ROSTRO HUMANO & VOCACIÓN) -->
+  <section class="py-16 px-4 max-w-6xl mx-auto" id="equipo">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest">Profesionales al Cuidado de tu Mascota</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Nuestro Equipo Veterinario</h2>
+      <p class="text-slate-600 text-sm mt-2">Vocación médica y trato afectuoso para que tu mascota se sienta protegida y tranquila.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Veterinaria Colegiada Titular" class="w-full sm:w-44 h-56 object-cover">
+        <div class="p-6">
+          <span class="text-[10px] uppercase tracking-wider font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Veterinaria Directora</span>
+          <h3 class="font-extrabold text-slate-900 text-lg mt-2">[Dra. Nombre de la Veterinaria]</h3>
+          <p class="text-xs text-slate-500 font-medium mb-3">Licenciada en Veterinaria • [Col. Nº 0000]</p>
+          <p class="text-slate-600 text-xs leading-relaxed">
+            Especialista en medicina interna, anestesia y diagnóstico ecográfico con amplia trayectoria en el cuidado de pequeños animales.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Veterinario Especialista en Cirugía" class="w-full sm:w-44 h-56 object-cover">
+        <div class="p-6">
+          <span class="text-[10px] uppercase tracking-wider font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Cirujano Veterinario</span>
+          <h3 class="font-extrabold text-slate-900 text-lg mt-2">[Dr. Nombre del Veterinario]</h3>
+          <p class="text-xs text-slate-500 font-medium mb-3">Cirugía &amp; Traumatología • [Col. Nº 0000]</p>
+          <p class="text-slate-600 text-xs leading-relaxed">
+            Enfocado en cirugía preventiva de tejidos blandos, traumatología y cuidados posoperatorios asistidos para una pronta recuperación.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. GALERÍA VISUAL DE INSTALACIONES Y PACIENTES -->
+  <section class="py-14 bg-emerald-950 text-white px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">Nuestras Instalaciones</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Un Entorno Limpio, Seguro y Acogedor</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="rounded-2xl overflow-hidden shadow-lg aspect-square border border-emerald-800">
+          <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=600&q=80" alt="Consulta veterinaria" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg aspect-square border border-emerald-800">
+          <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=600&q=80" alt="Instalaciones de clínica veterinaria" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg aspect-square border border-emerald-800">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80" alt="Perro atendido en consulta" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg aspect-square border border-emerald-800">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" alt="Gato en revisión periódica" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PROCESO DE ATENCIÓN EN 3 PASOS -->
+  <section class="py-16 px-4 max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest">Sencillo y Cómodo</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Cómo Funciona Tu Visita a la Clínica</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 relative shadow-sm">
+        <span class="text-[11px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full uppercase">Paso 1</span>
+        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg mt-4 mb-2">Pide Tu Cita Previa</h3>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+          Reserva por WhatsApp o teléfono indicando la especie, edad y el motivo de consulta para asignarte el tiempo que tu mascota merece.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 relative shadow-sm">
+        <span class="text-[11px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full uppercase">Paso 2</span>
+        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg mt-4 mb-2">Exploración Detallada</h3>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+          Revisamos constantes, peso, pelaje, boca y ojos en un ambiente tranquilo, realizándole las pruebas diagnósticas necesarias sin demoras.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 relative shadow-sm">
+        <span class="text-[11px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full uppercase">Paso 3</span>
+        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg mt-4 mb-2">Plan y Seguimiento</h3>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+          Te entregamos pautas claras de tratamiento y medicación, manteniéndonos disponibles por WhatsApp para resolver dudas sobre su evolución.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. PRUEBA SOCIAL / RESEÑAS DEMOSTRATIVAS -->
+  <section class="py-16 bg-slate-100 px-4 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest">Opiniones de Propietarios</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Familias que Confían en Nuestra Clínica</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 mb-3">
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+              "Llevo a mis dos perros desde cachorros. El trato siempre es dulce y calmado. Mi golden retriever entra feliz por la puerta y eso no tiene precio."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">MA</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-xs">Marta Alarcón</h4>
+              <span class="text-[11px] text-slate-500">Propietaria de 'Thor' &amp; 'Luna'</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 mb-3">
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+              "Esterilizamos a nuestra gata y la recuperación fue rapidísima. Nos llamaron al día siguiente para interesarse por su estado. Grandes profesionales."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">DG</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-xs">David Gómez</h4>
+              <span class="text-[11px] text-slate-500">Propietario de 'Mía'</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 mb-3">
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+              "Resolvieron un problema de alergia en la piel que llevaba meses arrastrando. Nos cambiaron la dieta y el tratamiento y la mejoría fue inmediata."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">CR</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-xs">Clara Ramos</h4>
+              <span class="text-[11px] text-slate-500">Propietaria de 'Coco'</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. FORMULARIO DE CITA PREVIA -->
+  <section class="py-16 bg-white border-t border-slate-200 px-4" id="cita">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-emerald-700 font-bold text-xs uppercase tracking-widest">Reserva Fácil</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Pedir Cita en la Clínica</h2>
+        <p class="text-slate-600 text-sm mt-2">
+          Déjanos los datos de tu mascota y coordinamos el mejor horario contigo por WhatsApp.
+        </p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
+        <form id="form_vet" onsubmit="enviarCitaVet(event);" class="space-y-4 text-xs sm:text-sm">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nombre_dueno" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Tu Nombre y Apellidos <span class="text-emerald-600">*</span>
+              </label>
+              <input type="text" id="nombre_dueno" required placeholder="Ej. Ana Martínez" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none transition min-h-[48px]">
+            </div>
+
+            <div>
+              <label for="telefono_dueno" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Teléfono de Contacto <span class="text-emerald-600">*</span>
+              </label>
+              <input type="tel" id="telefono_dueno" required placeholder="Ej. 612 345 678" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none transition min-h-[48px]">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nombre_mascota" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Nombre de la Mascota &amp; Especie <span class="text-emerald-600">*</span>
+              </label>
+              <input type="text" id="nombre_mascota" required placeholder="Ej. Toby (Perro) / Luna (Gato)" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none transition min-h-[48px]">
+            </div>
+
+            <div>
+              <label for="servicio_cita" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Motivo de la Consulta <span class="text-emerald-600">*</span>
+              </label>
+              <select id="servicio_cita" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none transition min-h-[48px]">
+                <option value="Consulta General / Revisión">Consulta General / Revisión Anual</option>
+                <option value="Vacunación y Desparasitación">Vacunación y Desparasitación</option>
+                <option value="Cirugía / Esterilización">Cirugía / Esterilización</option>
+                <option value="Prueba Diagnóstica / Ecografía">Prueba Diagnóstica / Ecografía</option>
+                <option value="Dermatología / Alergias">Dermatología / Alergias y Piel</option>
+                <option value="Peluquería / Baño Terapéutico">Peluquería y Estética Canina</option>
+                <option value="Otro Motivo de Consulta">Otro Motivo de Consulta</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="notas_cita" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+              Síntomas o Preferencia de Horario <span class="text-slate-400 font-normal text-[11px]">(Opcional)</span>
+            </label>
+            <textarea id="notas_cita" rows="2" placeholder="Describe brevemente si presenta algún síntoma o tu horario preferido de visita..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none transition"></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm py-4 px-6 rounded-xl shadow-xl shadow-emerald-600/20 transition transform active:scale-95 flex items-center justify-center gap-2 min-h-[48px]">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              <span>Confirmar Solicitud de Cita por WhatsApp</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 12. UBICACIÓN, HORARIOS Y CONTACTO -->
+  <section class="py-16 px-4 max-w-6xl mx-auto">
+    <div class="bg-emerald-950 text-white rounded-3xl p-8 sm:p-12 border border-emerald-900 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      
+      <div>
+        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">Encuéntranos Fácilmente</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-4">Ubicación y Horarios de Atención</h2>
+        <p class="text-emerald-200 text-xs sm:text-sm leading-relaxed mb-6">
+          Nuestra clínica cuenta con acceso cómodo para mascotas y zona de espera diferenciada para perros y gatos para reducir el estrés.
+        </p>
+
+        <div class="space-y-4 text-xs sm:text-sm text-emerald-100">
+          <div class="flex items-start gap-3">
+            <svg width="20" height="20" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <p class="font-bold text-white">Dirección de la Clínica:</p>
+              <p class="text-emerald-300">[Calle Principal de la Localidad / Zona Residencial]</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg width="20" height="20" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <p class="font-bold text-white">Horario Ininterrumpido:</p>
+              <p class="text-emerald-300">Lunes a Viernes: 9:00 a 20:30 | Sábados: 10:00 a 14:00</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg width="20" height="20" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <p class="font-bold text-white">Teléfono de Citas:</p>
+              <p class="text-emerald-300 font-extrabold">+34 362 54 74 79</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-emerald-900/60 p-6 rounded-2xl border border-emerald-800 text-center">
+        <h3 class="font-extrabold text-white text-lg mb-2">¿Tienes alguna duda sobre la salud de tu mascota?</h3>
+        <p class="text-emerald-200 text-xs sm:text-sm mb-6 leading-relaxed">
+          Escríbenos por WhatsApp con cualquier síntoma o consulta sobre vacunas y alimentación. Te orientamos encantados.
+        </p>
+        <a href="https://wa.me/34362547479?text=Hola,%20quisiera%20consultar%20una%20duda%20veterinaria." class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg transition min-h-[48px] w-full">
+          <svg width="16" height="16" class="w-4 h-4 text-slate-950" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
+          <span>Escribir al WhatsApp de la Clínica</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 13. CTA FINAL DE CIERRE -->
+  <section class="py-14 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl sm:text-4xl font-extrabold mb-3">Cuida hoy de quien siempre está contigo</h2>
+      <p class="text-emerald-100 text-sm sm:text-base font-medium mb-6 max-w-xl mx-auto">
+        Programa su revisión anual de salud o consúltanos cualquier necesidad médica para su bienestar.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
+        <a href="#cita" class="inline-flex items-center justify-center gap-2 bg-white text-emerald-950 font-black text-sm px-8 py-4 rounded-xl shadow-2xl transition transform hover:scale-105 min-h-[48px] w-full sm:w-auto">
+          <svg width="20" height="20" class="w-5 h-5 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>Pedir Cita Online</span>
+        </a>
+        <a href="tel:+34362547479" class="inline-flex items-center justify-center gap-2 bg-emerald-950/80 text-white border border-emerald-400/40 font-black text-sm px-6 py-4 rounded-xl transition min-h-[48px] w-full sm:w-auto">
+          <svg width="16" height="16" class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Llamar Ahora</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. FOOTER CLÍNICO -->
+  <footer class="bg-emerald-950 text-emerald-300 py-8 px-4 text-center text-xs border-t border-emerald-900">
+    <p class="font-extrabold text-white text-sm">CLÍNICA VETERINARIA SAN ANTÓN • Medicina Preventiva, Diagnóstico &amp; Cirugía</p>
+    <p class="mt-1 text-emerald-400">© 2026 CLÍNICA VETERINARIA SAN ANTÓN. Todos los derechos reservados. Web de demostración profesional.</p>
+  </footer>
+
+  <!-- 15. BOTÓN FLOTANTE MÓVIL DE WHATSAPP -->
+  <a href="https://wa.me/34362547479?text=Hola,%20quisiera%20pedir%20cita%20veterinaria%20para%20mi%20mascota." class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 transition transform hover:scale-110 active:scale-95">
+    <svg width="28" height="28" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
+  </a>
+
+  <!-- SCRIPT DE ENVÍO DE CITA -->
+  <script>
+    function enviarCitaVet(e) {
+      e.preventDefault();
+      const dueno = document.getElementById('nombre_dueno').value.trim();
+      const tel = document.getElementById('telefono_dueno').value.trim();
+      const mascota = document.getElementById('nombre_mascota').value.trim();
+      const motivo = document.getElementById('servicio_cita').value;
+      const notas = document.getElementById('notas_cita').value.trim();
+
+      const mensaje = `*SOLICITUD DE CITA - CLÍNICA VETERINARIA SAN ANTÓN*
+
+🐾 *Mascota:* ${mascota}
+👤 *Propietario:* ${dueno}
+📞 *Teléfono:* ${tel}
+🏥 *Motivo de Consulta:* ${motivo}
+${notas ? `📝 *Observaciones:* "${notas}"\n` : ''}
+_Enviado desde la web oficial de la clínica._`;
+
+      const url = `https://wa.me/34362547479?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>

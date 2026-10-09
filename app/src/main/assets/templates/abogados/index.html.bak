@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bufete Anastasia Payno • Abogada en Burgos | Asesoramiento Jurídico y Defensa Legal</title>
+  <meta name="description" content="Bufete Anastasia Payno en Burgos. Especialistas en Derecho Bancario, Familia, Herencias, Civil y Penal. Primera consulta gratuita. Calle Santander, 9.">
+  <meta name="keywords" content="abogada burgos, bufete anastasia payno, clausulas suelo burgos, divorcios burgos, herencias burgos, abogado bancario burgos">
+  <meta name="author" content="Bufete Anastasia Payno - LogiMotion Digital">
+  
+  <!-- Favicon Monograma AP -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f141c'/><text x='50' y='68' font-family='Cinzel, serif' font-size='52' font-weight='bold' fill='%23c5a059' text-anchor='middle'>AP</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#e0c88a',
+              400: '#d4af37',
+              500: '#c5a059',
+              600: '#a8833e',
+              700: '#8a692b'
+            },
+            legal: {
+              dark: '#0e1218',
+              surface: '#141a23',
+              card: '#1a222e',
+              cream: '#f8f6f1',
+              creamSoft: '#fbfaf7',
+              border: '#e8e4dc',
+              textMuted: '#6b7280'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            title: ['"Cinzel"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            handwriting: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #0e1218;
+      color: #1a202c;
+      overflow-x: hidden;
+    }
+
+    .font-serif-lux {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-title-lux {
+      font-family: 'Cinzel', serif;
+    }
+
+    .font-signature {
+      font-family: 'Alex Brush', cursive;
+    }
+
+    .hero-container {
+      background-color: #0e1218;
+      background-image: 
+        linear-gradient(to right, rgba(14, 18, 24, 0.96) 0%, rgba(14, 18, 24, 0.88) 42%, rgba(14, 18, 24, 0.35) 75%, rgba(14, 18, 24, 0.15) 100%),
+        url('assets/bg-hero.png');
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    @media (max-width: 768px) {
+      .hero-container {
+        background-image: 
+          linear-gradient(to bottom, rgba(14, 18, 24, 0.94) 0%, rgba(14, 18, 24, 0.97) 100%),
+          url('assets/bg-hero.png');
+      }
+    }
+
+    .experience-container {
+      background-color: #0c1017;
+      background-image: 
+        linear-gradient(to right, rgba(12, 16, 23, 0.85) 0%, rgba(12, 16, 23, 0.45) 45%, rgba(12, 16, 23, 0.6) 80%, rgba(12, 16, 23, 0.92) 100%),
+        url('assets/bg-experience.png');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .footer-container {
+      background-color: #0b0e13;
+      background-image: 
+        linear-gradient(to bottom, rgba(11, 14, 19, 0.85) 0%, rgba(11, 14, 19, 0.70) 45%, rgba(11, 14, 19, 0.95) 100%),
+        url('assets/footer-panorama.jpg');
+      background-position: center bottom;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .card-hover {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08), 0 10px 15px -5px rgba(197, 160, 89, 0.15);
+      border-color: #c5a059;
+    }
+
+    .modal-backdrop {
+      background-color: rgba(10, 14, 20, 0.82);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-white">
+
+  <!-- 0. BARRA SUPERIOR INSTITUCIONAL Y LEGAL -->
+  <div class="bg-[#090c10] border-b border-white/5 text-slate-400 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5 text-slate-300">
+          <svg class="w-3.5 h-3.5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+          <strong class="font-medium text-slate-200">Colegiada ICABURGOS</strong> • Ilustre Colegio de Abogados de Burgos
+        </span>
+        <span class="hidden lg:inline-block text-slate-600">|</span>
+        <span class="hidden lg:flex items-center gap-1.5 text-slate-400">
+          <svg class="w-3.5 h-3.5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          Garantía de Secreto Profesional & Máxima Confidencialidad
+        </span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="tel:947023159" class="flex items-center gap-1.5 text-slate-300 hover:text-gold-400 transition">
+          <svg class="w-3.5 h-3.5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+          <span>947 023 159</span>
+        </a>
+        <span class="text-slate-700">•</span>
+        <span class="text-slate-400">Lunes a Viernes: 9:00 - 19:30 h</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. CABECERA PRINCIPAL (NAVBAR) -->
+  <header class="sticky top-0 z-50 bg-[#0e1218]/95 backdrop-blur-md border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Monograma & Nombre del Bufete -->
+      <a href="#inicio" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-lg border border-gold-500/40 bg-gradient-to-br from-[#1a222e] to-[#0e1218] flex items-center justify-center shadow-lg group-hover:border-gold-400 transition">
+          <span class="font-title-lux text-2xl font-bold text-gold-400 tracking-wider">AP</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-title-lux text-white text-base sm:text-lg font-bold tracking-widest leading-tight group-hover:text-gold-300 transition">
+            BUFETE ANASTASIA PAYNO
+          </span>
+          <span class="text-[11px] tracking-[0.22em] text-gold-400 font-medium uppercase mt-0.5">
+            ABOGADA · BURGOS
+          </span>
+        </div>
+      </a>
+
+      <!-- Menú Escritorio -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#inicio" class="text-sm font-medium text-slate-200 hover:text-gold-400 transition tracking-wide">Inicio</a>
+        <a href="#especialidades" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition tracking-wide">Especialidades</a>
+        <a href="#sobre-mi" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition tracking-wide">Sobre mí</a>
+        <a href="#contacto" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition tracking-wide">Contacto</a>
+        
+        <button onclick="openModal('consultaModal')" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gold-500/15 border border-gold-500/40 text-gold-400 text-xs font-semibold tracking-wider uppercase hover:bg-gold-500 hover:text-slate-950 transition-all shadow-sm">
+          <span>Consulta Gratuita</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Botón Menú Móvil -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-300 hover:text-gold-400" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0c1015] border-b border-white/10 px-6 py-5 space-y-4">
+      <a href="#inicio" class="block text-slate-200 hover:text-gold-400 font-medium py-1">Inicio</a>
+      <a href="#especialidades" class="block text-slate-300 hover:text-gold-400 font-medium py-1">Especialidades</a>
+      <a href="#sobre-mi" class="block text-slate-300 hover:text-gold-400 font-medium py-1">Sobre mí</a>
+      <a href="#contacto" class="block text-slate-300 hover:text-gold-400 font-medium py-1">Contacto</a>
+      <button onclick="openModal('consultaModal')" class="w-full text-center py-2.5 rounded-md bg-gold-500 text-slate-950 font-semibold text-sm">
+        Solicitar Consulta Gratuita
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION CON FONDO DE CATEDRAL DE BURGOS -->
+  <section id="inicio" class="relative hero-container min-h-[580px] lg:min-h-[640px] flex items-center py-16 lg:py-24 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Columna Izquierda: Texto Principal -->
+        <div class="lg:col-span-8 z-10 max-w-2xl">
+          
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-6 h-[1.5px] bg-gold-500"></span>
+              <span class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-gold-400 uppercase">
+                TU CONFIANZA, MI COMPROMISO
+              </span>
+            </div>
+            <span class="text-slate-600 hidden sm:inline">•</span>
+            <span class="font-serif-lux italic text-xs sm:text-sm text-gold-300/90 tracking-wide">
+              “Más de una historia familiar, una trayectoria de confianza en Burgos”
+            </span>
+          </div>
+
+          <h1 class="font-serif-lux text-4xl sm:text-5xl lg:text-6xl text-white font-semibold leading-[1.12] tracking-tight mb-6">
+            Soluciones legales para lo que realmente te importa
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 font-light max-w-xl">
+            En el <strong class="text-white font-medium">Bufete Anastasia Payno</strong> te ofrezco un asesoramiento cercano, honesto y eficaz, para defender tus derechos y ayudarte a tomar las mejores decisiones.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button onclick="openModal('consultaModal')" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-[#c5a059] hover:bg-[#d4af37] text-slate-950 font-medium text-base shadow-xl shadow-gold-500/10 transition-all hover:scale-[1.02] active:scale-[0.98]">
+              <span>Primera consulta gratuita</span>
+              <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+
+            <a href="tel:947023159" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 text-base font-medium transition">
+              <svg class="w-4 h-4 text-gold-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              <span>Llamar: 947 023 159</span>
+            </a>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 text-xs text-slate-400">
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Despacho en Calle Santander 9 (Burgos)
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Presupuestos cerrados sin sorpresas
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Espacio despejado: permite apreciar la Catedral de Burgos y la Balanza con máxima amplitud y elegancia -->
+        <div class="hidden lg:block lg:col-span-4"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SECCIÓN: ÁREAS DE PRÁCTICA (ESPECIALIDADES) -->
+  <section id="especialidades" class="bg-[#f8f6f1] py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e8e4dc]">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 mb-2">
+            <span class="w-5 h-[2px] bg-gold-600"></span>
+            <span class="text-xs font-bold tracking-[0.2em] text-gold-700 uppercase">
+              NUESTRAS ESPECIALIDADES
+            </span>
+          </div>
+          <h2 class="font-serif-lux text-4xl sm:text-5xl text-slate-900 font-semibold tracking-tight">
+            Áreas de práctica
+          </h2>
+        </div>
+        <p class="text-slate-600 text-sm sm:text-base max-w-md font-normal leading-relaxed">
+          En <strong class="text-slate-900 font-semibold">Bufete Anastasia Payno</strong> trabajamos en las principales áreas del derecho, con un enfoque práctico y personalizado para cada caso.
+        </p>
+      </div>
+
+      <!-- Cuadrícula de 4 Tarjetas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        
+        <!-- Tarjeta 1: Derecho Bancario y Financiero -->
+        <div class="bg-white rounded-xl overflow-hidden border border-[#e8e4dc] shadow-sm card-hover flex flex-col">
+          <div class="relative h-44 overflow-hidden bg-slate-100">
+            <img src="assets/card-bancario.jpg" alt="Derecho Bancario y Financiero en Burgos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-md text-gold-700 shadow">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif-lux text-xl font-bold text-slate-900 mb-3 leading-snug">
+                Derecho Bancario y Financiero
+              </h3>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Cláusulas suelo</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Gastos hipotecarios</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Tarjetas revolving</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Ley de Segunda Oportunidad</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100">
+              <button onclick="openModalWithService('Derecho Bancario y Financiero')" class="text-xs font-semibold text-gold-700 hover:text-gold-600 flex items-center gap-1 group">
+                <span>Consultar este servicio</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Derecho de Familia -->
+        <div class="bg-white rounded-xl overflow-hidden border border-[#e8e4dc] shadow-sm card-hover flex flex-col">
+          <div class="relative h-44 overflow-hidden bg-slate-100">
+            <img src="assets/card-familia.jpg" alt="Derecho de Familia en Burgos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-md text-gold-700 shadow">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif-lux text-xl font-bold text-slate-900 mb-3 leading-snug">
+                Derecho de Familia
+              </h3>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Divorcios y separaciones</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Custodias de menores</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Pensiones de alimentos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Liquidación de gananciales</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100">
+              <button onclick="openModalWithService('Derecho de Familia')" class="text-xs font-semibold text-gold-700 hover:text-gold-600 flex items-center gap-1 group">
+                <span>Consultar este servicio</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Derecho Civil y Sucesorio -->
+        <div class="bg-white rounded-xl overflow-hidden border border-[#e8e4dc] shadow-sm card-hover flex flex-col">
+          <div class="relative h-44 overflow-hidden bg-slate-100">
+            <img src="assets/card-civil.jpg" alt="Derecho Civil y Sucesorio en Burgos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-md text-gold-700 shadow">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif-lux text-xl font-bold text-slate-900 mb-3 leading-snug">
+                Derecho Civil y Sucesorio
+              </h3>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Herencias y sucesiones</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Testamentos y donaciones</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Contratos y arrendamientos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-gold-600 font-bold">•</span>
+                  <span>Reclamación de deudas</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100">
+              <button onclick="openModalWithService('Derecho Civil y Sucesorio')" class="text-xs font-semibold text-gold-700 hover:text-gold-600 flex items-center gap-1 group">
+                <span>Consultar este servicio</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Derecho Penal y Laboral -->
+        <div class="bg-white rounded-xl overflow-hidden border border-[#e8e4dc] shadow-sm card-hover flex flex-col">
+          <div class="relative h-44 overflow-hidden bg-slate-100">
+            <img src="assets/card-penal.jpg" alt="Derecho Penal y Laboral en Burgos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-md text-gold-700 shadow">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+              </svg>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif-lux text-xl font-bold text-slate-900 mb-3 leading-snug">
+                Derecho Penal y Laboral
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                Defensa legal en todo tipo de procedimientos penales, asistencia letrada inmediata y resolución de conflictos laborales y despidos.
+              </p>
+              <ul class="space-y-1.5 text-xs text-slate-500">
+                <li>• Asistencia en comisaría y juzgado</li>
+                <li>• Despidos y reclamación de salarios</li>
+                <li>• Incapacidades laborales</li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100">
+              <button onclick="openModalWithService('Derecho Penal y Laboral')" class="text-xs font-semibold text-gold-700 hover:text-gold-600 flex items-center gap-1 group">
+                <span>Consultar este servicio</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SECCIÓN: ¿POR QUÉ ELEGIR EL BUFETE? (RÉPLICA EXACTA DEL MOCKUP) -->
+  <section id="sobre-mi" class="relative overflow-hidden py-16 sm:py-20 lg:py-24 border-t border-b border-white/10" style="background: url('assets/bg-experience.png') center/cover no-repeat; background-color: #0c1017;">
+    
+    <!-- Contenedor general -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- ============================================== -->
+        <!-- LADO IZQUIERDO: Título, Línea y los 4 Pilares -->
+        <!-- ============================================== -->
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          
+          <!-- Título y Eyebrow -->
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 mb-2.5">
+              <span class="w-7 h-[2px] bg-gold-400"></span>
+              <span class="text-xs sm:text-sm font-semibold tracking-[0.22em] text-gold-300 uppercase">
+                ¿POR QUÉ ELEGIR EL BUFETE ANASTASIA PAYNO?
+              </span>
+            </div>
+            <h2 class="font-serif-lux text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.15] text-white">
+              Experiencia, cercanía<br>y compromiso
+            </h2>
+          </div>
+
+          <!-- Línea divisoria horizontal idéntica a la imagen -->
+          <div class="h-[1px] w-full bg-gradient-to-r from-gold-500/40 via-white/20 to-transparent my-6"></div>
+
+          <!-- Los 4 Pilares: Solo a la izquierda, transparentes, sin cajas pesadas -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 pt-2">
+            
+            <!-- Pilar 1 -->
+            <div class="flex flex-col items-center text-center px-2 sm:px-3 py-2 border-r border-white/20">
+              <div class="text-white/90 mb-2">
+                <svg class="w-6 h-6 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <span class="text-xs sm:text-sm font-normal text-slate-200 leading-snug">
+                Atención<br>personalizada
+              </span>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="flex flex-col items-center text-center px-2 sm:px-3 py-2 sm:border-r border-white/20">
+              <div class="text-white/90 mb-2">
+                <svg class="w-6 h-6 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <span class="text-xs sm:text-sm font-normal text-slate-200 leading-snug">
+                Rigor jurídico<br>y profesionalidad
+              </span>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="flex flex-col items-center text-center px-2 sm:px-3 py-2 border-r border-white/20 mt-4 sm:mt-0">
+              <div class="text-white/90 mb-2">
+                <svg class="w-6 h-6 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <span class="text-xs sm:text-sm font-normal text-slate-200 leading-snug">
+                Conocimiento del<br>entorno de Burgos
+              </span>
+            </div>
+
+            <!-- Pilar 4 -->
+            <div class="flex flex-col items-center text-center px-2 sm:px-3 py-2 mt-4 sm:mt-0">
+              <div class="text-white/90 mb-2">
+                <svg class="w-6 h-6 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span class="text-xs sm:text-sm font-normal text-slate-200 leading-snug">
+                Tu tranquilidad<br>es nuestra prioridad
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ============================================== -->
+        <!-- LADO DERECHO: Deja el libro libre + Cita & Firma -->
+        <!-- ============================================== -->
+        <div class="lg:col-span-5 flex flex-col justify-between h-full min-h-[220px] pt-2 text-right">
+          
+          <!-- Cita en color blanco puro de alta visibilidad, idéntica a la imagen original -->
+          <div class="mb-auto pt-1">
+            <p class="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-white font-normal leading-snug" style="color: #ffffff !important; text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.95);">
+              “Cada caso es único,<br class="hidden sm:inline"> y merece una atención especial.”
+            </p>
+          </div>
+
+          <!-- Firma al lado del libro en blanco nítido -->
+          <div class="mt-8 lg:mt-auto pt-6">
+            <p class="text-xs sm:text-sm font-serif text-white font-medium" style="color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.9);">
+              Anastasia Eugenia Payno Lázaro
+            </p>
+            <p class="text-[11px] tracking-wider text-gold-400 uppercase font-medium" style="text-shadow: 0 1px 4px rgba(0,0,0,0.9);">
+              Abogada
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. MÓDULO DE CONTACTO Y CITA PREVIA -->
+  <section id="contacto" class="bg-[#f8f6f1] py-16 px-4 sm:px-6 lg:px-8 border-b border-[#e8e4dc]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Fila de los 3 Datos de Contacto Reales -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+        
+        <!-- Teléfono -->
+        <a href="tel:947023159" class="bg-white p-6 rounded-xl border border-[#e8e4dc] shadow-sm flex items-center gap-4 hover:border-gold-500 transition group">
+          <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-700 flex-shrink-0 group-hover:bg-gold-500 group-hover:text-slate-950 transition">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+          </div>
+          <div>
+            <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-0.5">Teléfono Directo</span>
+            <span class="font-serif-lux text-2xl font-bold text-slate-900 group-hover:text-gold-700 transition">947 023 159</span>
+            <span class="text-[11px] text-emerald-600 block font-medium mt-0.5">● Clic para llamar ahora</span>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:apayno.bufete@gmail.com" class="bg-white p-6 rounded-xl border border-[#e8e4dc] shadow-sm flex items-center gap-4 hover:border-gold-500 transition group">
+          <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-700 flex-shrink-0 group-hover:bg-gold-500 group-hover:text-slate-950 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="overflow-hidden">
+            <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-0.5">Correo Electrónico</span>
+            <span class="text-base sm:text-lg font-bold text-slate-900 truncate block group-hover:text-gold-700 transition">apayno.bufete@gmail.com</span>
+            <span class="text-[11px] text-slate-500 block mt-0.5">Respuesta en menos de 24h</span>
+          </div>
+        </a>
+
+        <!-- Dirección -->
+        <a href="https://maps.google.com/?q=Calle+Santander+9+Burgos" target="_blank" rel="noopener noreferrer" class="bg-white p-6 rounded-xl border border-[#e8e4dc] shadow-sm flex items-center gap-4 hover:border-gold-500 transition group">
+          <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-700 flex-shrink-0 group-hover:bg-gold-500 group-hover:text-slate-950 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div>
+            <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-0.5">Despacho en Burgos</span>
+            <span class="text-sm font-bold text-slate-900 block group-hover:text-gold-700 transition">Calle Santander, 9 - 2.º</span>
+            <span class="text-xs text-slate-500 block">09004 Burgos (Centro)</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Formulario de Primera Consulta Gratuita -->
+      <div id="consulta-form" class="bg-white rounded-2xl p-8 sm:p-12 border border-[#e8e4dc] shadow-xl max-w-3xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <div class="inline-flex items-center gap-2 mb-2">
+            <span class="w-4 h-[2px] bg-gold-600"></span>
+            <span class="text-xs font-bold tracking-widest text-gold-700 uppercase">SIN COSTE NI COMPROMISO</span>
+            <span class="w-4 h-[2px] bg-gold-600"></span>
+          </div>
+          <h3 class="font-serif-lux text-3xl sm:text-4xl font-bold text-slate-900">
+            Solicite su Primera Consulta Gratuita
+          </h3>
+          <p class="text-slate-600 text-sm mt-2">
+            Expónganos brevemente su situación. Analizaremos su caso de manera confidencial y nos pondremos en contacto con usted a la mayor brevedad.
+          </p>
+        </div>
+
+        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Nombre y Apellidos *</label>
+              <input type="text" id="formName" required placeholder="Ej. Carlos Martínez" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Teléfono de Contacto *</label>
+              <input type="tel" id="formPhone" required placeholder="Ej. 600 000 000" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Correo Electrónico</label>
+              <input type="email" id="formEmail" placeholder="su-correo@ejemplo.com" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Área de Consulta *</label>
+              <select id="formArea" required class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition bg-white">
+                <option value="" disabled selected>Seleccione la especialidad...</option>
+                <option value="Derecho Bancario y Financiero">Derecho Bancario (Cláusulas, Revolving)</option>
+                <option value="Derecho de Familia">Derecho de Familia (Divorcios, Custodias)</option>
+                <option value="Derecho Civil y Sucesorio">Derecho Civil y Sucesorio (Herencias)</option>
+                <option value="Derecho Penal y Laboral">Derecho Penal y Laboral</option>
+                <option value="Otra Consulta Legal">Otra consulta legal</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Resumen breve de su caso *</label>
+            <textarea id="formMessage" required rows="3" placeholder="Explique brevemente en qué podemos ayudarle..." class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition resize-none"></textarea>
+          </div>
+
+          <div class="flex items-start gap-3 pt-1">
+            <input type="checkbox" id="rgpdCheck" required class="mt-1 rounded border-slate-300 text-gold-600 focus:ring-gold-500 h-4 w-4">
+            <label for="rgpdCheck" class="text-xs text-slate-600 leading-normal">
+              He leído y acepto la <button type="button" onclick="openModal('privacidadModal')" class="text-gold-700 underline font-medium">Política de Privacidad</button> y consiento el tratamiento de mis datos para la gestión de mi consulta legal bajo estricto secreto profesional.
+            </label>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-lg bg-[#c5a059] hover:bg-[#d4af37] text-slate-950 font-semibold text-base shadow-lg transition-all transform hover:-translate-y-0.5">
+            Solicitar Cita / Enviar Consulta Gratuita →
+          </button>
+        </form>
+
+        <div id="formSuccess" class="hidden mt-6 p-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-center text-sm">
+          <p class="font-bold text-base mb-1">✓ Su consulta ha sido registrada con éxito</p>
+          <p class="text-emerald-700 text-xs">Le responderemos a la mayor brevedad al teléfono indicado bajo estricta confidencialidad.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. PIE DE PÁGINA PANORÁMICO DE BURGOS -->
+  <footer class="footer-container text-white pt-20 pb-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Bloque Central de Marca y Firma -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        
+        <h3 class="font-title-lux text-2xl sm:text-3xl font-bold tracking-widest text-white mb-2">
+          BUFETE ANASTASIA PAYNO
+        </h3>
+        
+        <div class="w-16 h-[2px] bg-gold-500 mx-auto my-3"></div>
+
+        <p class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-gold-400 uppercase mb-3">
+          Tu abogada en Burgos
+        </p>
+
+        <p class="text-xs text-slate-400 tracking-[0.25em] uppercase mb-8">
+          TRADICIÓN &nbsp;•&nbsp; EXPERIENCIA &nbsp;•&nbsp; RESULTADOS
+        </p>
+
+        <!-- Firma Caligráfica -->
+        <div class="inline-block pt-2">
+          <p class="font-signature text-3xl sm:text-4xl text-gold-300">
+            Anastasia Eugenia Payno Lázaro
+          </p>
+          <p class="text-[11px] tracking-[0.2em] text-slate-400 uppercase mt-1">
+            ABOGADA COLEGIADA
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 7. COLEGIACIÓN Y SEDE DEL BUFETE (LIMPIO Y SOBRIO) -->
+      <div class="border-t border-white/10 pt-8 pb-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div class="flex items-center gap-2 text-slate-300">
+          <svg class="w-4 h-4 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+          <span>Colegiada en el <strong class="text-white">Ilustre Colegio de Abogados de Burgos (ICABURGOS)</strong></span>
+        </div>
+        <div class="flex items-center gap-4 text-slate-400">
+          <span>Calle Santander, 9 - 2.º, Burgos</span>
+          <span>•</span>
+          <a href="tel:947023159" class="hover:text-gold-400 transition">947 023 159</a>
+          <span>•</span>
+          <a href="mailto:apayno.bufete@gmail.com" class="hover:text-gold-400 transition">apayno.bufete@gmail.com</a>
+        </div>
+      </div>
+
+      <!-- Barra de Enlaces Legales y Copyright -->
+      <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© 2026 Bufete Anastasia Payno. Todos los derechos reservados.</p>
+        <div class="flex flex-wrap items-center gap-4 text-slate-400">
+          <button onclick="openModal('avisoModal')" class="hover:text-gold-400 transition">Aviso Legal</button>
+          <span>•</span>
+          <button onclick="openModal('privacidadModal')" class="hover:text-gold-400 transition">Política de Privacidad</button>
+          <span>•</span>
+          <button onclick="openModal('cookiesModal')" class="hover:text-gold-400 transition">Política de Cookies</button>
+          <span>•</span>
+          <button onclick="openModal('secretoModal')" class="hover:text-gold-400 transition">Secreto Profesional</button>
+        </div>
+        <p class="text-slate-600 text-[11px]">
+          Desarrollado con el estándar de calidad de <strong class="text-slate-400 font-normal">LogiMotion Digital</strong>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <div class="hidden sm:block bg-slate-900/90 text-white text-xs py-2 px-3 rounded-lg border border-gold-500/30 shadow-xl backdrop-blur-sm">
+      ¿Tiene una consulta legal? Hable con nosotros
+    </div>
+    <a href="https://wa.me/34631122707?text=Hola%20Anastasia,%20vengo%20de%20la%20web%20del%20bufete%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all" aria-label="Contactar por WhatsApp">
+      <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- MODALES LEGALES Y FORMULARIO -->
+  <div id="consultaModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeModal('consultaModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="font-serif-lux text-2xl font-bold text-slate-900 mb-1">Primera Consulta Gratuita</h3>
+      <p class="text-xs text-slate-500 mb-5">Indique sus datos y le responderemos con prioridad bajo secreto profesional.</p>
+      <form onsubmit="handleQuickSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nombre Completo *</label>
+          <input type="text" required placeholder="Su nombre" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm outline-none focus:border-gold-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Teléfono *</label>
+          <input type="tel" required placeholder="600 000 000" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm outline-none focus:border-gold-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Área o Asunto *</label>
+          <input type="text" id="modalServiceInput" required placeholder="Ej. Tarjeta revolving, Divorcio, Herencia..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm outline-none focus:border-gold-500">
+        </div>
+        <button type="submit" class="w-full py-3 rounded-lg bg-gold-500 hover:bg-gold-600 text-slate-950 font-bold text-sm shadow">
+          Solicitar Cita Gratuita
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="avisoModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl relative">
+      <button onclick="closeModal('avisoModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="font-serif-lux text-2xl font-bold text-slate-900 mb-4">Aviso Legal e Información Corporativa</h3>
+      <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+        <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE):</p>
+        <p><strong>Titular del Despacho:</strong> Anastasia Eugenia Payno Lázaro</p>
+        <p><strong>Actividad:</strong> Ejercicio de la Abogacía</p>
+        <p><strong>Colegio Profesional:</strong> Ilustre Colegio de Abogados de Burgos (ICABURGOS)</p>
+        <p><strong>Domicilio Profesional:</strong> Calle Santander, 9 - 2.º, 09004 Burgos, España</p>
+        <p><strong>Email de Contacto:</strong> apayno.bufete@gmail.com | <strong>Teléfono:</strong> 947 023 159</p>
+        <p>Las normas profesionales aplicables al ejercicio de la abogacía se encuentran a disposición en el Consejo General de la Abogacía Española (CGAE) y en el ICABURGOS.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="privacidadModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl relative">
+      <button onclick="closeModal('privacidadModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="font-serif-lux text-2xl font-bold text-slate-900 mb-4">Política de Privacidad y Protección de Datos</h3>
+      <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+        <p>Conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD):</p>
+        <p><strong>Responsable del Tratamiento:</strong> Anastasia Eugenia Payno Lázaro (Bufete Anastasia Payno).</p>
+        <p><strong>Finalidad:</strong> Atender y dar respuesta a las solicitudes de asesoramiento jurídico y gestión de consultas planteadas a través de este sitio web o vías de contacto.</p>
+        <p><strong>Legitimación:</strong> Consentimiento expreso del interesado y la aplicación de medidas precontractuales o contractuales a solicitud del mismo.</p>
+        <p><strong>Destinatarios:</strong> No se cederán datos a terceros salvo obligación legal expresa o requerimiento judicial.</p>
+        <p><strong>Derechos:</strong> Tiene derecho a acceder, rectificar, suprimir sus datos y oponerse a su tratamiento enviando un correo a <em>apayno.bufete@gmail.com</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="cookiesModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl relative">
+      <button onclick="closeModal('cookiesModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="font-serif-lux text-2xl font-bold text-slate-900 mb-4">Política de Cookies</h3>
+      <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+        <p>Este sitio web utiliza exclusivamente cookies técnicas esenciales que permiten la correcta navegación y visualización de la página.</p>
+        <p>No se utilizan cookies analíticas de rastreo invasivo ni cookies publicitarias de terceros sin su consentimiento explícito.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="secretoModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl relative">
+      <button onclick="closeModal('secretoModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="font-serif-lux text-2xl font-bold text-slate-900 mb-4">Garantía de Secreto Profesional</h3>
+      <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+        <p>El secreto profesional es un pilar fundamental del Estado de Derecho y un derecho de los ciudadanos consagrado en el artículo 542.3 de la Ley Orgánica del Poder Judicial (LOPJ).</p>
+        <p>Toda comunicación, documentación, consulta preliminar o dato compartido con el <strong>Bufete Anastasia Payno</strong> está blindado bajo el más riguroso deber y derecho de secreto profesional de la Abogacía Española.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function openModalWithService(serviceName) {
+      document.getElementById('modalServiceInput').value = serviceName;
+      openModal('consultaModal');
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-backdrop')) {
+        e.target.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('formName').value;
+      const phone = document.getElementById('formPhone').value;
+      const area = document.getElementById('formArea').value;
+      const msg = document.getElementById('formMessage').value;
+
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('formSuccess').classList.remove('hidden');
+
+      setTimeout(() => {
+        const text = encodeURIComponent(`Hola Bufete Anastasia Payno. Mi nombre es ${name} (Tel: ${phone}). Quisiera una consulta sobre ${area}: "${msg}"`);
+        window.open(`https://wa.me/34631122707?text=${text}`, '_blank');
+      }, 1600);
+    }
+
+    function handleQuickSubmit(e) {
+      e.preventDefault();
+      closeModal('consultaModal');
+      alert('¡Muchas gracias! Su solicitud ha sido registrada con éxito. Nos pondremos en contacto con usted en menos de 24 horas bajo estricto secreto profesional.');
+    }
+  </script>
+
+</body>
+</html>

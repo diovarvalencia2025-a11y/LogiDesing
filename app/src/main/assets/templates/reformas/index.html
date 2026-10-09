@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFC REFORMAS • Obras Integrales, Cocinas y Baños | Presupuesto Cerrado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+    
+    :root {
+      --brand-amber: #f59e0b;
+      --brand-amber-dark: #d97706;
+      --slate-deep: #0f172a;
+    }
+
+    body { 
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    .hero-reformas {
+      background: linear-gradient(rgba(15, 23, 42, 0.84), rgba(15, 23, 42, 0.90)), 
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover;
+    }
+  
+    /* 🛡️ BLINDAJE ANTI-DESBORDAMIENTO DE ICONOS SVG EN MÓVILES */
+    svg {
+      max-width: 100%;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    svg.w-3\.5 { width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; }
+    svg.w-4 { width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; }
+    svg.w-5 { width: 20px !important; height: 20px !important; min-width: 20px !important; max-width: 20px !important; }
+    svg.w-6 { width: 24px !important; height: 24px !important; min-width: 24px !important; max-width: 24px !important; }
+    svg.w-7 { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
+    svg.w-8 { width: 32px !important; height: 32px !important; min-width: 32px !important; max-width: 32px !important; }
+    svg.w-9 { width: 36px !important; height: 36px !important; min-width: 36px !important; max-width: 36px !important; }
+    svg.w-10 { width: 40px !important; height: 40px !important; min-width: 40px !important; max-width: 40px !important; }
+    svg.w-12 { width: 48px !important; height: 48px !important; min-width: 48px !important; max-width: 48px !important; }
+    svg.w-14 { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; }
+    svg.w-16 { width: 64px !important; height: 64px !important; min-width: 64px !important; max-width: 64px !important; }
+    svg:not([class*="w-"]) { max-width: 24px !important; max-height: 24px !important; }
+
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- 1. BARRA SUPERIOR DE CONTACTO Y COBERTURA -->
+  <div class="bg-slate-950 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+        <span class="flex items-center gap-1.5 text-slate-300">
+          <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Área de Cobertura: Localidad y Alrededores
+        </span>
+        <span class="hidden md:flex items-center gap-1.5 text-slate-400">
+          <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Horario Técnico: Lun - Sáb de 8:00 a 20:00
+        </span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-amber-400 font-bold flex items-center gap-1 text-[11px] sm:text-xs">
+          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          5.0 en Opiniones de Clientes
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. NAVEGACIÓN PRINCIPAL -->
+  <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
+      
+      <!-- LOGO / IDENTIDAD -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-md shadow-amber-500/20">
+          <svg width="24" height="24" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight block leading-tight">RFC REFORMAS</span>
+          <span class="text-[10px] text-amber-700 font-extrabold uppercase tracking-widest block">Obras &amp; Interiorismo</span>
+        </div>
+      </div>
+
+      <!-- BOTONES DE CONTACTO -->
+      <div class="flex items-center gap-3">
+        <a href="tel:+34362547479" class="hidden sm:inline-flex items-center gap-2 text-slate-700 hover:text-slate-950 font-bold text-xs px-3 py-2 rounded-lg transition">
+          <svg width="16" height="16" class="w-4 h-4 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Llamar: +34 362 54 74 79</span>
+        </a>
+
+        <a href="#presupuesto" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/25 flex items-center gap-2 transition transform active:scale-95 min-h-[44px]">
+          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+          <span>Pedir Presupuesto</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. HERO PRINCIPAL -->
+  <section class="hero-reformas text-white py-16 sm:py-26 px-4 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      
+      <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 border border-amber-400/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+        <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Garantía por Escrito • Plazos y Precios Cerrados
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none mb-6">
+        Reformas Integrales de Viviendas con <span class="text-amber-400">Presupuesto Cerrado</span> y Sin Sorpresas.
+      </h1>
+
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+        Transformamos tu cocina, baño o vivienda completa con materiales de primera calidad, dirección técnica continua y cumplimiento estricto de los plazos de entrega.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
+        <a href="#presupuesto" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-8 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 shadow-xl shadow-amber-500/30 transition transform hover:-translate-y-0.5 min-h-[48px]">
+          <svg width="20" height="20" class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+          <span>Solicitar Presupuesto Gratis</span>
+        </a>
+
+        <a href="https://wa.me/34362547479?text=Hola,%20quisiera%20pedir%20presupuesto%20para%20una%20reforma." class="w-full sm:w-auto bg-slate-900/90 hover:bg-slate-800 text-white border border-slate-700 font-bold px-6 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 transition min-h-[48px]">
+          <svg width="20" height="20" class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
+          <span>WhatsApp Directo</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. PILARES DE CONFIANZA Y GARANTÍAS -->
+  <section class="py-10 bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Presupuesto 100% Cerrado</h3>
+            <p class="text-slate-600 text-xs mt-0.5">El importe presupuestado es el final. Sin sobrecostes imprevistos.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Plazos Garantizados</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Fecha de inicio y fin pactadas por contrato para tu tranquilidad.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Acabados Profesionales</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Supervisión técnica de cada oficio y entrega de obra limpia.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Garantía por Escrito</h3>
+            <p class="text-slate-600 text-xs mt-0.5">Garantía total de ejecución e instalaciones según normativa.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ESPECIALIDADES Y SERVICIOS DE REFORMA -->
+  <section class="py-16 px-4 max-w-6xl mx-auto" id="servicios">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Lo Que Hacemos</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Especialistas en Obras y Reformas</h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-2">Soluciones integrales de albañilería, fontanería, electricidad y carpintería.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- SERVICIO 1: COCINAS -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Reforma moderna de cocina" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Reformas de Cocinas a Medida</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Diseño ergonómico, islas centrales, encimeras de porcelánico o cuarzo, fontanería renovada e iluminación LED bajo muebles.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#presupuesto" class="text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1">
+            Consultar reforma de cocina →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 2: BAÑOS -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Reforma de baño y plato de ducha" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Baños y Cambio de Bañera</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Cambio de bañera por plato de ducha antideslizante de resina, mamparas de cristal templado, grifería empotrada y azulejos rectificados.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#presupuesto" class="text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1">
+            Consultar reforma de baño →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 3: PISOS INTEGRALES -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Reforma integral de piso" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Reformas Integrales de Viviendas</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Redistribución de espacios abiertos, demolición de tabiques, aislamiento acústico/térmico, suelos laminados o porcelánicos y pintura lisa.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#presupuesto" class="text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1">
+            Consultar reforma integral →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 4: CARPINTERÍA & SUELOS -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Carpintería y suelos de madera" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Carpintería, Puertas &amp; Ventanas PVC</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Ventanas con rotura de puente térmico y doble acristalamiento Climalit, puertas lacadas en blanco, armarios empotrados y tarima flotante AC5.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#presupuesto" class="text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1">
+            Consultar carpintería →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 5: ELECTRICIDAD Y CLIMATIZACIÓN -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80" alt="Instalaciones y climatización" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Instalaciones &amp; Climatización</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Actualización de cuadros eléctricos según normativa, boletines oficiales, fontanería multicapa y climatización por conductos o split.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#presupuesto" class="text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1">
+            Consultar instalaciones →
+          </a>
+        </div>
+      </div>
+
+      <!-- SERVICIO 6: LOCALES Y OFICINAS -->
+      <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Reforma de local comercial" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="font-extrabold text-slate-900 text-lg mb-2">Locales Comerciales &amp; Oficinas</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Adecuación integral para negocios, insonorización, accesibilidad para personas con movilidad reducida y tramitación de licencias de apertura.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-slate-100">
+          <a href="#presupuesto" class="text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1">
+            Consultar local comercial →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. PROCESO DE REFORMA EN 4 PASOS -->
+  <section class="py-16 bg-slate-900 text-white px-4 border-y border-slate-800">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Sin Complicaciones</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Cómo Desarrollamos Tu Obra</h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">Un método transparente para que disfrutes de la reforma sin estrés.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
+          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 1</span>
+          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Visita &amp; Medición</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Acudimos a tu vivienda para tomar medidas exactas, entender tus necesidades y asesorarte sobre la mejor distribución.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
+          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 2</span>
+          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Presupuesto Cerrado</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Te entregamos una memoria de calidades detallada partida por partida, con precio final garantizado por contrato.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
+          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 3</span>
+          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Ejecución &amp; Control</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Nuestros propios operarios cualificados realizan la obra con un jefe de obra que coordina cada oficio y te mantiene informado.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
+          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 4</span>
+          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Entrega Limpia</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Revisión final conjunta de cada detalle, limpieza exhaustiva y entrega de llaves lista para entrar a vivir con garantía.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. FORMULARIO DE PRESUPUESTO RÁPIDO ONLINE -->
+  <section class="py-16 bg-white border-t border-slate-200 px-4" id="presupuesto">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Valoración Sin Compromiso</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Solicita Tu Presupuesto de Reforma</h2>
+        <p class="text-slate-600 text-sm mt-2">
+          Completa el formulario y te contactaremos en menos de 24 horas para coordinar la visita técnica gratuita.
+        </p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
+        <form id="form_reformas" onsubmit="enviarPresupuestoReformas(event);" class="space-y-4 text-xs sm:text-sm">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nombre_reforma" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Tu Nombre y Apellidos <span class="text-amber-600">*</span>
+              </label>
+              <input type="text" id="nombre_reforma" required placeholder="Ej. Francisco Navarro" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
+            </div>
+
+            <div>
+              <label for="telefono_reforma" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Teléfono de Contacto <span class="text-amber-600">*</span>
+              </label>
+              <input type="tel" id="telefono_reforma" required placeholder="Ej. 612 345 678" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="tipo_obra" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Tipo de Reforma <span class="text-amber-600">*</span>
+              </label>
+              <select id="tipo_obra" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
+                <option value="Reforma Integral de Piso">Reforma Integral de Vivienda / Piso</option>
+                <option value="Reforma de Cocina">Reforma de Cocina</option>
+                <option value="Reforma de Baño / Cambio de Bañera">Reforma de Baño / Cambio de Bañera</option>
+                <option value="Carpintería y Suelos">Carpintería, Puertas y Suelos</option>
+                <option value="Local Comercial u Oficina">Local Comercial u Oficina</option>
+                <option value="Otra Reforma Parcial">Otra Reforma Parcial</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="metros_obra" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+                Metros Cuadrados Aprox. <span class="text-slate-400 font-normal text-[11px]">(Opcional)</span>
+              </label>
+              <input type="text" id="metros_obra" placeholder="Ej. 85 m²" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
+            </div>
+          </div>
+
+          <div>
+            <label for="detalles_obra" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
+              Cuéntanos qué tienes en mente <span class="text-slate-400 font-normal text-[11px]">(Opcional)</span>
+            </label>
+            <textarea id="detalles_obra" rows="2" placeholder="Ej. Queremos abrir la cocina al salón, cambiar suelo por tarima y renovar los dos baños..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition"></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-sm py-4 px-6 rounded-xl shadow-xl shadow-amber-500/25 transition transform active:scale-95 flex items-center justify-center gap-2 min-h-[48px]">
+              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+              <span>Enviar Solicitud de Presupuesto por WhatsApp</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. PRUEBA SOCIAL / RESEÑAS DE CLIENTES -->
+  <section class="py-16 bg-slate-900 text-white px-4">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3.5 py-1 rounded-full text-xs font-semibold mb-3">
+          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Opiniones de Propietarios
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold">Lo Que Opinan Quienes Han Reformado Con Nosotros</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-3">
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+              "Hicieron la reforma de nuestra cocina y el baño principal. Cumplieron con los días pactados y la atención fue impecable en todo momento. Totalmente recomendados."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-700/60">
+            <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs">MG</div>
+            <div>
+              <h4 class="font-bold text-white text-xs">María González</h4>
+              <span class="text-[11px] text-slate-400">Reforma de Cocina &amp; Baño</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-3">
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+              "Presupuesto claro desde el primer minuto. Ninguna sorpresa desagradable. Cumplieron con la fecha de entrega y dejaron todo impecable."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-700/60">
+            <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs">CR</div>
+            <div>
+              <h4 class="font-bold text-white text-xs">Carlos Ramos</h4>
+              <span class="text-[11px] text-slate-400">Reforma Integral de Piso</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-3">
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+              "Muy satisfechos con el cambio de bañera a plato de ducha y la renovación de suelo y puertas. Rápidos, limpios y muy detallistas."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-700/60">
+            <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs">EP</div>
+            <div>
+              <h4 class="font-bold text-white text-xs">Elena Pascual</h4>
+              <span class="text-[11px] text-slate-400">Cambio de Bañera &amp; Suelos</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. UBICACIÓN, HORARIOS Y CONTACTO -->
+  <section class="py-16 px-4 max-w-6xl mx-auto">
+    <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      
+      <div>
+        <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Encuéntranos Fácilmente</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-4">Oficina Técnica y Cobertura</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+          Realizamos visitas técnicas sin coste para evaluar tu proyecto in situ y facilitarte una propuesta con precio cerrado.
+        </p>
+
+        <div class="space-y-4 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-start gap-3">
+            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <p class="font-bold text-white">Oficina Central &amp; Exposición:</p>
+              <p class="text-slate-400">[Calle Principal de la Localidad / Polígono Industrial]</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <p class="font-bold text-white">Horario de Atención:</p>
+              <p class="text-slate-400">Lunes a Viernes: 8:00 a 19:30 | Sábados: 9:00 a 13:30</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <p class="font-bold text-white">Teléfono de Atención Directa:</p>
+              <p class="text-amber-400 font-extrabold">+34 362 54 74 79</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center">
+        <h3 class="font-extrabold text-white text-lg mb-2">¿Quieres consultar tu reforma por WhatsApp?</h3>
+        <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+          Envíanos fotos o la idea de lo que quieres reformar y te damos una primera orientación estimada sin coste.
+        </p>
+        <a href="https://wa.me/34362547479?text=Hola,%20deseo%20consultar%20el%20presupuesto%20para%20una%20reforma." class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 text-slate-950 font-black text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg transition min-h-[48px] w-full">
+          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
+          <span>Consultar por WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. CTA FINAL DE CIERRE -->
+  <section class="py-14 bg-amber-500 text-slate-950 text-center px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl sm:text-4xl font-black mb-3">Haz realidad la reforma de tu hogar con total garantía</h2>
+      <p class="text-slate-900 text-sm sm:text-base font-semibold mb-6 max-w-xl mx-auto">
+        Pide tu presupuesto sin compromiso y comprueba la diferencia de trabajar con profesionales.
+      </p>
+      <a href="#presupuesto" class="inline-flex items-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-black text-sm px-8 py-4 rounded-xl shadow-2xl transition transform hover:scale-105 min-h-[48px]">
+        <svg width="20" height="20" class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+        <span>Pedir Presupuesto Gratis Ahora</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 11. PIE DE PÁGINA CORPORATIVO -->
+  <footer class="bg-slate-950 text-slate-500 py-8 px-4 text-center text-xs border-t border-slate-800">
+    <p class="font-bold text-slate-400">RFC REFORMAS INTEGRALES • Obras, Cocinas, Baños &amp; Interiorismo</p>
+    <p class="mt-1">© 2026 RFC REFORMAS. Todos los derechos reservados. Web de demostración profesional.</p>
+  </footer>
+
+  <!-- 12. BOTÓN FLOTANTE MÓVIL DE WHATSAPP -->
+  <a href="https://wa.me/34362547479?text=Hola,%20vi%20su%20web%20y%20deseo%20pedir%20presupuesto%20para%20una%20reforma." class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 transition transform hover:scale-110 active:scale-95">
+    <svg width="28" height="28" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
+  </a>
+
+  <!-- SCRIPT DE ENVÍO DE PRESUPUESTO -->
+  <script>
+    function enviarPresupuestoReformas(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre_reforma').value.trim();
+      const tel = document.getElementById('telefono_reforma').value.trim();
+      const tipo = document.getElementById('tipo_obra').value;
+      const metros = document.getElementById('metros_obra').value.trim();
+      const detalles = document.getElementById('detalles_obra').value.trim();
+
+      const mensaje = `*SOLICITUD DE PRESUPUESTO - RFC REFORMAS*
+
+👤 *Cliente:* ${nombre}
+📞 *Teléfono:* ${tel}
+🔨 *Tipo de Obra:* ${tipo}
+${metros ? `📐 *Metros Aprox.:* ${metros}\n` : ''}${detalles ? `📝 *Detalles del Proyecto:* "${detalles}"\n` : ''}
+_Enviado desde el formulario web de reformas._`;
+
+      const url = `https://wa.me/34362547479?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
