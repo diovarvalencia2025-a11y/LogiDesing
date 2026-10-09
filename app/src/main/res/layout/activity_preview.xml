@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainPreview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F172A"
+    tools:context=".PreviewActivity">
+
+    <!-- BARRA SUPERIOR / HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:background="#1E293B">
+
+        <!-- Botón Volver -->
+        <ImageButton
+            android:id="@+id/btnBackPreview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Volver" />
+
+        <!-- Título y Nicho -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/tvPreviewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mi Página Web"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvPreviewSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generado por LogiDesign AI"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Botón Copiar Código -->
+        <ImageButton
+            android:id="@+id/btnCopyCode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_share"
+            android:contentDescription="Copiar o Compartir Código" />
+    </LinearLayout>
+
+    <!-- SELECTOR DE PESTAÑAS (VISTA PREVIA VS CÓDIGO) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="#0F172A"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tabPreview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🌐 Vista Previa"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:background="#334155" />
+
+        <TextView
+            android:id="@+id/tabCode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="💻 Código HTML"
+            android:textColor="#94A3B8"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:background="#0F172A" />
+    </LinearLayout>
+
+    <!-- CONTENEDOR PRINCIPAL: WEBVIEW O CÓDIGO -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 1. VISTA PREVIA (WEBVIEW) -->
+        <WebView
+            android:id="@+id/webViewPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <!-- 2. VISOR DE CÓDIGO HTML (SCROLLABLE) -->
+        <ScrollView
+            android:id="@+id/scrollCodePreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0B0F17"
+            android:visibility="gone">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCodePreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:fontFamily="monospace"
+                    android:textColor="#38BDF8"
+                    android:textSize="12sp"
+                    android:textIsSelectable="true" />
+            </HorizontalScrollView>
+        </ScrollView>
+
+    </FrameLayout>
+
+</LinearLayout>

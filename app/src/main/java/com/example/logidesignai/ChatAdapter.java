@@ -39,6 +39,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             holder.layoutUserMessage.setVisibility(View.GONE);
             holder.layoutAiMessage.setVisibility(View.VISIBLE);
             holder.tvAiMessage.setText(message.getText());
+
+            if (message.isWebsiteReady()) {
+                holder.layoutBtnOpenWebsite.setVisibility(View.VISIBLE);
+                holder.layoutBtnOpenWebsite.setOnClickListener(v -> {
+                    android.content.Context ctx = v.getContext();
+                    android.content.Intent intent = new android.content.Intent(ctx, PreviewActivity.class);
+                    intent.putExtra(PreviewActivity.EXTRA_NICHE, message.getNiche());
+                    intent.putExtra(PreviewActivity.EXTRA_NOMBRE, message.getBusinessName());
+                    intent.putExtra(PreviewActivity.EXTRA_TELEFONO, message.getPhone());
+                    intent.putExtra(PreviewActivity.EXTRA_DIRECCION, message.getAddress());
+                    intent.putExtra(PreviewActivity.EXTRA_SERVICIOS, message.getServices());
+                    ctx.startActivity(intent);
+                });
+            } else {
+                holder.layoutBtnOpenWebsite.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -52,6 +68,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         TextView tvUserMessage;
         LinearLayout layoutAiMessage;
         TextView tvAiMessage;
+        LinearLayout layoutBtnOpenWebsite;
 
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +76,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             tvUserMessage = itemView.findViewById(R.id.tvUserMessage);
             layoutAiMessage = itemView.findViewById(R.id.layoutAiMessage);
             tvAiMessage = itemView.findViewById(R.id.tvAiMessage);
+            layoutBtnOpenWebsite = itemView.findViewById(R.id.layoutBtnOpenWebsite);
         }
     }
 }

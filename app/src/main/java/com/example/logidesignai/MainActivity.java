@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
             ollamaService.enviarMensaje(previousHistory, userPrompt, new OllamaService.OllamaCallback() {
                 @Override
                 public void onSuccess(String responseText) {
-                    aiBubble.setText(responseText);
+                    procesarRespuestaIA(aiBubble, responseText);
                     chatAdapter.notifyItemChanged(aiIndex);
                     rvChatMessages.smoothScrollToPosition(aiIndex);
                 }
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onError(String errorMessage) {
                     String fallback = getLocalFallback(userPrompt);
-                    aiBubble.setText(fallback);
+                    procesarRespuestaIA(aiBubble, fallback);
                     chatAdapter.notifyItemChanged(aiIndex);
                     rvChatMessages.smoothScrollToPosition(aiIndex);
                 }
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
             geminiService.enviarMensaje(previousHistory, userPrompt, new GeminiService.GeminiCallback() {
                 @Override
                 public void onSuccess(String responseText) {
-                    aiBubble.setText(responseText);
+                    procesarRespuestaIA(aiBubble, responseText);
                     chatAdapter.notifyItemChanged(aiIndex);
                     rvChatMessages.smoothScrollToPosition(aiIndex);
                 }
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onError(String errorMessage) {
                     String fallback = getLocalFallback(userPrompt);
-                    aiBubble.setText(fallback);
+                    procesarRespuestaIA(aiBubble, fallback);
                     chatAdapter.notifyItemChanged(aiIndex);
                     rvChatMessages.smoothScrollToPosition(aiIndex);
                 }
@@ -274,66 +274,115 @@ public class MainActivity extends AppCompatActivity {
             // MOTOR 3: MODO LOCAL SIMULADO (OFFLINE)
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 String localResponse = getLocalFallback(userPrompt);
-                aiBubble.setText(localResponse);
+                procesarRespuestaIA(aiBubble, localResponse);
                 chatAdapter.notifyItemChanged(aiIndex);
                 rvChatMessages.smoothScrollToPosition(aiIndex);
             }, 600);
         }
     }
 
+    private void procesarRespuestaIA(ChatMessage bubble, String fullResponse) {
+        if (fullResponse == null) {
+            bubble.setText("Hubo un detalle al procesar la respuesta.");
+            return;
+        }
+
+        // Buscar si la IA incluye la etiqueta oculta de web lista
+        String tagPrefix = "[LOGIDESIGN_WEB_READY:";
+        int tagIndex = fullResponse.indexOf(tagPrefix);
+
+        if (tagIndex != -1) {
+            int tagEnd = fullResponse.indexOf("]", tagIndex);
+            if (tagEnd != -1) {
+                String tagContent = fullResponse.substring(tagIndex + tagPrefix.length(), tagEnd);
+                String cleanMessage = fullResponse.substring(0, tagIndex).trim();
+
+                String[] parts = tagContent.split("\\|");
+                String niche = parts.length > 0 ? parts[0].trim() : "restaurantes";
+                String nombre = parts.length > 1 ? parts[1].trim() : "Mi Negocio";
+                String telefono = parts.length > 2 ? parts[2].trim() : "+34 600 000 000";
+                String direccion = parts.length > 3 ? parts[3].trim() : "Calle Principal";
+                String servicios = parts.length > 4 ? parts[4].trim() : "";
+
+                bubble.setText(cleanMessage);
+                bubble.setWebsiteReady(true);
+                bubble.setNiche(niche);
+                bubble.setBusinessName(nombre);
+                bubble.setPhone(telefono);
+                bubble.setAddress(direccion);
+                bubble.setServices(servicios);
+                return;
+            }
+        }
+
+        bubble.setText(fullResponse);
+    }
+
     private int offlineStep = 0;
     private String offlineNiche = "";
+    private String offlineNombre = "";
+    private String offlineTelefono = "";
+    private String offlineDireccion = "";
+    private String offlineServicios = "";
 
     private String getLocalFallback(String userPrompt) {
         String lower = userPrompt.toLowerCase().trim();
 
         String detectedNiche = "";
-        if (lower.contains("restaurante") || lower.contains("bar") || lower.contains("comida") || lower.contains("pizza")) {
-            detectedNiche = "Restaurante";
-        } else if (lower.contains("taller") || lower.contains("mecánico") || lower.contains("mecanico") || lower.contains("coche")) {
-            detectedNiche = "Taller Mecánico";
-        } else if (lower.contains("veterinaria") || lower.contains("mascota") || lower.contains("animal")) {
-            detectedNiche = "Clínica Veterinaria";
-        } else if (lower.contains("reforma") || lower.contains("obra") || lower.contains("construcci")) {
-            detectedNiche = "Reformas y Construcción";
+        if (lower.contains("restauran") || lower.contains("bar") || lower.contains("comida") || lower.contains("pizza")) {
+            detectedNiche = "restaurantes";
+        } else if (lower.contains("taller") || lower.contains("mecanic") || lower.contains("coche")) {
+            detectedNiche = "taller";
+        } else if (lower.contains("veterina") || lower.contains("mascota") || lower.contains("animal")) {
+            detectedNiche = "veterinaria";
+        } else if (lower.contains("reforma") || lower.contains("obra") || lower.contains("construc")) {
+            detectedNiche = "reformas";
         } else if (lower.contains("abogado") || lower.contains("legal") || lower.contains("despacho")) {
-            detectedNiche = "Despacho de Abogados";
+            detectedNiche = "abogados";
+        } else if (lower.contains("dental") || lower.contains("dentist") || lower.contains("diente")) {
+            detectedNiche = "dental";
         }
 
         if (offlineStep == 0) {
             if (!detectedNiche.isEmpty()) {
                 offlineNiche = detectedNiche;
                 offlineStep = 1;
-                return "¡Excelente! Vamos a diseñar la página web para tu " + offlineNiche + ". 🚀\n\n" +
-                        "Para construirla a tu medida ahora mismo, facilítame estos datos (puedes enviármelos todos juntos):\n\n" +
+                return "¡Excelente! Vamos a diseñar la página web para tu negocio de " + offlineNiche.toUpperCase() + ". 🚀\n\n" +
+                        "Dime por favor estos datos para prepararla a tu medida:\n\n" +
                         "1️⃣ Nombre de tu negocio\n" +
-                        "2️⃣ Teléfono o WhatsApp de contacto\n" +
-                        "3️⃣ Dirección física o ciudad\n" +
-                        "4️⃣ Servicios principales o especialidad que ofreces";
+                        "2️⃣ Teléfono o WhatsApp\n" +
+                        "3️⃣ Dirección o ciudad\n" +
+                        "4️⃣ Servicios o platos principales";
             } else {
                 offlineStep = 1;
-                return "¡Hola Diovar! 👋\n\n¿De qué temática o negocio quieres crear tu página web?\n\n(Por ejemplo: Restaurante, Taller Mecánico, Veterinaria, Reformas o Abogados).";
+                return "¡Hola Diovar! 👋\n\n¿De qué temática o negocio quieres crear tu página web hoy?\n\n(Por ejemplo: Restaurante, Taller Mecánico, Veterinaria, Reformas, Dental o Abogados).";
             }
         } else if (offlineStep == 1) {
             if (!detectedNiche.isEmpty()) {
                 offlineNiche = detectedNiche;
                 offlineStep = 2;
-                return "¡Perfecto! Vamos a diseñar la página web para tu " + offlineNiche + ". 🌟\n\n" +
-                        "Para estructurar tu página ahora mismo, envíame estos datos en tu próximo mensaje:\n\n" +
+                return "¡Perfecto! Vamos a diseñar la página web para " + offlineNiche.toUpperCase() + ". 🌟\n\n" +
+                        "Dime por favor en un mensaje:\n\n" +
                         "1️⃣ Nombre de tu negocio\n" +
-                        "2️⃣ Teléfono o WhatsApp de contacto\n" +
-                        "3️⃣ Dirección física o ciudad\n" +
-                        "4️⃣ Servicios que quieres que aparezcan";
+                        "2️⃣ Teléfono o WhatsApp\n" +
+                        "3️⃣ Dirección o ciudad\n" +
+                        "4️⃣ Servicios principales";
             } else {
                 offlineStep = 2;
-                return "🎉 ¡Perfecto! He procesado toda la información de tu negocio:\n\n" +
-                        "✅ Nombre de tu marca configurado.\n" +
-                        "✅ Botón de contacto directo por WhatsApp vinculado.\n" +
-                        "✅ Ubicación, mapa y catálogo de servicios integrados.\n\n" +
-                        "¡Tu página web está completamente diseñada y lista para previsualizar!";
+                // Asignar datos por defecto extraídos del prompt
+                offlineNombre = userPrompt.length() > 20 ? userPrompt.substring(0, 20) : userPrompt;
+                if (offlineNiche.isEmpty()) offlineNiche = "restaurantes";
+
+                return "🎉 ¡Excelente! He procesado la información de tu negocio:\n\n" +
+                        "✅ Marca y cabecera configuradas\n" +
+                        "✅ Botones de reserva y WhatsApp enlazados\n" +
+                        "✅ Ubicación y catálogo de servicios aplicados\n\n" +
+                        "¡Tu página web y su código fuente ya están listos! Toca el botón de abajo para verla:\n" +
+                        "[LOGIDESIGN_WEB_READY:" + offlineNiche + "|" + offlineNombre + "|+34 612 345 678|Calle Principal 10, Madrid|Servicio y atención personalizada]";
             }
         } else {
-            return "¡Tu página web de " + (offlineNiche.isEmpty() ? "tu negocio" : offlineNiche) + " ya tiene todos tus datos aplicados!\n\n¿Quieres abrir la vista previa de tu web ahora?";
+            return "¡Tu página web ya está lista! Pulsa el botón de abajo para abrir la vista previa y explorar el código:\n" +
+                    "[LOGIDESIGN_WEB_READY:" + (offlineNiche.isEmpty() ? "restaurantes" : offlineNiche) + "|Mi Negocio|+34 600 123 456|Av. Central 25|Especialidades y atención profesional]";
         }
     }
 
