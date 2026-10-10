@@ -651,9 +651,9 @@ public class MainActivity extends AppCompatActivity {
         // Configuración de nichos con colores temáticos y estilos de tipografía distintos
         demoNiches = new DemoNiche[]{
                 new DemoNiche("RESTAURANTES", android.graphics.Color.parseColor("#E11D48"), android.graphics.Typeface.SERIF),               // Rojo gastronomía elegante Serif
+                new DemoNiche("REFORMAS", android.graphics.Color.parseColor("#D97706"), android.graphics.Typeface.create("sans-serif-black", android.graphics.Typeface.NORMAL)), // Ámbar construcción Black
                 new DemoNiche("TALLER MECÁNICO", android.graphics.Color.parseColor("#EA580C"), android.graphics.Typeface.MONOSPACE),          // Naranja industrial Monospace
                 new DemoNiche("VETERINARIA", android.graphics.Color.parseColor("#16A34A"), android.graphics.Typeface.DEFAULT_BOLD),          // Verde natural Sans negrita
-                new DemoNiche("REFORMAS", android.graphics.Color.parseColor("#D97706"), android.graphics.Typeface.create("sans-serif-black", android.graphics.Typeface.NORMAL)), // Ámbar construcción Black
                 new DemoNiche("ABOGADOS", android.graphics.Color.parseColor("#1E3A8A"), android.graphics.Typeface.create(android.graphics.Typeface.SERIF, android.graphics.Typeface.BOLD_ITALIC)), // Azul legal Serif cursiva
                 new DemoNiche("CLÍNICA DENTAL", android.graphics.Color.parseColor("#0284C7"), android.graphics.Typeface.create("sans-serif-light", android.graphics.Typeface.BOLD))  // Cian clínico moderno
         };
