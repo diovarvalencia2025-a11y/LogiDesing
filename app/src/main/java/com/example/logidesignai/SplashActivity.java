@@ -20,6 +20,12 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Desactivado temporalmente para pasar directo al chat principal.
+        // Para activar el video de entrada en la presentación final: borrar la siguiente línea y descomentar el bloque inferior.
+        navigateToMainChat();
+
+        /*
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
 
@@ -31,27 +37,25 @@ public class SplashActivity extends AppCompatActivity {
 
         videoViewSplash = findViewById(R.id.videoViewSplash);
         playSplashVideo();
+        */
     }
 
+    /*
     private void playSplashVideo() {
         try {
             Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash_video);
             videoViewSplash.setVideoURI(videoUri);
 
-            // Al terminar la reproducción del video, saltar al chat
             videoViewSplash.setOnCompletionListener(mp -> navigateToMainChat());
 
-            // Si ocurre algún problema al reproducir, pasar al chat directamente sin trabar la app
             videoViewSplash.setOnErrorListener((mp, what, extra) -> {
                 navigateToMainChat();
                 return true;
             });
 
-            // Permitir al usuario tocar la pantalla si desea saltar el video antes
             findViewById(R.id.splashContainer).setOnClickListener(v -> navigateToMainChat());
 
             videoViewSplash.setOnPreparedListener(mp -> {
-                // Video a pantalla completa y sin interrupciones
                 mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
                 videoViewSplash.start();
             });
@@ -60,6 +64,7 @@ public class SplashActivity extends AppCompatActivity {
             navigateToMainChat();
         }
     }
+    */
 
     private synchronized void navigateToMainChat() {
         if (isNavigating) return;

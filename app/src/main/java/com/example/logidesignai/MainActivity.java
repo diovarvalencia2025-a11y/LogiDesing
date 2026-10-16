@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.example.logidesignai.data.HistorialDao;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     private final List<ChatMessage> chatMessages = new ArrayList<>();
     private GeminiService geminiService;
     private OllamaService ollamaService;
+    private HistorialDao historialDao;
 
     private final String[] logiDesignModels = {
             "Ollama Local (PC)",
@@ -101,11 +103,51 @@ public class MainActivity extends AppCompatActivity {
         setupListeners();
         setupNavigationDrawer();
         setupBackPressHandler();
+
+        boolean esNuevoChat = getIntent().getBooleanExtra("EXTRA_NUEVO_CHAT", false);
+        if (esNuevoChat) {
+            historialDao.borrarHistorial();
+            chatMessages.clear();
+        } else {
+            cargarHistorial();
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        boolean esNuevoChat = intent.getBooleanExtra("EXTRA_NUEVO_CHAT", false);
+        if (esNuevoChat) {
+            if (historialDao != null) {
+                historialDao.borrarHistorial();
+            }
+            chatMessages.clear();
+            centerHeroLayout.setVisibility(View.VISIBLE);
+            bannerPromo.setVisibility(View.VISIBLE);
+            rvChatMessages.setVisibility(View.GONE);
+            chatAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void cargarHistorial() {
+        if (historialDao == null) return;
+        List<ChatMessage> guardados = historialDao.obtenerHistorial();
+        if (guardados != null && !guardados.isEmpty()) {
+            chatMessages.clear();
+            chatMessages.addAll(guardados);
+            centerHeroLayout.setVisibility(View.GONE);
+            bannerPromo.setVisibility(View.GONE);
+            rvChatMessages.setVisibility(View.VISIBLE);
+            chatAdapter.notifyDataSetChanged();
+            rvChatMessages.scrollToPosition(chatMessages.size() - 1);
+        }
     }
 
     private void initViews() {
         geminiService = new GeminiService();
         ollamaService = new OllamaService();
+        historialDao = new HistorialDao(this);
 
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
@@ -115,7 +157,10 @@ public class MainActivity extends AppCompatActivity {
         tvGreeting = findViewById(R.id.tvGreeting);
         tvSlogan = findViewById(R.id.tvSlogan);
         tvSloganAnimated = findViewById(R.id.tvSloganAnimated);
-        setupNicheSloganAnimation();
+        tvSloganAnimated.setText("RESTAURANTES");
+        tvSloganAnimated.setTextColor(android.graphics.Color.parseColor("#E11D48"));
+        tvSloganAnimated.setTypeface(android.graphics.Typeface.SERIF);
+        // setupNicheSloganAnimation(); // Descomentar para activar la animacion de texto en la presentacion final
         bannerPromo = findViewById(R.id.bannerPromo);
         tvBannerAction = findViewById(R.id.tvBannerAction);
         etMessagePrompt = findViewById(R.id.etMessagePrompt);
@@ -221,7 +266,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Agregar mensaje del usuario a la derecha
-        chatMessages.add(new ChatMessage(text, ChatMessage.TYPE_USER));
+        ChatMessage userMsg = new ChatMessage(text, ChatMessage.TYPE_USER);
+        chatMessages.add(userMsg);
+        if (historialDao != null) {
+            historialDao.insertarMensaje(userMsg);
+        }
         chatAdapter.notifyItemInserted(chatMessages.size() - 1);
         rvChatMessages.smoothScrollToPosition(chatMessages.size() - 1);
         etMessagePrompt.setText("");
@@ -295,6 +344,9 @@ public class MainActivity extends AppCompatActivity {
     private void procesarRespuestaIA(ChatMessage bubble, String fullResponse) {
         if (fullResponse == null) {
             bubble.setText("Hubo un detalle al procesar la respuesta.");
+            if (historialDao != null) {
+                historialDao.insertarMensaje(bubble);
+            }
             return;
         }
 
@@ -322,11 +374,18 @@ public class MainActivity extends AppCompatActivity {
                 bubble.setPhone(telefono);
                 bubble.setAddress(direccion);
                 bubble.setServices(servicios);
+
+                if (historialDao != null) {
+                    historialDao.insertarMensaje(bubble);
+                }
                 return;
             }
         }
 
         bubble.setText(fullResponse);
+        if (historialDao != null) {
+            historialDao.insertarMensaje(bubble);
+        }
     }
 
     private int offlineStep = 0;
@@ -642,8 +701,10 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    private int typeCharIndex = 0;
-    private boolean isDeleting = false;
+    private static final String SCRAMBLE_GLYPHS = "!@#$%^&*<>~+=-_{}[]|:;?0123456789ABCDEFXYZ";
+    private final java.util.Random scrambleRandom = new java.util.Random();
+    private int lockedIndex = 0;
+    private int scrambleTickCount = 0;
 
     private void setupNicheSloganAnimation() {
         if (tvSloganAnimated == null) return;
@@ -660,14 +721,14 @@ public class MainActivity extends AppCompatActivity {
 
         sloganAnimHandler = new Handler(Looper.getMainLooper());
         currentNicheIndex = 0;
-        typeCharIndex = 0;
-        isDeleting = false;
+        lockedIndex = 0;
+        scrambleTickCount = 0;
 
-        // Establecer primer nicho
+        // Mostrar primer nicho de inicio
         DemoNiche initial = demoNiches[currentNicheIndex];
         tvSloganAnimated.setTextColor(initial.color);
         tvSloganAnimated.setTypeface(initial.typeface);
-        tvSloganAnimated.setText("|");
+        tvSloganAnimated.setText(initial.name);
 
         sloganAnimRunnable = new Runnable() {
             @Override
@@ -675,57 +736,76 @@ public class MainActivity extends AppCompatActivity {
                 if (isFinishing() || isDestroyed()) return;
 
                 DemoNiche current = demoNiches[currentNicheIndex];
-                String fullWord = current.name;
+                String targetWord = current.name;
+                int targetLen = targetWord.length();
 
-                if (!isDeleting) {
-                    // MODO ESCRIBIR: Añadir una letra de izquierda a derecha
-                    typeCharIndex++;
-                    String visibleText = fullWord.substring(0, typeCharIndex) + "|";
-                    tvSloganAnimated.setText(visibleText);
+                if (lockedIndex < targetLen) {
+                    // Efecto de descifrado (glitch / jeroglíficos) letra por letra
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < targetLen; i++) {
+                        if (i < lockedIndex) {
+                            sb.append(targetWord.charAt(i));
+                        } else if (targetWord.charAt(i) == ' ') {
+                            sb.append(' ');
+                        } else {
+                            int randIndex = scrambleRandom.nextInt(SCRAMBLE_GLYPHS.length());
+                            sb.append(SCRAMBLE_GLYPHS.charAt(randIndex));
+                        }
+                    }
+
+                    tvSloganAnimated.setText(sb.toString());
                     tvSloganAnimated.setTextColor(current.color);
                     tvSloganAnimated.setTypeface(current.typeface);
 
-                    if (typeCharIndex == fullWord.length()) {
-                        // Terminó de escribir la palabra completa: mostrar sin cursor y esperar 1.8 segundos
-                        tvSloganAnimated.setText(fullWord);
-                        isDeleting = true;
-                        sloganAnimHandler.postDelayed(this, 1800);
-                    } else {
-                        // Velocidad de tecleo natural (entre 80ms y 110ms por letra)
-                        sloganAnimHandler.postDelayed(this, 90);
+                    scrambleTickCount++;
+                    if (scrambleTickCount >= 2) {
+                        lockedIndex++;
+                        scrambleTickCount = 0;
                     }
+
+                    sloganAnimHandler.postDelayed(this, 40);
                 } else {
-                    // MODO BORRAR: Quitar una letra de derecha a izquierda
-                    typeCharIndex--;
-                    if (typeCharIndex > 0) {
-                        String visibleText = fullWord.substring(0, typeCharIndex) + "|";
-                        tvSloganAnimated.setText(visibleText);
-                        // Velocidad de borrado rápida (45ms por letra)
-                        sloganAnimHandler.postDelayed(this, 45);
-                    } else {
-                        // Se borró por completo: pasar al siguiente nicho y empezar a teclear
-                        isDeleting = false;
+                    // Palabra completamente armada y limpia
+                    tvSloganAnimated.setText(targetWord);
+                    tvSloganAnimated.setTextColor(current.color);
+                    tvSloganAnimated.setTypeface(current.typeface);
+
+                    // Pausa de 2.2 segundos para poder leer la palabra con calma
+                    sloganAnimHandler.postDelayed(() -> {
+                        if (isFinishing() || isDestroyed()) return;
+
+                        // Pasar al siguiente nicho
                         currentNicheIndex = (currentNicheIndex + 1) % demoNiches.length;
+                        lockedIndex = 0;
+                        scrambleTickCount = 0;
                         DemoNiche nextNiche = demoNiches[currentNicheIndex];
                         tvSloganAnimated.setTextColor(nextNiche.color);
                         tvSloganAnimated.setTypeface(nextNiche.typeface);
-                        tvSloganAnimated.setText("|");
-                        // Pausa de 350ms antes de comenzar a escribir la siguiente
-                        sloganAnimHandler.postDelayed(this, 350);
-                    }
+
+                        sloganAnimHandler.post(sloganAnimRunnable);
+                    }, 2200);
                 }
             }
         };
 
-        // Iniciar la máquina de escribir tras 1 segundo
-        sloganAnimHandler.postDelayed(sloganAnimRunnable, 1000);
+        // Iniciar la primera transición tras 2.2 segundos
+        sloganAnimHandler.postDelayed(() -> {
+            if (isFinishing() || isDestroyed()) return;
+            currentNicheIndex = 1;
+            lockedIndex = 0;
+            scrambleTickCount = 0;
+            DemoNiche nextNiche = demoNiches[currentNicheIndex];
+            tvSloganAnimated.setTextColor(nextNiche.color);
+            tvSloganAnimated.setTypeface(nextNiche.typeface);
+            sloganAnimHandler.post(sloganAnimRunnable);
+        }, 2200);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (sloganAnimHandler != null && sloganAnimRunnable != null) {
-            sloganAnimHandler.removeCallbacks(sloganAnimRunnable);
+        if (sloganAnimHandler != null) {
+            sloganAnimHandler.removeCallbacksAndMessages(null);
         }
     }
 }

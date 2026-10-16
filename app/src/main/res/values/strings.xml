@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">LogiDesign AI</string>
     <string name="usuario" translatable="false">Usuario</string>
-
+    <string name="chats_title">Chats</string>
+    <string name="desc_menu">Menú</string>
+    <string name="desc_filters">Filtros</string>
+    <string name="desc_select">Seleccionar</string>
+    <string name="hint_search">Buscar</string>
+    <string name="desc_search_icon">Buscar</string>
+    <string name="empty_chats_hint">Sin conversaciones recientes</string>
+    <string name="new_chat">Nuevo chat</string>
+    <string name="desc_add">Añadir</string>
 </resources>
