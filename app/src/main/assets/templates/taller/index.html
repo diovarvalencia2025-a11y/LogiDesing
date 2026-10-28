@@ -1,444 +1,847 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{NOMBRE_NEGOCIO}} • Taller Mecánico, Electromecánica & Diagnosis Oficial</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-    
-    :root {
-      --brand-orange: #f97316;
-      --brand-orange-hover: #ea580c;
-      --dark-surface: #0f172a;
-      --card-surface: #1e293b;
-    }
+  <title>{{NOMBRE_NEGOCIO}} | Taller Mecánico, Revisiones & Diagnosis en {{DIRECCION}}</title>
+  <meta name="description" content="{{NOMBRE_NEGOCIO}} en {{DIRECCION}}. Especialistas en revisiones oficiales de mantenimiento, frenos, diagnosis electrónica avanzada, neumáticos y cita en el día.">
+  <meta name="robots" content="noindex, nofollow">
 
-    body { 
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#e5252a',
+              redHover: '#c9181d',
+              blue: '#2563eb',
+              blueLight: '#38bdf8',
+              dark: '#0c0f14',
+              card: '#12161f',
+              surface: '#181d28',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #f8fafc;
       color: #0f172a;
     }
-
-    .hero-auto {
-      background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.92)), 
-                  url('https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1600&q=80') center/cover;
+    .hero-glow {
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
     }
-
-    .bg-grid-pattern {
-      background-image: radial-gradient(rgba(249, 115, 22, 0.08) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-  
-    /* 🛡️ BLINDAJE ANTI-DESBORDAMIENTO DE ICONOS SVG EN MÓVILES */
-    svg {
-      max-width: 100%;
-      box-sizing: border-box;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    svg.w-3\.5 { width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; }
-    svg.w-4 { width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; }
-    svg.w-5 { width: 20px !important; height: 20px !important; min-width: 20px !important; max-width: 20px !important; }
-    svg.w-6 { width: 24px !important; height: 24px !important; min-width: 24px !important; max-width: 24px !important; }
-    svg.w-7 { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
-    svg.w-8 { width: 32px !important; height: 32px !important; min-width: 32px !important; max-width: 32px !important; }
-    svg.w-9 { width: 36px !important; height: 36px !important; min-width: 36px !important; max-width: 36px !important; }
-    svg.w-10 { width: 40px !important; height: 40px !important; min-width: 40px !important; max-width: 40px !important; }
-    svg.w-12 { width: 48px !important; height: 48px !important; min-width: 48px !important; max-width: 48px !important; }
-    svg.w-14 { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; }
-    svg.w-16 { width: 64px !important; height: 64px !important; min-width: 64px !important; max-width: 64px !important; }
-    svg:not([class*="w-"]) { max-width: 24px !important; max-height: 24px !important; }
-
   </style>
 </head>
-<body class="antialiased selection:bg-orange-500 selection:text-white">
+<body class="antialiased selection:bg-[#e5252a] selection:text-white">
 
-  <!-- BARRA SUPERIOR DE ESTADO Y CONTACTO RÁPIDO -->
-  <div class="bg-slate-950 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-        <span class="flex items-center gap-1.5 text-slate-300">
-          <svg width="14" height="14" class="w-3.5 h-3.5 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Lun - Vie: 8:00 - 19:30 | Sáb: 8:30 - 13:30
-        </span>
-        <span class="hidden md:flex items-center gap-1.5 text-slate-400">
-          <svg width="14" height="14" class="w-3.5 h-3.5 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          {{DIRECCION}}
-        </span>
-      </div>
-      <div class="flex items-center gap-3">
-        <span class="text-amber-400 font-bold flex items-center gap-1">
-          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          4.9 en Google Maps (Reseñas Verificadas)
-        </span>
+  <!-- ==============================================
+       HEADER / NAVBAR (ESTILO OSCURO PROFESIONAL)
+       ============================================== -->
+  <header class="sticky top-0 z-50 bg-[#0a0d14]/95 backdrop-blur-md border-b border-white/10 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo de Taller -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-lg bg-[#e5252a] flex items-center justify-center text-white text-xl shadow-lg shadow-red-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-gauge-high"></i>
+          </div>
+          <div>
+            <span class="font-black text-lg sm:text-xl text-white tracking-tight block leading-tight">
+              {{NOMBRE_NEGOCIO}}
+            </span>
+            <span class="text-[10px] text-red-500 font-extrabold uppercase tracking-widest block">
+              TALLER MECÁNICO • ESPECIALISTAS
+            </span>
+          </div>
+        </a>
+
+        <!-- Menú de Navegación Escritorio -->
+        <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider text-slate-300">
+          <a href="#inicio" class="text-white hover:text-[#e5252a] transition">Inicio</a>
+          <a href="#servicios" class="hover:text-[#e5252a] transition">Servicios</a>
+          <a href="#ventajas" class="hover:text-[#e5252a] transition">¿Por qué nosotros?</a>
+          <a href="#cita" class="hover:text-[#e5252a] transition">Pedir Cita</a>
+          <a href="#opiniones" class="hover:text-[#e5252a] transition">Opiniones</a>
+          <a href="#contacto" class="hover:text-[#e5252a] transition">Contacto</a>
+        </nav>
+
+        <!-- Teléfono y Botón CTA -->
+        <div class="hidden sm:flex items-center space-x-5">
+          <a href="tel:{{TELEFONO}}" class="flex items-center gap-2 text-white hover:text-red-400 font-bold text-xs tracking-wider transition">
+            <i class="fa-solid fa-phone text-red-500 text-sm"></i>
+            <span>{{TELEFONO}}</span>
+          </a>
+          <a href="#cita" class="bg-[#e5252a] hover:bg-[#c9181d] text-white font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded-md shadow-md shadow-red-500/30 transition transform hover:-translate-y-0.5">
+            Pedir Cita
+          </a>
+        </div>
+
+        <!-- Botón Menú Móvil -->
+        <div class="lg:hidden flex items-center">
+          <button id="btnMobileNav" class="text-white hover:text-[#e5252a] p-2 focus:outline-none transition">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- NAVEGACIÓN PRINCIPAL -->
-  <nav class="bg-slate-900/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-800 shadow-lg">
-    <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobileNavMenu" class="hidden lg:hidden bg-[#0a0d14] border-t border-white/10 px-6 py-5 space-y-3 text-xs font-bold uppercase tracking-wider text-slate-300">
+      <a href="#inicio" class="block text-white py-1">Inicio</a>
+      <a href="#servicios" class="block hover:text-[#e5252a] py-1">Servicios</a>
+      <a href="#ventajas" class="block hover:text-[#e5252a] py-1">¿Por qué nosotros?</a>
+      <a href="#cita" class="block hover:text-[#e5252a] py-1">Pedir Cita</a>
+      <a href="#opiniones" class="block hover:text-[#e5252a] py-1">Opiniones</a>
+      <div class="pt-3 border-t border-white/10 flex flex-col gap-3">
+        <a href="tel:{{TELEFONO}}" class="flex items-center gap-2 text-white font-bold text-xs">
+          <i class="fa-solid fa-phone text-red-500"></i>
+          <span>Llamar: {{TELEFONO}}</span>
+        </a>
+        <a href="#cita" class="w-full text-center bg-[#e5252a] text-white font-bold py-3 rounded-md text-xs uppercase tracking-wider">
+          Pedir Cita Taller
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       SECCIÓN 1: HERO (CON IMAGEN REAL HERO.PNG)
+       ============================================== -->
+  <section id="inicio" class="relative bg-[#0c0f14] text-white min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden">
+    <!-- Imagen de Fondo Hero con fallback a Unsplash -->
+    <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('imagenes/Hero.png'), url('https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30 z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+      <div class="max-w-2xl space-y-6">
+        
+        <!-- Tag Superior -->
+        <div class="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-widest text-red-400">
+          <i class="fa-solid fa-shield-halved text-xs"></i>
+          <span>MECÁNICA INTEGRAL • {{NOMBRE_NEGOCIO}}</span>
+        </div>
+
+        <!-- Titular Principal con Estilo Fiel a la Imagen de Referencia -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-white hero-glow">
+          Mantenimiento &amp; <br>
+          Reparación de Coches <br>
+          <span class="text-blue-500">de Total Confianza</span>
+        </h1>
+
+        <!-- Párrafo Descriptivo -->
+        <p class="text-slate-300 text-sm sm:text-base font-normal leading-relaxed max-w-xl">
+          Revisiones oficiales sellando el libro de garantía, frenos, diagnosis electrónica avanzada, inspección pre-ITV, neumáticos, baterías y cita garantizada en el mismo día en <strong class="text-white">{{DIRECCION}}</strong>.
+        </p>
+
+        <!-- Botones de Acción -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <a href="#cita" class="inline-flex items-center justify-center gap-2 bg-[#e5252a] hover:bg-[#c9181d] text-white font-extrabold text-xs uppercase tracking-wider px-7 py-4 rounded-md shadow-xl shadow-red-600/30 transition transform hover:-translate-y-0.5 min-h-[48px]">
+            <i class="fa-solid fa-calendar-check text-sm"></i> Pedir Cita Taller
+          </a>
+          <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-extrabold text-xs uppercase tracking-wider px-7 py-4 rounded-md shadow-xl shadow-blue-600/20 transition min-h-[48px]">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Solicitar Presupuesto
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       BARRA DE VALOR / CONFIANZA (DIRECTO BAJO HERO)
+       ============================================== -->
+  <section class="bg-[#080a0e] border-y border-white/10 text-white py-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-red-500 text-lg shrink-0">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-xs uppercase tracking-wider text-white">Cita en el Día</div>
+            <div class="text-[11px] text-slate-400">Atención rápida y sin esperas</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-red-500 text-lg shrink-0">
+            <i class="fa-solid fa-wrench"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-xs uppercase tracking-wider text-white">Mecánicos Certificados</div>
+            <div class="text-[11px] text-slate-400">Técnicos especialistas titulados</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-red-500 text-lg shrink-0">
+            <i class="fa-solid fa-shield-check"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-xs uppercase tracking-wider text-white">Garantía por Escrito</div>
+            <div class="text-[11px] text-slate-400">Piezas y mano de obra garantizadas</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+          <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-red-500 text-lg shrink-0">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-xs uppercase tracking-wider text-white">Taller Local</div>
+            <div class="text-[11px] text-slate-400">{{DIRECCION}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN 2: NUESTROS SERVICIOS (GRID 3x3 = 9 CARDS)
+       (CON IMÁGENES 1.JPG HASTA 9.JPG)
+       ============================================== -->
+  <section id="servicios" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- LOGO / IDENTIDAD -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-md shadow-orange-500/20">
-          <svg width="24" height="24" class="w-6 h-6 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <!-- Encabezado de Sección con Línea Roja Central -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-slate-900 inline-block">
+          NUESTROS SERVICIOS <span class="text-[#e5252a]">AUTOMOTRICES</span>
+        </h2>
+        <div class="w-20 h-1 bg-[#e5252a] mx-auto mt-3 rounded-full"></div>
+        <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+          Mantenimiento preventivo, correctivo y de alta tecnología para todas las marcas en {{DIRECCION}}.
+        </p>
+      </div>
+
+      <!-- Grid de 9 Servicios (3 columnas x 3 filas) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- CARD 1: Logbook Servicing (1.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/1.jpg" alt="Revisión Oficial & Mantenimiento" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Revisión Oficial &amp; Libro
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Mantenemos la garantía oficial del fabricante con recambios homologados, cambio de aceite sintético, filtros y sellado del libro.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Pedir cita revisión <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 2: Brake Repairs (2.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/2.jpg" alt="Sistema de Frenos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-circle-dot"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Reparación de Frenos
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Máxima potencia y seguridad de frenado. Sustitución de pastillas, discos ventilados, zapatas, latiguillos y purgado de líquido de freno.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Revisar frenos <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 3: Engine Diagnostics (3.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/3.jpg" alt="Diagnosis Electrónica de Motor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Diagnosis Electrónica
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Equipos de diagnosis computarizada multimarca para identificar fallos de inyección, testigos de motor (Check Engine), sensores y centralitas.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Hacer diagnosis <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 4: Battery Replacement (4.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/4.jpg" alt="Cambio de Baterías" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-car-battery"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Cambio de Baterías
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Baterías de primeras marcas (AGM, EFB y plomo-ácido) con comprobación del alternador, instalación profesional y reciclado ecológico.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Comprobar batería <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 5: Tyre & Wheel Services (5.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/5.jpg" alt="Neumáticos & Alineación" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-ring"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Neumáticos &amp; Alineación
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Montaje, equilibrado de alta precisión y alineación 3D láser para alargar la vida útil de los neumáticos y mejorar el consumo de combustible.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Ver neumáticos <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 6: Suspension Repairs (6.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/6.jpg" alt="Suspensión & Amortiguadores" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Suspensión &amp; Amortiguación
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Recupera la estabilidad y el confort de marcha. Cambio de amortiguadores, muelles, brazos de suspensión, silentblocks y rótulas.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Revisar suspensión <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 7: Roadworthy Inspections (7.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/7.jpg" alt="Pre-ITV & Revisiones" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Pre-ITV &amp; Revisiones
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Revisión técnica de más de 40 puntos de control: gases, luces, frenada, dirección y neumáticos para pasar la ITV a la primera y con total tranquilidad.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Pedir cita pre-ITV <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 8: Air Conditioning Service (8.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/8.jpg" alt="Aire Acondicionado & Climatización" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-snowflake"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Climatización &amp; Aire Acondicionado
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Carga de gas refrigerante, detección de microfugas por ultravioleta, sustitución de filtros de habitáculo y desinfección con tratamiento de ozono.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Cargar aire acondicionado <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 9: Fleet Maintenance (9.jpg) -->
+        <div class="bg-[#0f141d] rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-[#e5252a] transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-48 overflow-hidden bg-slate-900">
+              <img src="imagenes/9.jpg" alt="Mantenimiento de Flotas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80';">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-2.5">
+                <div class="w-8 h-8 rounded-md bg-red-600/20 text-red-500 flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-truck-pickup"></i>
+                </div>
+                <h3 class="font-extrabold text-white text-base uppercase tracking-tight leading-snug">
+                  Mantenimiento de Flotas
+                </h3>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Planes preventivos y gestión prioritaria para furgonetas, comerciales y flotas de empresa. Reducimos el tiempo de inactividad de tus vehículos.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-5 pt-0">
+            <a href="#cita" class="text-red-400 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+              Planes para empresas <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botón Centrado Ver Todos los Servicios -->
+      <div class="text-center mt-12">
+        <a href="#cita" class="inline-block bg-white hover:bg-slate-900 hover:text-white text-slate-800 font-extrabold text-xs uppercase tracking-wider px-8 py-3.5 rounded-md border border-slate-300 shadow-sm transition">
+          Ver Todos los Servicios &amp; Precios
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN 3: ¿POR QUÉ LOS CONDUCTORES NOS ELIGEN?
+       (TIRA DE 7 ICONOS REDONDOS MINIMALISTAS)
+       ============================================== -->
+  <section id="ventajas" class="py-20 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Encabezado -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-slate-900 inline-block">
+          ¿POR QUÉ LOS CONDUCTORES <span class="text-[#e5252a]">NOS ELIGEN?</span>
+        </h2>
+        <div class="w-20 h-1 bg-[#e5252a] mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <!-- Tira de 7 Beneficios -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 text-center">
+        
+        <div class="flex flex-col items-center">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-wrench"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Mecánicos Cualificados</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-tag"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Precios Transparentes</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Diagnosis Moderna</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Cita en el Mismo Día</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Recambios Originales</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Garantía por Escrito</span>
+        </div>
+
+        <div class="flex flex-col items-center col-span-2 sm:col-span-1">
+          <div class="w-14 h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 text-xl mb-3 shadow-sm hover:border-red-500 hover:text-red-500 transition">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <span class="font-extrabold text-[11px] uppercase tracking-wider text-slate-900">Taller Impecable</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN 4: RESERVA DE CITA ("NEED YOUR CAR CHECKED TODAY?")
+       (CON IMAGEN DE FONDO ULRIMAIMAGENFONDO.JPG)
+       ============================================== -->
+  <section id="cita" class="py-20 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Contenedor Oscuro con Coche a la Izquierda y Formulario a la Derecha -->
+      <div class="relative bg-[#0c1017] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+        <!-- Imagen de fondo derecha -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center opacity-30" style="background-image: url('imagenes/ulrimaimagenfondo.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0c1017] via-[#0c1017]/95 to-[#0c1017]/80 z-0"></div>
+
+        <div class="relative z-10 p-8 sm:p-12 lg:p-16">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Columna Izquierda: Información y Confianza -->
+            <div class="lg:col-span-5 space-y-6">
+              <div>
+                <span class="text-red-500 text-xs font-black uppercase tracking-widest block mb-2">
+                  DISPONIBILIDAD INMEDIATA
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+                  ¿NECESITAS REVISAR TU COCHE <span class="text-blue-500">HOY?</span>
+                </h2>
+                <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                  Reserva online en 60 segundos. Citas disponibles en el día en <strong class="text-white">{{NOMBRE_NEGOCIO}}</strong>.
+                </p>
+              </div>
+
+              <!-- Lista con Checks Azules -->
+              <div class="space-y-3 text-xs sm:text-sm text-slate-200">
+                <div class="flex items-center gap-3">
+                  <i class="fa-solid fa-check text-blue-500 text-base"></i>
+                  <span>Sin compromiso y con diagnóstico claro</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fa-solid fa-check text-blue-500 text-base"></i>
+                  <span>Presupuesto transparente antes de reparar</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fa-solid fa-check text-blue-500 text-base"></i>
+                  <span>Mano de obra y recambios 100% garantizados</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="fa-solid fa-check text-blue-500 text-base"></i>
+                  <span>Taller local de máxima confianza en {{DIRECCION}}</span>
+                </div>
+              </div>
+
+              <!-- Teléfono Directo -->
+              <div class="pt-4 border-t border-white/10 flex items-center gap-3 text-white">
+                <div class="w-10 h-10 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center text-lg">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">Atención telefónica directa:</div>
+                  <a href="tel:{{TELEFONO}}" class="font-extrabold text-sm text-white hover:text-red-400 transition">{{TELEFONO}}</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario de Reserva Rápida -->
+            <div class="lg:col-span-7 bg-[#131924]/90 p-6 sm:p-8 rounded-xl border border-white/10 shadow-xl">
+              <form id="bookingForm" onsubmit="enviarCitaTaller(event)" class="space-y-4">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">Tu Nombre Completo *</label>
+                    <input type="text" id="taller_nombre" required placeholder="Ej: Diovar Valencia" class="w-full bg-[#0a0d14] border border-slate-700 rounded-md p-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-red-500 transition">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">Teléfono / WhatsApp *</label>
+                    <input type="tel" id="taller_tel" required placeholder="Ej: +34 600 000 000" class="w-full bg-[#0a0d14] border border-slate-700 rounded-md p-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-red-500 transition">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">Marca del Vehículo</label>
+                    <select id="taller_marca" class="w-full bg-[#0a0d14] border border-slate-700 rounded-md p-3 text-white text-xs focus:outline-none focus:border-red-500 transition">
+                      <option value="Audi">Audi</option>
+                      <option value="BMW">BMW</option>
+                      <option value="Mercedes-Benz">Mercedes-Benz</option>
+                      <option value="Volkswagen">Volkswagen</option>
+                      <option value="SEAT">SEAT</option>
+                      <option value="Renault">Renault</option>
+                      <option value="Peugeot">Peugeot</option>
+                      <option value="Ford">Ford</option>
+                      <option value="Toyota">Toyota</option>
+                      <option value="Hyundai">Hyundai</option>
+                      <option value="Otra marca">Otra marca</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">Servicio Requerido *</label>
+                    <select id="taller_servicio" class="w-full bg-[#0a0d14] border border-slate-700 rounded-md p-3 text-white text-xs focus:outline-none focus:border-red-500 transition">
+                      <option value="Revisión Oficial y Mantenimiento">Revisión Oficial &amp; Mantenimiento</option>
+                      <option value="Frenos (Pastillas/Discos)">Frenos (Pastillas / Discos)</option>
+                      <option value="Diagnosis Electrónica de Motor">Diagnosis Electrónica de Motor</option>
+                      <option value="Batería">Cambio / Comprobación de Batería</option>
+                      <option value="Neumáticos y Alineación">Neumáticos &amp; Alineación</option>
+                      <option value="Suspensión y Amortiguadores">Suspensión &amp; Amortiguadores</option>
+                      <option value="Revisión Pre-ITV">Revisión Pre-ITV</option>
+                      <option value="Aire Acondicionado">Aire Acondicionado &amp; Carga de Gas</option>
+                      <option value="Otra reparación">Otra avería o consulta</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">Ubicación / Ciudad</label>
+                    <input type="text" id="taller_ciudad" value="{{DIRECCION}}" class="w-full bg-[#0a0d14] border border-slate-700 rounded-md p-3 text-white text-xs focus:outline-none focus:border-red-500 transition">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-1.5">Horario Preferido</label>
+                    <select id="taller_horario" class="w-full bg-[#0a0d14] border border-slate-700 rounded-md p-3 text-white text-xs focus:outline-none focus:border-red-500 transition">
+                      <option value="Por la mañana (8:00 - 13:00)">Por la mañana (8:00 - 13:00)</option>
+                      <option value="Por la tarde (15:00 - 19:30)">Por la tarde (15:00 - 19:30)</option>
+                      <option value="Urgente hoy mismo">Urgente hoy mismo</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Botón de Envío Rojo Ancho Completo -->
+                <button type="submit" class="w-full bg-[#e5252a] hover:bg-[#c9181d] text-white font-black text-xs uppercase tracking-wider py-4 rounded-md shadow-xl shadow-red-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 mt-2">
+                  <i class="fa-solid fa-calendar-check text-sm"></i> RESERVAR MI CITA EN EL TALLER
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN 5: RESEÑAS GOOGLE & GARANTÍA OFICIAL
+       ============================================== -->
+  <section id="opiniones" class="py-16 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Puntuación Google -->
+        <div class="lg:col-span-3 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-200 pb-6 lg:pb-0 lg:pr-6">
+          <div class="flex items-center justify-center lg:justify-start gap-2">
+            <span class="text-4xl font-black text-slate-900">5.0</span>
+            <div>
+              <div class="flex text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="text-[11px] font-bold text-slate-500">Más de 250 reseñas</span>
+            </div>
+          </div>
+          <div class="mt-2 text-xs font-extrabold text-slate-700 flex items-center justify-center lg:justify-start gap-1.5">
+            <i class="fa-brands fa-google text-blue-600"></i> Google Reseñas Verificadas
+          </div>
+        </div>
+
+        <!-- 3 Testimonios Reales -->
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div class="bg-slate-50 p-4 rounded-lg border border-slate-200/80">
+            <div class="flex text-amber-400 text-[10px] mb-1">★★★★★</div>
+            <p class="text-slate-600 italic">"Servicio rápido, honesto y precio justo. Me tuvieron el coche listo el mismo día."</p>
+            <span class="font-bold text-slate-900 block mt-2 text-[11px]">— Jason M.</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-lg border border-slate-200/80">
+            <div class="flex text-amber-400 text-[10px] mb-1">★★★★★</div>
+            <p class="text-slate-600 italic">"Trato transparente desde el primer minuto. Muy profesionales en diagnosis."</p>
+            <span class="font-bold text-slate-900 block mt-2 text-[11px]">— Sarah T.</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-lg border border-slate-200/80">
+            <div class="flex text-amber-400 text-[10px] mb-1">★★★★★</div>
+            <p class="text-slate-600 italic">"El mejor taller de la zona. Trabajo impecable y garantía sin letras pequeñas."</p>
+            <span class="font-bold text-slate-900 block mt-2 text-[11px]">— Michael R.</span>
+          </div>
+        </div>
+
+        <!-- Sello de Garantía -->
+        <div class="lg:col-span-3 text-center bg-slate-50 p-5 rounded-xl border border-slate-200">
+          <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-lg mx-auto mb-2">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div class="font-extrabold text-xs uppercase text-slate-900">Garantía Certificada</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Recambios originales y mano de obra con cobertura oficial</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       FOOTER
+       ============================================== -->
+  <footer id="contacto" class="bg-[#0a0d14] text-slate-400 text-xs py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-slate-800">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-[#e5252a] flex items-center justify-center text-white text-lg shadow-md">
+            <i class="fa-solid fa-gauge-high"></i>
+          </div>
+          <div>
+            <span class="font-black text-base text-white tracking-tight block">{{NOMBRE_NEGOCIO}}</span>
+            <span class="text-[10px] text-red-500 font-extrabold uppercase tracking-widest block">TALLER MECÁNICO • {{DIRECCION}}</span>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-wrap justify-center gap-6 text-slate-300 font-bold uppercase tracking-wider text-[11px]">
+          <a href="#inicio" class="hover:text-red-400 transition">Inicio</a>
+          <a href="#servicios" class="hover:text-red-400 transition">Servicios</a>
+          <a href="#ventajas" class="hover:text-red-400 transition">Ventajas</a>
+          <a href="#cita" class="hover:text-red-400 transition">Pedir Cita</a>
+          <a href="tel:{{TELEFONO}}" class="hover:text-red-400 transition">{{TELEFONO}}</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-slate-500">
+        <div>
+          © 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.
         </div>
         <div>
-          <span class="font-black text-xl text-white tracking-tight block leading-tight">{{NOMBRE_NEGOCIO}}</span>
-          <span class="text-[10px] text-orange-400 font-bold uppercase tracking-widest block">Taller Mecánico &amp; Diagnosis</span>
+          Mantenimiento de Coches • Calidad • Transparencia • {{DIRECCION}}
         </div>
-      </div>
-
-      <!-- BOTONES DE CONTACTO -->
-      <div class="flex items-center gap-3">
-        <a href="tel:{{TELEFONO}}" class="hidden sm:inline-flex items-center gap-2 text-slate-300 hover:text-white font-bold text-xs px-3 py-2 rounded-lg transition">
-          <svg width="16" height="16" class="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>Llamar al Taller</span>
-        </a>
-
-        <a href="{{ENLACE_WHATSAPP}}" class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-orange-500/25 flex items-center gap-2 transition transform active:scale-95">
-          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>Pedir Cita Taller</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION PRINCIPAL -->
-  <section class="hero-auto text-white py-16 sm:py-24 px-4 relative overflow-hidden">
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-      
-      <div class="inline-flex items-center gap-2 bg-orange-500/20 text-orange-400 border border-orange-500/30 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-        <svg width="14" height="14" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Mantenimiento Oficial • Sin Perder la Garantía de Fábrica
-      </div>
-
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
-        Tu Vehículo en Manos Expertas con <span class="text-orange-500">Presupuesto Previo</span> y Sin Sorpresas.
-      </h1>
-
-      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
-        Revisiones oficiales multimarca, diagnosis electrónica avanzada, cambio de frenos, neumáticos, embragues y puesta a punto integral para la ITV en {{NOMBRE_NEGOCIO}}.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
-        <a href="{{ENLACE_WHATSAPP}}" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-slate-950 font-black px-8 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 shadow-xl shadow-orange-500/30 transition transform hover:-translate-y-0.5 min-h-[48px]">
-          <svg width="20" height="20" class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>Pedir Cita por WhatsApp</span>
-        </a>
-
-        <a href="tel:{{TELEFONO}}" class="w-full sm:w-auto bg-slate-900/90 hover:bg-slate-800 text-white border border-slate-700 font-bold px-6 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 transition min-h-[48px]">
-          <svg width="16" height="16" class="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>Llamar para Avería Directa</span>
-        </a>
       </div>
 
     </div>
-  </section>
-
-  <!-- BARRA DE COMPROMISOS Y CONFIANZA TÉCNICA -->
-  <section class="py-10 bg-white border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Presupuesto Previo</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Te informamos del coste exacto antes de realizar cualquier intervención.</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Diagnosis Digital</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Equipos OBD multimarca para identificar la causa real sin rodeos.</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Entrega en el Día</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Mantenimientos y revisiones programadas listas en la misma jornada.</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Piezas con Garantía</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Recambios originales o de primer equipo con garantía de taller.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN: SERVICIOS PRINCIPALES -->
-  <section class="py-16 px-4 max-w-6xl mx-auto" id="servicios">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">Especialidades del Taller</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Servicios Mecánicos y Electromecánica</h2>
-      <p class="text-slate-600 text-sm sm:text-base mt-2">Soluciones integrales de mantenimiento, reparación y puesta a punto multimarca.</p>
-    </div>
-
-    <!-- CONTENEDOR DINÁMICO DE SERVICIOS -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {{SERVICIOS}}
-    </div>
-  </section>
-
-  <!-- SECCIÓN DESTACADA: PROCESO TRANSPARENTE EN 3 PASOS -->
-  <section class="py-16 bg-slate-900 text-white px-4 border-y border-slate-800">
-    <div class="max-w-6xl mx-auto">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-orange-400 font-bold text-xs uppercase tracking-widest">Máxima Confianza</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Cómo Trabajamos en {{NOMBRE_NEGOCIO}}</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-2">Un método claro para que siempre tengas el control total de la reparación de tu vehículo.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-orange-400 bg-orange-500/20 border border-orange-500/30 px-3 py-1 rounded-full uppercase">Paso 1</span>
-          <h3 class="font-extrabold text-white text-lg mt-4 mb-2">Recepción y Chequeo</h3>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            Conectamos el vehículo a los equipos de diagnosis, probamos los componentes y registramos el estado de los puntos clave.
-          </p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-orange-400 bg-orange-500/20 border border-orange-500/30 px-3 py-1 rounded-full uppercase">Paso 2</span>
-          <h3 class="font-extrabold text-white text-lg mt-4 mb-2">Presupuesto Cerrado</h3>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            Te llamamos o enviamos por WhatsApp el desglose exacto de piezas y mano de obra. <strong>No reparamos nada sin tu visto bueno</strong>.
-          </p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-orange-400 bg-orange-500/20 border border-orange-500/30 px-3 py-1 rounded-full uppercase">Paso 3</span>
-          <h3 class="font-extrabold text-white text-lg mt-4 mb-2">Reparación y Prueba</h3>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            Instalamos recambios de calidad, realizamos prueba en carretera y te entregamos el vehículo limpio con su factura y garantía.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SECCIÓN PRE-ITV CON CHECKLIST -->
-  <section class="py-16 px-4 max-w-6xl mx-auto">
-    <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 sm:p-12 text-slate-950 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-      
-      <div class="max-w-xl">
-        <div class="inline-flex items-center gap-2 bg-slate-950/20 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-          <svg width="14" height="14" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Servicio Exprés Pre-ITV
-        </div>
-        <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-          ¿Te toca pasar la ITV? Pásala a la primera sin perder tiempo ni dinero.
-        </h2>
-        <p class="text-slate-900 text-sm sm:text-base mt-3 font-medium leading-relaxed">
-          Comprobamos frenómetro, opacímetro/emisiones de gases, reglaje de faros, rótulas de suspensión y elementos de seguridad antes de tu cita.
-        </p>
-
-        <div class="grid grid-cols-2 gap-2.5 mt-5 text-xs font-bold">
-          <div class="flex items-center gap-2"><span>✓</span> <span>Medición de humos CO</span></div>
-          <div class="flex items-center gap-2"><span>✓</span> <span>Alineación de faros</span></div>
-          <div class="flex items-center gap-2"><span>✓</span> <span>Frenada equilibrada</span></div>
-          <div class="flex items-center gap-2"><span>✓</span> <span>Holguras y rótulas</span></div>
-        </div>
-      </div>
-
-      <div class="shrink-0 w-full sm:w-auto text-center">
-        <a href="{{ENLACE_WHATSAPP}}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-black text-sm px-8 py-4 rounded-xl shadow-xl transition transform hover:scale-105 min-h-[48px]">
-          <svg width="20" height="20" class="w-5 h-5 text-orange-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>Agendar Pre-ITV por WhatsApp</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PRUEBA SOCIAL / RESEÑAS DE CLIENTES -->
-  <section class="py-16 bg-slate-100 px-4 border-t border-slate-200">
-    <div class="max-w-6xl mx-auto">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-3.5 py-1 rounded-full text-xs font-bold mb-2">
-          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Opiniones de Conductores
-        </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">La Opinión de Quienes Confían en Nosotros</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-              "Llevé mi coche por un ruido extraño en la dirección. Me dieron el presupuesto en menos de dos horas y por la tarde ya lo tenía listo. Honestos y muy profesionales."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
-            <div class="w-9 h-9 rounded-full bg-slate-900 text-orange-400 font-bold flex items-center justify-center text-xs">JM</div>
-            <div>
-              <h4 class="font-bold text-slate-900 text-xs">Javier Morales</h4>
-              <span class="text-[11px] text-slate-500">Mantenimiento de Dirección</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-              "Revisión completa y cambio de distribución. Me explicaron cada detalle con fotos en WhatsApp antes de cambiar las piezas. Da gusto encontrar un taller así."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
-            <div class="w-9 h-9 rounded-full bg-slate-900 text-orange-400 font-bold flex items-center justify-center text-xs">SR</div>
-            <div>
-              <h4 class="font-bold text-slate-900 text-xs">Sandra Romero</h4>
-              <span class="text-[11px] text-slate-500">Kit de Distribución</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-              "Servicio Pre-ITV de 10. Lo dejaron perfecto y pasé la inspección sin ningún fallo leve. Muy buen precio comparado con el concesionario oficial."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
-            <div class="w-9 h-9 rounded-full bg-slate-900 text-orange-400 font-bold flex items-center justify-center text-xs">AL</div>
-            <div>
-              <h4 class="font-bold text-slate-900 text-xs">Antonio Lozano</h4>
-              <span class="text-[11px] text-slate-500">Pre-ITV &amp; Frenos</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- UBICACIÓN, HORARIOS Y CONTACTO -->
-  <section class="py-16 px-4 max-w-6xl mx-auto">
-    <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      
-      <div>
-        <span class="text-orange-400 font-bold text-xs uppercase tracking-widest">Encuéntranos Fácilmente</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-4">Ubicación y Horarios del Taller</h2>
-        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-          Estamos ubicados en zona de fácil acceso para dejar o recoger tu vehículo cómodamente antes o después de tu jornada laboral.
-        </p>
-
-        <div class="space-y-3.5 text-xs sm:text-sm text-slate-300">
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-orange-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <p class="font-bold text-white">Dirección del Taller:</p>
-              <p class="text-slate-400">{{DIRECCION}}</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-orange-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <div>
-              <p class="font-bold text-white">Horario Ininterrumpido:</p>
-              <p class="text-slate-400">Lunes a Viernes: 8:00 a 19:30 | Sábados: 8:30 a 13:30</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-orange-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div>
-              <p class="font-bold text-white">Teléfono de Atención Directa:</p>
-              <p class="text-orange-400 font-extrabold">{{TELEFONO}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center">
-        <h3 class="font-extrabold text-white text-lg mb-2">¿Necesitas presupuesto para una avería?</h3>
-        <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
-          Escríbenos por WhatsApp indicando la marca, modelo y síntoma de tu coche. Te respondemos con una valoración sin compromiso.
-        </p>
-        <a href="{{ENLACE_WHATSAPP}}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 text-white font-black text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg transition min-h-[48px] w-full">
-          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>Consultar Avería por WhatsApp</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA FINAL DE PÁGINA -->
-  <section class="py-14 bg-orange-500 text-slate-950 text-center px-4">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl sm:text-4xl font-black mb-3">Mantén tu coche seguro y al 100% de rendimiento</h2>
-      <p class="text-slate-900 text-sm sm:text-base font-semibold mb-6 max-w-xl mx-auto">
-        Pide cita ahora mismo o consúltanos cualquier duda mecánica sin compromiso.
-      </p>
-      <a href="{{ENLACE_WHATSAPP}}" class="inline-flex items-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-black text-sm px-8 py-4 rounded-xl shadow-2xl transition transform hover:scale-105 min-h-[48px]">
-        <svg width="20" height="20" class="w-5 h-5 text-orange-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-        <span>Pedir Cita por WhatsApp</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- PIE DE PÁGINA -->
-  <footer class="bg-slate-950 text-slate-500 py-8 px-4 text-center text-xs border-t border-slate-800">
-    <p class="font-bold text-slate-400">{{NOMBRE_NEGOCIO}} TALLER MECÁNICO • Electromecánica y Diagnosis Multimarca</p>
-    <p class="mt-1">© 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados. Web de demostración profesional.</p>
   </footer>
 
-  <!-- BOTÓN FLOTANTE MÓVIL DE WHATSAPP -->
-  <a href="{{ENLACE_WHATSAPP}}" class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 transition transform hover:scale-110 active:scale-95">
-    <svg width="28" height="28" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-  </a>
+  <!-- BOTÓN FLOTANTE PERMANENTE DE WHATSAPP -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl transition transform hover:scale-110 relative" title="Hablar por WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- SCRIPT PARA EL MENÚ MÓVIL Y ENVÍO DE FORMULARIO -->
+  <script>
+    // Menú móvil
+    const btnMobile = document.getElementById('btnMobileNav');
+    const menuMobile = document.getElementById('mobileNavMenu');
+    if (btnMobile && menuMobile) {
+      btnMobile.addEventListener('click', () => {
+        menuMobile.classList.toggle('hidden');
+      });
+    }
+
+    // Envío del formulario directo a WhatsApp
+    function enviarCitaTaller(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('taller_nombre').value.trim();
+      const tel = document.getElementById('taller_tel').value.trim();
+      const marca = document.getElementById('taller_marca').value;
+      const servicio = document.getElementById('taller_servicio').value;
+      const ciudad = document.getElementById('taller_ciudad').value.trim();
+      const horario = document.getElementById('taller_horario').value;
+
+      const texto = `Hola, quiero pedir cita en el taller:\n- Nombre: ${nombre}\n- Teléfono: ${tel}\n- Vehículo: ${marca}\n- Servicio: ${servicio}\n- Zona: ${ciudad}\n- Horario preferido: ${horario}`;
+      const url = `https://wa.me/{{TELEFONO}}?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 
 </body>
 </html>

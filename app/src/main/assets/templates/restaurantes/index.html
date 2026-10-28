@@ -1,306 +1,637 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{NOMBRE_NEGOCIO}} • Cocina Tradicional Italiana & Horno de Leña</title>
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} — Restaurante gastronómico en {{DIRECCION}}. Pasta fresca artesanal, horno de leña e ingredientes seleccionados.">
+  <title>{{NOMBRE_NEGOCIO}} • Alta Gastronomía & Cocina de Autor</title>
+  <meta name="description" content="{{NOMBRE_NEGOCIO}} — Experiencia culinaria de alta gama en {{DIRECCION}}. Cortes selectos madurados a la brasa, pastas artesanales y bodega de autor.">
+  
+  <!-- Tailwind CSS & Google Fonts de Máximo Lujo -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-    
-    .serif-toscana { font-family: 'Playfair Display', serif; }
-    
-    body { 
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background-color: #FDFBF7;
-      color: #1c130e;
-    }
-
-    .hero-toscana {
-      background: linear-gradient(rgba(28, 19, 14, 0.78), rgba(45, 30, 24, 0.90)), 
-                  url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80') center/cover;
-    }
   
-    /* 🛡️ BLINDAJE ANTI-DESBORDAMIENTO DE ICONOS SVG EN MÓVILES */
-    svg {
-      max-width: 100%;
-      box-sizing: border-box;
-      display: inline-block;
-      vertical-align: middle;
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+    
+    :root {
+      --gold-deep: #9d7d43;
+      --gold-primary: #c5a880;
+      --gold-champagne: #ecd5b3;
+      --gold-radiant: #dfbe82;
+      --dark-canvas: #070605;
+      --dark-card: #110e0c;
+      --dark-surface: #181512;
+      --border-subtle: rgba(197, 168, 128, 0.22);
     }
-    svg.w-3\.5 { width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; }
-    svg.w-4 { width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; }
-    svg.w-5 { width: 20px !important; height: 20px !important; min-width: 20px !important; max-width: 20px !important; }
-    svg.w-6 { width: 24px !important; height: 24px !important; min-width: 24px !important; max-width: 24px !important; }
-    svg.w-7 { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
-    svg.w-8 { width: 32px !important; height: 32px !important; min-width: 32px !important; max-width: 32px !important; }
-    svg.w-9 { width: 36px !important; height: 36px !important; min-width: 36px !important; max-width: 36px !important; }
-    svg.w-10 { width: 40px !important; height: 40px !important; min-width: 40px !important; max-width: 40px !important; }
-    svg.w-12 { width: 48px !important; height: 48px !important; min-width: 48px !important; max-width: 48px !important; }
-    svg.w-14 { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; }
-    svg.w-16 { width: 64px !important; height: 64px !important; min-width: 64px !important; max-width: 64px !important; }
-    svg:not([class*="w-"]) { max-width: 24px !important; max-height: 24px !important; }
 
+    body { 
+      font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+      background-color: var(--dark-canvas);
+      color: #eae5dc;
+      overflow-x: hidden;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* TEXTO CON DEGRADADO METÁLICO DORADO */
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #f7ebd9 0%, #dfbe82 40%, #b89355 80%, #dfbe82 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* HERO GASTRONÓMICO DE ALTA FIDELIDAD */
+    .hero-gourmet-luxury {
+      background: 
+        radial-gradient(circle at 50% 45%, rgba(7, 6, 5, 0.40) 0%, rgba(7, 6, 5, 0.85) 65%, rgba(7, 6, 5, 0.98) 100%),
+        linear-gradient(to bottom, rgba(7, 6, 5, 0.50) 0%, rgba(7, 6, 5, 0.20) 40%, rgba(7, 6, 5, 0.95) 100%),
+        url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2200&q=90') center center / cover no-repeat;
+    }
+
+    /* EFECTO SHIMMER EN BOTÓN DORADO */
+    @keyframes goldShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .btn-luxury-outline {
+      border: 1px solid rgba(197, 168, 128, 0.60);
+      color: #ecd5b3;
+      background: rgba(18, 16, 14, 0.70);
+      backdrop-filter: blur(12px);
+      letter-spacing: 0.22em;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-luxury-outline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(236, 213, 179, 0.25), transparent);
+      transition: all 0.6s ease;
+    }
+    .btn-luxury-outline:hover::before {
+      left: 100%;
+    }
+    .btn-luxury-outline:hover {
+      background: #c5a880;
+      color: #080706;
+      border-color: #dfbe82;
+      box-shadow: 0 10px 30px -5px rgba(197, 168, 128, 0.50);
+      transform: translateY(-2px);
+    }
+
+    .btn-luxury-solid {
+      background: linear-gradient(135deg, #b89355 0%, #dfbe82 50%, #ecd5b3 100%);
+      color: #080706;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-luxury-solid:hover {
+      box-shadow: 0 10px 35px -5px rgba(223, 190, 130, 0.60);
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    /* BENTO CARD LUXURY STYLING */
+    .bento-card {
+      background: linear-gradient(145deg, #15110e 0%, #0d0b09 100%);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .bento-card:hover {
+      border-color: rgba(223, 190, 130, 0.55);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.70), 0 0 25px rgba(223, 190, 130, 0.12);
+      transform: translateY(-4px);
+    }
+
+    /* TAB BOTONES */
+    .tab-btn.active {
+      background: #c5a880;
+      color: #080706;
+      border-color: #dfbe82;
+      box-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+    }
+
+    /* ESPACIO VIP SELECCIONADO */
+    .space-card.selected {
+      border-color: #dfbe82 !important;
+      background: rgba(197, 168, 128, 0.12) !important;
+      box-shadow: 0 0 25px rgba(223, 190, 130, 0.25);
+    }
+
+    /* MODAL BACKDROP */
+    .modal-active {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-amber-700 selection:text-white">
+<body class="selection:bg-[#c5a880] selection:text-black">
 
-  <!-- 1. BARRA SUPERIOR DE HORARIOS Y RESERVAS -->
-  <div class="bg-[#1C130E] text-amber-200 text-xs py-2.5 px-4 border-b border-amber-950/60">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start text-[11px] sm:text-xs">
-        <span class="flex items-center gap-1.5 text-amber-100">
-          <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Almuerzos: 13:00 - 16:00 | Cenas: 20:00 - 23:30 (Cerrado Lunes)
+  <!-- ==========================================
+       BARRA DE PROGRESO DE LECTURA (SCROLL PROGRESS)
+       ========================================== -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-[#b89355] via-[#dfbe82] to-[#ecd5b3] z-[999] transition-all duration-75" style="width: 0%"></div>
+
+  <!-- ==========================================
+       1. BARRA SUPERIOR DE UTILIDAD & SISTEMA MULTILINGÜE
+       ========================================== -->
+  <div class="bg-[#050403] border-b border-stone-800/80 text-[11px] text-stone-400 py-2.5 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      
+      <!-- ESTADO EN VIVO (LIVE BADGE) -->
+      <div class="flex items-center gap-2.5">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
         </span>
-        <span class="hidden md:flex items-center gap-1.5 text-amber-200/80">
-          <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          {{DIRECCION}}
+        <span class="tracking-widest uppercase font-semibold text-emerald-400">
+          Cocina Abierta · Servicio de Noche hasta las 23:45
         </span>
       </div>
-      <div class="flex items-center gap-3">
-        <span class="text-amber-400 font-bold flex items-center gap-1 text-[11px] sm:text-xs">
-          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          4.9 en Google Maps (Comensales Verificados)
-        </span>
+
+      <!-- SELECTOR MULTILINGÜE & TELÉFONO -->
+      <div class="flex items-center gap-6">
+
+        <!-- Teléfono de contacto directo -->
+        <a href="tel:{{TELEFONO}}" class="hidden md:flex items-center gap-2 text-stone-300 hover:text-[#dfbe82] transition tracking-wider">
+          <svg width="14" height="14" class="w-3.5 h-3.5 text-[#dfbe82]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>{{TELEFONO}}</span>
+        </a>
       </div>
+
     </div>
   </div>
 
-  <!-- 2. NAVEGACIÓN GASTRONÓMICA -->
-  <nav class="bg-[#FDFBF7]/95 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
+  <!-- ==========================================
+       2. CABECERA NAVEGACIÓN STICKY CON GLASSMORPHISM
+       ========================================== -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#070605]/95 border-b border-stone-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex justify-between items-center">
       
-      <!-- LOGO / IDENTIDAD -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-amber-800 text-amber-100 rounded-xl flex items-center justify-center shadow-md shadow-amber-900/20">
-          <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8M12 11v11M5 3v5c0 3.87 3.13 7 7 7s7-3.13 7-7V3Z"/></svg>
+      <!-- LOGO CON ICONO CULINARIO -->
+      <a href="#inicio" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-full border border-[#c5a880]/50 flex items-center justify-center text-[#dfbe82] group-hover:border-[#dfbe82] group-hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(197,168,128,0.15)]">
+          <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+            <line x1="6" x2="18" y1="17" y2="17"/>
+          </svg>
         </div>
         <div>
-          <span class="serif-toscana font-bold text-xl sm:text-2xl text-stone-900 block leading-tight">{{NOMBRE_NEGOCIO}}</span>
-          <span class="text-[9px] uppercase tracking-widest text-amber-800 font-bold block">Restaurante &amp; Gastronomía</span>
+          <span class="font-cinzel text-lg sm:text-xl font-bold tracking-[0.22em] text-white uppercase block leading-none">
+            {{NOMBRE_NEGOCIO}}
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-[#dfbe82] font-semibold mt-1 block">
+            Alta Gastronomía &amp; Brasas
+          </span>
         </div>
-      </div>
+      </a>
 
-      <!-- BOTONES DE CONTACTO -->
-      <div class="flex items-center gap-3">
-        <a href="tel:{{TELEFONO}}" class="hidden sm:inline-flex items-center gap-2 text-stone-700 hover:text-amber-800 font-bold text-xs px-3 py-2 rounded-lg transition">
-          <svg width="16" height="16" class="w-4 h-4 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>Llamar: {{TELEFONO}}</span>
-        </a>
+      <!-- NAVEGACIÓN PRINCIPAL -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-medium tracking-[0.2em] uppercase text-stone-300">
+        <a href="#inicio" class="hover:text-[#dfbe82] transition-colors">Inicio</a>
+        <a href="#bento-section" class="hover:text-[#dfbe82] transition-colors">Bento Carta</a>
+        <a href="#bodega" class="hover:text-[#dfbe82] transition-colors">Bodega &amp; Cava</a>
+        <a href="#nosotros" class="hover:text-[#dfbe82] transition-colors">Filosofía</a>
+        <a href="#reserva" class="hover:text-[#dfbe82] transition-colors">Reservas</a>
+      </nav>
 
-        <a href="#reserva" class="bg-gradient-to-r from-amber-700 to-amber-800 hover:from-amber-800 hover:to-amber-900 text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-lg shadow-amber-800/20 flex items-center gap-2 transition transform active:scale-95 min-h-[44px]">
-          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-          <span>Reservar Mesa</span>
-        </a>
-      </div>
+      <!-- CTA RESERVA VIP -->
+      <a href="#reserva" class="btn-luxury-solid px-6 py-2.5 rounded-full text-xs uppercase font-bold tracking-widest shadow-lg flex items-center gap-2">
+        <svg width="14" height="14" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        <span>Reservar Mesa</span>
+      </a>
+
     </div>
-  </nav>
+  </header>
 
-  <!-- 3. HERO EDITORIAL GASTRONÓMICO -->
-  <section class="hero-toscana text-white py-18 sm:py-28 px-4 text-center relative overflow-hidden">
-    <div class="max-w-4xl mx-auto relative z-10">
+  <!-- ==========================================
+       3. HERO BANNER CINEMATOGRÁFICO DE ALTA COCINA
+       ========================================== -->
+  <section id="inicio" class="hero-gourmet-luxury min-h-[90vh] flex flex-col justify-center items-center text-center px-4 relative pt-12 pb-20">
+    
+    <!-- Orbes de luz cálida ambiental difusa -->
+    <div class="absolute w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[140px] pointer-events-none -top-20 left-1/2 -translate-x-1/2"></div>
+    <div class="absolute w-[350px] h-[350px] bg-red-800/10 rounded-full blur-[120px] pointer-events-none bottom-10 right-10"></div>
+
+    <div class="max-w-4xl mx-auto z-10">
       
-      <span class="text-amber-300 serif-toscana italic text-lg sm:text-2xl block mb-3 font-normal">
-        Auténtica Tradición Culinaria
-      </span>
+      <!-- PRE-TÍTULO EDITORIAL CON LÍNEAS GUÍA -->
+      <div class="inline-flex items-center gap-3 mb-6">
+        <span class="h-[1px] w-8 sm:w-16 bg-[#c5a880]/60"></span>
+        <span class="text-xs sm:text-sm uppercase tracking-[0.35em] text-[#dfbe82] font-semibold">
+          Experiencia Gastronómica Inmersiva
+        </span>
+        <span class="h-[1px] w-8 sm:w-16 bg-[#c5a880]/60"></span>
+      </div>
 
-      <h1 class="serif-toscana text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-        La Verdadera Esencia Culinaria de {{NOMBRE_NEGOCIO}}
+      <!-- TÍTULO PRINCIPAL MONUMENTAL -->
+      <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight">
+        <span class="block">{{NOMBRE_NEGOCIO}}</span>
+        <span class="font-serif-luxury italic font-normal text-3xl sm:text-5xl text-gold-gradient normal-case block mt-2">
+          El arte del fuego y la tradición reinterpretada
+        </span>
       </h1>
 
-      <p class="text-stone-200 text-base sm:text-lg mb-8 max-w-2xl mx-auto font-light leading-relaxed">
-        Platos elaborados con ingredientes de primera calidad, recetas tradicionales y un servicio excepcional en {{DIRECCION}}.
+      <!-- DESCRIPCIÓN CON ESTILO EDITORIAL -->
+      <p class="font-light text-stone-300 text-sm sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        Cortes madurados con precisión, pastas frescas amasadas cada mañana y más de 120 referencias de autor seleccionadas por nuestro sumiller en {{DIRECCION}}.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
-        <a href="#reserva" class="w-full sm:w-auto bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-black px-8 py-4 rounded-full text-base flex items-center justify-center gap-2.5 shadow-xl shadow-amber-900/40 transition transform hover:-translate-y-0.5 min-h-[48px]">
-          <svg width="20" height="20" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-          <span>Reservar Mesa Online</span>
+      <!-- BOTONES DE ACCIÓN PRINCIPALES -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+        <a href="#bento-section" class="btn-luxury-outline w-full sm:w-auto px-8 py-3.5 rounded-full text-xs uppercase font-bold tracking-widest flex items-center justify-center gap-2">
+          <span>Explorar Carta (Bento Grid)</span>
+          <span class="text-[#dfbe82]">⟶</span>
         </a>
-
-        <a href="#carta" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-4 rounded-full text-base flex items-center justify-center gap-2 transition min-h-[48px]">
-          <svg width="16" height="16" class="w-4 h-4 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
-          <span>Ver Carta Digital</span>
+        <a href="#reserva" class="btn-luxury-solid w-full sm:w-auto px-8 py-3.5 rounded-full text-xs uppercase font-bold tracking-widest shadow-xl flex items-center justify-center gap-2">
+          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Reserva VIP Concierge</span>
         </a>
       </div>
 
     </div>
-  </section>
 
-  <!-- 4. PILARES DE EXCELENCIA CULINARIA -->
-  <section class="py-12 bg-white border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- 3 PILARES MODULARES DE EXCELENCIA -->
+    <div class="w-full max-w-5xl mx-auto border-t border-stone-800/80 pt-8 mt-4 z-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-stone-800/80 text-center gap-4 sm:gap-0">
         
-        <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FDFBF7] border border-stone-200/80">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <!-- PILAR 1 -->
+        <div class="flex flex-col items-center justify-center px-4 py-2 group">
+          <div class="w-11 h-11 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#dfbe82] mb-2.5 group-hover:border-[#dfbe82] group-hover:scale-110 transition-all duration-300">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
           </div>
-          <div>
-            <h3 class="serif-toscana font-bold text-stone-900 text-base">Origen Garantizado</h3>
-            <p class="text-stone-600 text-xs mt-0.5">Ingredientes frescos y de temporada seleccionados diariamente.</p>
-          </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-200">Maduración Propia</span>
+          <span class="text-[11px] text-stone-400 mt-0.5 font-light">Cámara a 1°C y 80% humedad controlada</span>
         </div>
 
-        <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FDFBF7] border border-stone-200/80">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        <!-- PILAR 2 -->
+        <div class="flex flex-col items-center justify-center px-4 py-2 group">
+          <div class="w-11 h-11 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#dfbe82] mb-2.5 group-hover:border-[#dfbe82] group-hover:scale-110 transition-all duration-300">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V18a1 1 0 0 1-2 0v-1.07A7 7 0 0 1 5.07 11H4a1 1 0 0 1 0-2h1.07A7 7 0 0 1 11 5.07V4a1 1 0 0 1 2 0v1.07A7 7 0 0 1 18.93 11H20a1 1 0 0 1 0 2h-1.07A7 7 0 0 1 13 16.93z"/></svg>
           </div>
-          <div>
-            <h3 class="serif-toscana font-bold text-stone-900 text-base">Cocina Artesanal</h3>
-            <p class="text-stone-600 text-xs mt-0.5">Elaboración cuidada respetando los tiempos y sabores auténticos.</p>
-          </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-200">Pasta Amasada al Momento</span>
+          <span class="text-[11px] text-stone-400 mt-0.5 font-light">Sémola de grano duro y trufa fresca</span>
         </div>
 
-        <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FDFBF7] border border-stone-200/80">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8M12 11v11M5 3v5c0 3.87 3.13 7 7 7s7-3.13 7-7V3Z"/></svg>
+        <!-- PILAR 3 -->
+        <div class="flex flex-col items-center justify-center px-4 py-2 group">
+          <div class="w-11 h-11 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#dfbe82] mb-2.5 group-hover:border-[#dfbe82] group-hover:scale-110 transition-all duration-300">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 22h8M12 11v11M5 3v5c0 3.87 3.13 7 7 7s7-3.13 7-7V3Z"/></svg>
           </div>
-          <div>
-            <h3 class="serif-toscana font-bold text-stone-900 text-base">Bodega Seleccionada</h3>
-            <p class="text-stone-600 text-xs mt-0.5">Vinos de referencia ideales para maridar con cada plato.</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#FDFBF7] border border-stone-200/80">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          </div>
-          <div>
-            <h3 class="serif-toscana font-bold text-stone-900 text-base">Ambiente Acogedor</h3>
-            <p class="text-stone-600 text-xs mt-0.5">Espacio cálido y familiar perfecto para comidas y cenas especiales.</p>
-          </div>
+          <span class="text-xs font-semibold uppercase tracking-[0.22em] text-stone-200">Bodega de Autor</span>
+          <span class="text-[11px] text-stone-400 mt-0.5 font-light">+120 referencias y maridaje por sumiller</span>
         </div>
 
       </div>
     </div>
+
   </section>
 
-  <!-- 5. PLATOS ESTRELLA / CARTA DIGITAL SELECCIONADA -->
-  <section id="carta" class="py-20 px-4 max-w-6xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="text-amber-800 uppercase tracking-widest text-xs font-bold">Nuestra Selección Culinaria</span>
-      <h2 class="serif-toscana text-3xl sm:text-5xl font-bold text-stone-900 mt-1">Especialidades &amp; Platos</h2>
-      <p class="text-stone-600 text-sm sm:text-base mt-2">Platos elaborados al momento con la máxima dedicación en {{NOMBRE_NEGOCIO}}.</p>
-    </div>
-
-    <!-- Cuadrícula de Platos / Especialidades -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {{SERVICIOS}}
-    </div>
-  </section>
-
-  <!-- 6. ATMÓSFERA Y BODEGA DE VINOS -->
-  <section class="py-16 bg-[#1C130E] text-stone-200 px-4 border-y border-amber-950">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+  <!-- ==========================================
+       4. BENTO GRID GASTRONÓMICO ASIMÉTRICO (INSPIRACIÓN GUGGENHEIM)
+       ========================================== -->
+  <section id="bento-section" class="py-24 px-4 sm:px-8 bg-[#0a0807] border-t border-stone-800/80 relative">
+    <div class="max-w-7xl mx-auto">
       
-      <div>
-        <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Enología y Maridaje</span>
-        <h2 class="serif-toscana text-3xl sm:text-4xl font-bold text-white mt-1 mb-4">
-          Una Bodega Pensada para Enriquecer Cada Bocado
-        </h2>
-        <p class="text-stone-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
-          Nuestra carta de bebidas y vinos incluye una cuidada selección de etiquetas ideales para maridar con nuestras especialidades gastronómicas en {{NOMBRE_NEGOCIO}}.
-        </p>
-
-        <div class="grid grid-cols-2 gap-4 text-xs">
-          <div class="p-3.5 rounded-xl bg-stone-900/80 border border-stone-800">
-            <p class="font-bold text-amber-300">Vinos Seleccionados</p>
-            <p class="text-stone-400 text-[11px] mt-0.5">Tintos, blancos y espumosos de gran calidad.</p>
-          </div>
-          <div class="p-3.5 rounded-xl bg-stone-900/80 border border-stone-800">
-            <p class="font-bold text-amber-300">Maridaje Perfecto</p>
-            <p class="text-stone-400 text-[11px] mt-0.5">Recomendaciones personalizadas para tus platos.</p>
-          </div>
+      <!-- ENCABEZADO DE SECCIÓN -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="flex items-center justify-center gap-3 mb-3">
+          <span class="h-[1px] w-10 bg-[#c5a880]/60"></span>
+          <span class="text-xs uppercase tracking-[0.35em] text-[#dfbe82] font-semibold">ARQUITECTURA MODULAR BENTO</span>
+          <span class="h-[1px] w-10 bg-[#c5a880]/60"></span>
         </div>
+        <h2 class="font-serif-luxury text-4xl sm:text-6xl font-bold text-white uppercase tracking-tight">
+          La Carta del Chef
+        </h2>
+        <p class="text-stone-400 text-xs sm:text-sm mt-3 font-light max-w-xl mx-auto leading-relaxed">
+          Estructura en cuadrícula asimétrica que exhibe cada creación según su jerarquía gastronómica, notas de cata y maridaje sugerido.
+        </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
-        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Copa de vino en el restaurante" class="rounded-2xl h-56 w-full object-cover border border-stone-800">
-        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80" alt="Ambiente y mesas del restaurante" class="rounded-2xl h-56 w-full object-cover border border-stone-800">
+      <!-- BUSCADOR INSTANTÁNEO EN TIEMPO REAL & CATEGORÍAS -->
+      <div class="max-w-4xl mx-auto mb-12 space-y-5">
+        
+        <!-- Input de Búsqueda Instantánea -->
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#dfbe82]">
+            <svg width="18" height="18" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <input 
+            type="text" 
+            id="search-input" 
+            onkeyup="buscarPlatoEnVivo()" 
+            placeholder="Buscar por ingrediente, corte o maridaje (ej. trufa, madurado, risotto, vino, tomahawk)..." 
+            class="w-full bg-[#120f0d] border border-stone-800/90 rounded-2xl pl-11 pr-4 py-3.5 text-xs sm:text-sm text-white placeholder-stone-500 focus:border-[#dfbe82] focus:outline-none focus:ring-1 focus:ring-[#dfbe82]/40 transition shadow-inner">
+        </div>
+
+        <!-- Pestañas de Filtro Interactivo -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
+          <button onclick="filtrarCategoria('todas', this)" class="tab-btn active px-5 py-2 rounded-full border border-stone-800 text-[11px] font-semibold uppercase tracking-[0.2em] transition">
+            Todos
+          </button>
+          <button onclick="filtrarCategoria('carnes', this)" class="tab-btn px-5 py-2 rounded-full border border-stone-800 text-stone-400 hover:text-white text-[11px] font-semibold uppercase tracking-[0.2em] transition">
+            Cortes &amp; Brasa
+          </button>
+          <button onclick="filtrarCategoria('pastas', this)" class="tab-btn px-5 py-2 rounded-full border border-stone-800 text-stone-400 hover:text-white text-[11px] font-semibold uppercase tracking-[0.2em] transition">
+            Pastas Frescas
+          </button>
+          <button onclick="filtrarCategoria('bodega', this)" class="tab-btn px-5 py-2 rounded-full border border-stone-800 text-stone-400 hover:text-white text-[11px] font-semibold uppercase tracking-[0.2em] transition">
+            Cava &amp; Postres
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ==========================================
+           CUADRÍCULA BENTO ASIMÉTRICA PRINCIPAL
+           ========================================== -->
+      <div id="bento-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- BLOQUE DINAMICO DEL USUARIO -->
+        {{SERVICIOS}}
+
+        <!-- BENTO CARD 1 (1x1): ENTRANTE NOBLE -->
+        <div class="bento-card rounded-3xl overflow-hidden flex flex-col justify-between p-6 dish-item" data-category="carnes" data-title="Carpaccio de Picaña Madurada" data-desc="Finas láminas de ternera con maduración 45 días, virutas de foie micuit, piñones tostados y reducción balsámica de PX." data-price="24,00€" data-pair="Ribera del Duero Crianza 2020" data-img="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-[9px] uppercase tracking-[0.25em] text-[#dfbe82] font-semibold bg-[#dfbe82]/10 border border-[#dfbe82]/30 px-3 py-1 rounded-full">Entrante Frío</span>
+              <span class="font-cinzel text-[#dfbe82] font-bold text-lg">24,00€</span>
+            </div>
+            <h3 class="font-serif-luxury text-2xl font-bold text-white mb-2 leading-snug">Carpaccio de Picaña Madurada</h3>
+            <p class="text-stone-400 text-xs leading-relaxed font-light mb-4">
+              Finas láminas de ternera con maduración de 45 días, virutas de foie micuit, piñones nacionales tostados y reducción de Pedro Ximénez.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-800/80 flex items-center justify-between">
+            <button onclick="abrirModalGourmet(this.closest('.dish-item'))" class="text-xs text-[#dfbe82] hover:text-white font-semibold tracking-wider uppercase flex items-center gap-1 transition">
+              <span>Ficha &amp; Maridaje</span>
+              <span>+</span>
+            </button>
+            <a href="#reserva" class="text-[11px] text-stone-400 hover:text-white uppercase tracking-widest font-medium">Reservar ⟶</a>
+          </div>
+        </div>
+
+        <!-- BENTO CARD 2 (1x1): TÉCNICA CULINARIA & TRUFA -->
+        <div class="bento-card rounded-3xl overflow-hidden flex flex-col justify-between p-6 dish-item" data-category="pastas" data-title="Risotto de Boletus & Tartufo" data-desc="Arroz carnaroli envejecido 1 año mantecado con queso pecorino trufado, reducción de caldo de caza y láminas de trufa negra." data-price="28,00€" data-pair="Chardonnay Barrica 2021" data-img="https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=800&q=80">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-[9px] uppercase tracking-[0.25em] text-[#dfbe82] font-semibold bg-[#dfbe82]/10 border border-[#dfbe82]/30 px-3 py-1 rounded-full">Especialidad de Temporada</span>
+              <span class="font-cinzel text-[#dfbe82] font-bold text-lg">28,00€</span>
+            </div>
+            <h3 class="font-serif-luxury text-2xl font-bold text-white mb-2 leading-snug">Risotto de Boletus &amp; Tartufo</h3>
+            <p class="text-stone-400 text-xs leading-relaxed font-light mb-4">
+              Arroz carnaroli envejecido mantecado lentamente con queso pecorino trufado, reducción de caldo de caza y láminas de trufa fresca rallada en mesa.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-800/80 flex items-center justify-between">
+            <button onclick="abrirModalGourmet(this.closest('.dish-item'))" class="text-xs text-[#dfbe82] hover:text-white font-semibold tracking-wider uppercase flex items-center gap-1 transition">
+              <span>Ficha &amp; Maridaje</span>
+              <span>+</span>
+            </button>
+            <a href="#reserva" class="text-[11px] text-stone-400 hover:text-white uppercase tracking-widest font-medium">Reservar ⟶</a>
+          </div>
+        </div>
+
+        <!-- BENTO CARD 3 (PANORÁMICA 2x1 EN MD): LA CAVA SUBTERRÁNEA & MARIDAJE -->
+        <div class="md:col-span-2 bento-card rounded-3xl overflow-hidden flex flex-col md:flex-row justify-between dish-item" data-category="bodega" data-title="Experiencia Cava & Sommelier" data-desc="Recorrido sensorial por más de 120 referencias exclusivas con maridaje por pasos sugerido por nuestro sumiller de sala." data-price="55,00€" data-pair="Gran Selección 5 Pasos" data-img="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80">
+          <div class="md:w-1/2 h-56 md:h-auto overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Cava y Sommelier" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+              <span class="text-[9px] uppercase tracking-[0.25em] text-[#dfbe82] font-semibold bg-[#070605]/90 border border-[#dfbe82]/40 px-3 py-1 rounded-full">+120 Referencias</span>
+            </div>
+          </div>
+          <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.25em] text-[#dfbe82] font-semibold block mb-2">Selección Enológica</span>
+              <h3 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-white mb-3">La Cava Subterránea &amp; Sumiller</h3>
+              <p class="text-stone-400 text-xs leading-relaxed font-light mb-4">
+                Una bodega climatizada que alberga añadas históricas, pequeños productores de parcelas singulares y maridajes diseñados a medida para cada plato de la carta.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-stone-800/80 flex items-center justify-between">
+              <span class="font-cinzel text-[#dfbe82] font-bold text-lg">Maridaje · 55,00€</span>
+              <button onclick="abrirModalGourmet(this.closest('.dish-item'))" class="btn-luxury-outline px-5 py-2 rounded-full text-[11px] uppercase tracking-wider font-semibold">
+                Ver Maridaje
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO CARD 4 (1x1): POSTRE DE AUTOR -->
+        <div class="bento-card rounded-3xl overflow-hidden flex flex-col justify-between p-6 dish-item" data-category="bodega" data-title="Texturas de Chocolate Valrhona 70%" data-desc="Ganache aireada de cacao puro, tierra de avellanas garrapiñadas y quenelle de helado de vainilla Bourbon ahumada." data-price="14,00€" data-pair="Oporto Tawny 10 Años" data-img="https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=800&q=80">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="text-[9px] uppercase tracking-[0.25em] text-[#dfbe82] font-semibold bg-[#dfbe82]/10 border border-[#dfbe82]/30 px-3 py-1 rounded-full">Alta Pastelería</span>
+              <span class="font-cinzel text-[#dfbe82] font-bold text-lg">14,00€</span>
+            </div>
+            <h3 class="font-serif-luxury text-2xl font-bold text-white mb-2 leading-snug">Texturas de Chocolate Valrhona</h3>
+            <p class="text-stone-400 text-xs leading-relaxed font-light mb-4">
+              Ganache aireada de cacao puro al 70%, tierra crujiente de avellanas garrapiñadas y quenelle de helado de vainilla Bourbon de Madagascar ahumada en sarmiento.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-800/80 flex items-center justify-between">
+            <button onclick="abrirModalGourmet(this.closest('.dish-item'))" class="text-xs text-[#dfbe82] hover:text-white font-semibold tracking-wider uppercase flex items-center gap-1 transition">
+              <span>Ficha &amp; Maridaje</span>
+              <span>+</span>
+            </button>
+            <a href="#reserva" class="text-[11px] text-stone-400 hover:text-white uppercase tracking-widest font-medium">Reservar ⟶</a>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- 7. FORMULARIO INTERACTIVO DE RESERVA DE MESA -->
-  <section class="py-16 bg-[#FDFBF7] px-4" id="reserva">
+  <!-- ==========================================
+       5. MODAL INTERACTIVO "QUICK VIEW / FICHA GOURMET"
+       ========================================== -->
+  <div id="modal-gourmet" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-[#14100e] border border-[#dfbe82]/40 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative transform transition-transform duration-300 scale-95" id="modal-box">
+      
+      <!-- Botón Cerrar -->
+      <button onclick="cerrarModalGourmet()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/70 border border-stone-700 text-stone-300 hover:text-white flex items-center justify-center transition">
+        ✕
+      </button>
+
+      <!-- Imagen Cabecera Modal -->
+      <div class="h-52 overflow-hidden relative">
+        <img id="modal-img" src="" alt="Plato Gourmet" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#14100e] via-transparent to-transparent"></div>
+        <div class="absolute bottom-3 left-6">
+          <span id="modal-price" class="font-cinzel text-xl text-[#dfbe82] font-bold"></span>
+        </div>
+      </div>
+
+      <!-- Contenido Detallado -->
+      <div class="p-6 sm:p-8 space-y-4 text-xs sm:text-sm">
+        <h3 id="modal-title" class="font-serif-luxury text-3xl font-bold text-white leading-tight"></h3>
+        <p id="modal-desc" class="text-stone-300 leading-relaxed font-light"></p>
+
+        <!-- Bloque de Maridaje Sugerido -->
+        <div class="p-4 rounded-xl bg-[#0a0807] border border-[#dfbe82]/20 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-full bg-[#dfbe82]/10 border border-[#dfbe82]/30 flex items-center justify-center text-[#dfbe82] shrink-0">
+            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 22h8M12 11v11M5 3v5c0 3.87 3.13 7 7 7s7-3.13 7-7V3Z"/></svg>
+          </div>
+          <div>
+            <span class="text-[9px] uppercase tracking-widest text-[#dfbe82] font-semibold block">Maridaje Recomendado</span>
+            <span id="modal-pair" class="text-white font-medium text-xs"></span>
+          </div>
+        </div>
+
+        <!-- Sellos de Alérgenos y Trazabilidad -->
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-2.5 py-1 rounded-md bg-stone-900 border border-stone-800 text-[10px] text-stone-300">✓ Gluten Free Adaptable</span>
+          <span class="px-2.5 py-1 rounded-md bg-stone-900 border border-stone-800 text-[10px] text-stone-300">✓ Trazabilidad Certificada</span>
+          <span class="px-2.5 py-1 rounded-md bg-stone-900 border border-stone-800 text-[10px] text-stone-300">✓ Cocina en Directo</span>
+        </div>
+
+        <!-- Acción de Añadir a Reserva -->
+        <div class="pt-4">
+          <button onclick="anadirPlatoAReserva()" class="btn-luxury-solid w-full py-3.5 rounded-xl text-xs uppercase font-bold tracking-widest flex items-center justify-center gap-2">
+            <span>Añadir a mi Selección de Reserva ⟶</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       6. RESERVA VIP CONCIERGE & SELECTOR DE AMBIENTE
+       ========================================== -->
+  <section id="reserva" class="py-24 px-4 sm:px-8 bg-[#070605] border-t border-stone-800/80 relative">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-amber-800 font-bold text-xs uppercase tracking-widest">Garantiza Tu Mesa</span>
-        <h2 class="serif-toscana text-3xl sm:text-4xl font-bold text-stone-900 mt-1">Reserva de Mesa</h2>
-        <p class="text-stone-600 text-sm mt-2">
-          Indícanos los detalles de tu visita y confirmamos tu mesa al instante por WhatsApp.
+      <div class="text-center mb-14">
+        <div class="flex items-center justify-center gap-3 mb-3">
+          <span class="h-[1px] w-10 bg-[#c5a880]/60"></span>
+          <span class="text-xs uppercase tracking-[0.35em] text-[#dfbe82] font-semibold">CONCIERGE VIP</span>
+          <span class="h-[1px] w-10 bg-[#c5a880]/60"></span>
+        </div>
+        <h2 class="font-serif-luxury text-4xl sm:text-6xl font-bold text-white uppercase tracking-tight">
+          Reserva de Mesa
+        </h2>
+        <p class="text-stone-400 text-xs sm:text-sm mt-3 font-light max-w-md mx-auto leading-relaxed">
+          Seleccione su ambiente predilecto y asegure una experiencia gastronómica personalizada con confirmación inmediata.
         </p>
       </div>
 
-      <div class="bg-white border border-stone-200 rounded-3xl p-6 sm:p-10 shadow-sm">
-        <form id="form_restaurante" onsubmit="enviarReservaRestaurante(event);" class="space-y-4 text-xs sm:text-sm">
+      <!-- SELECTOR VISUAL DE ESPACIO (INTERACTIVO) -->
+      <div class="mb-10">
+        <label class="block font-semibold text-stone-300 mb-3 text-xs uppercase tracking-wider text-center">
+          1. Seleccione el Ambiente de Sala *
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Espacio 1: Frente a Brasas -->
+          <div onclick="seleccionarEspacio('Mesa Frente a Brasas (Showcooking)', this)" class="space-card selected p-4 rounded-2xl border border-[#dfbe82]/40 bg-[#14100e] cursor-pointer text-center transition group">
+            <div class="text-2xl mb-1.5">🥩</div>
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-1">Frente a Brasas</h4>
+            <p class="text-[10px] text-stone-400 font-light leading-snug">Showcooking y corte en directo</p>
+          </div>
+
+          <!-- Espacio 2: Salón Principal -->
+          <div onclick="seleccionarEspacio('Salón Principal Clásico (Luz Tenue)', this)" class="space-card p-4 rounded-2xl border border-stone-800 bg-[#14100e] cursor-pointer text-center transition group">
+            <div class="text-2xl mb-1.5">🕯️</div>
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-1">Salón Clásico</h4>
+            <p class="text-[10px] text-stone-400 font-light leading-snug">Atmósfera íntima a la luz de velas</p>
+          </div>
+
+          <!-- Espacio 3: Cava Privada -->
+          <div onclick="seleccionarEspacio('Cava Privada & Mesa del Chef', this)" class="space-card p-4 rounded-2xl border border-stone-800 bg-[#14100e] cursor-pointer text-center transition group">
+            <div class="text-2xl mb-1.5">🍷</div>
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-1">Cava &amp; Mesa Chef</h4>
+            <p class="text-[10px] text-stone-400 font-light leading-snug">Exclusivo grupos y maridaje</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FORMULARIO ELEGANTE -->
+      <div class="bento-card rounded-3xl p-6 sm:p-10 border border-stone-800">
+        <form id="form_restaurante" onsubmit="enviarReservaRestaurante(event);" class="space-y-5 text-xs sm:text-sm">
+          
+          <input type="hidden" id="espacio_seleccionado" value="Mesa Frente a Brasas (Showcooking)">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label for="nombre_reserva" class="block font-bold text-stone-700 mb-1.5 text-xs uppercase tracking-wider">
-                Nombre y Apellidos <span class="text-amber-800">*</span>
+              <label for="nombre_reserva" class="block font-semibold text-stone-300 mb-1.5 text-xs uppercase tracking-wider">
+                Nombre y Apellidos *
               </label>
-              <input type="text" id="nombre_reserva" required placeholder="Ej. Lucía Martínez" class="w-full bg-[#FDFBF7] border border-stone-300 rounded-xl px-4 py-3 text-stone-900 focus:border-amber-700 focus:outline-none transition min-h-[48px]">
+              <input type="text" id="nombre_reserva" required placeholder="Ej. Carlos Mendoza" class="w-full bg-[#0a0807] border border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-600 focus:border-[#dfbe82] focus:outline-none transition min-h-[48px]">
             </div>
 
             <div>
-              <label for="telefono_reserva" class="block font-bold text-stone-700 mb-1.5 text-xs uppercase tracking-wider">
-                Teléfono de Contacto <span class="text-amber-800">*</span>
+              <label for="telefono_reserva" class="block font-semibold text-stone-300 mb-1.5 text-xs uppercase tracking-wider">
+                Teléfono de Contacto (WhatsApp) *
               </label>
-              <input type="tel" id="telefono_reserva" required placeholder="Ej. 612 345 678" class="w-full bg-[#FDFBF7] border border-stone-300 rounded-xl px-4 py-3 text-stone-900 focus:border-amber-700 focus:outline-none transition min-h-[48px]">
+              <input type="tel" id="telefono_reserva" required placeholder="Ej. 612 345 678" class="w-full bg-[#0a0807] border border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-600 focus:border-[#dfbe82] focus:outline-none transition min-h-[48px]">
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
             <div>
-              <label for="personas_reserva" class="block font-bold text-stone-700 mb-1.5 text-xs uppercase tracking-wider">
-                Comensales <span class="text-amber-800">*</span>
+              <label for="personas_reserva" class="block font-semibold text-stone-300 mb-1.5 text-xs uppercase tracking-wider">
+                Comensales *
               </label>
-              <select id="personas_reserva" class="w-full bg-[#FDFBF7] border border-stone-300 rounded-xl px-4 py-3 text-stone-900 focus:border-amber-700 focus:outline-none transition min-h-[48px]">
-                <option value="2 personas">2 personas</option>
-                <option value="3 personas">3 personas</option>
-                <option value="4 personas">4 personas</option>
-                <option value="5-6 personas">5-6 personas</option>
-                <option value="Grupo (+6 personas)">Grupo (+6 personas)</option>
+              <select id="personas_reserva" class="w-full bg-[#0a0807] border border-stone-800 rounded-xl px-4 py-3.5 text-white focus:border-[#dfbe82] focus:outline-none transition min-h-[48px]">
+                <option value="2 comensales">2 comensales</option>
+                <option value="3 comensales">3 comensales</option>
+                <option value="4 comensales">4 comensales</option>
+                <option value="5-6 comensales">5-6 comensales</option>
+                <option value="Mesa Privada (+6 comensales)">Mesa Privada (+6 comensales)</option>
               </select>
             </div>
 
             <div>
-              <label for="fecha_reserva" class="block font-bold text-stone-700 mb-1.5 text-xs uppercase tracking-wider">
-                Fecha Deseada <span class="text-amber-800">*</span>
+              <label for="fecha_reserva" class="block font-semibold text-stone-300 mb-1.5 text-xs uppercase tracking-wider">
+                Fecha de la Visita *
               </label>
-              <input type="date" id="fecha_reserva" required class="w-full bg-[#FDFBF7] border border-stone-300 rounded-xl px-4 py-3 text-stone-900 focus:border-amber-700 focus:outline-none transition min-h-[48px]">
+              <input type="date" id="fecha_reserva" required class="w-full bg-[#0a0807] border border-stone-800 rounded-xl px-4 py-3.5 text-white focus:border-[#dfbe82] focus:outline-none transition min-h-[48px]">
             </div>
 
             <div>
-              <label for="turno_reserva" class="block font-bold text-stone-700 mb-1.5 text-xs uppercase tracking-wider">
-                Turno / Horario <span class="text-amber-800">*</span>
+              <label for="turno_reserva" class="block font-semibold text-stone-300 mb-1.5 text-xs uppercase tracking-wider">
+                Turno de Sala *
               </label>
-              <select id="turno_reserva" class="w-full bg-[#FDFBF7] border border-stone-300 rounded-xl px-4 py-3 text-stone-900 focus:border-amber-700 focus:outline-none transition min-h-[48px]">
+              <select id="turno_reserva" class="w-full bg-[#0a0807] border border-stone-800 rounded-xl px-4 py-3.5 text-white focus:border-[#dfbe82] focus:outline-none transition min-h-[48px]">
                 <option value="Almuerzo (13:30 - 15:30)">Almuerzo (13:30 - 15:30)</option>
-                <option value="Cena 1er Turno (20:30 - 22:00)">Cena 1er Turno (20:30 - 22:00)</option>
-                <option value="Cena 2do Turno (22:15 - 23:45)">Cena 2do Turno (22:15 - 23:45)</option>
+                <option value="Cena - 1er Turno (20:30 - 22:15)">Cena - 1er Turno (20:30)</option>
+                <option value="Cena - 2do Turno (22:30 - Cierre)">Cena - 2do Turno (22:30)</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label for="notas_reserva" class="block font-bold text-stone-700 mb-1.5 text-xs uppercase tracking-wider">
-              Alergias o Petición Especial <span class="text-stone-400 font-normal text-[11px]">(Opcional)</span>
+            <label for="notas_reserva" class="block font-semibold text-stone-300 mb-1.5 text-xs uppercase tracking-wider">
+              Platos Deseados, Petición Especial o Alergias <span class="text-stone-500 font-normal text-[11px]">(Opcional)</span>
             </label>
-            <textarea id="notas_reserva" rows="2" placeholder="Indícanos si celebráis alguna ocasión especial o si algún comensal tiene intolerancias..." class="w-full bg-[#FDFBF7] border border-stone-300 rounded-xl px-4 py-3 text-stone-900 focus:border-amber-700 focus:outline-none transition"></textarea>
+            <textarea id="notas_reserva" rows="3" placeholder="Ej. Quisiéramos descorchar un vino especial, mesa para celebración de aniversario, intolerancia a frutos secos..." class="w-full bg-[#0a0807] border border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-600 focus:border-[#dfbe82] focus:outline-none transition"></textarea>
           </div>
 
-          <div class="pt-2">
-            <button type="submit" class="w-full bg-gradient-to-r from-amber-700 to-amber-800 hover:from-amber-800 hover:to-amber-900 text-white font-extrabold text-sm py-4 px-6 rounded-full shadow-xl shadow-amber-900/20 transition transform active:scale-95 flex items-center justify-center gap-2 min-h-[48px]">
-              <svg width="20" height="20" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-              <span>Confirmar Reserva por WhatsApp</span>
+          <div class="pt-3">
+            <button type="submit" class="btn-luxury-solid w-full text-xs sm:text-sm py-4 px-6 rounded-xl shadow-2xl flex items-center justify-center gap-2.5 min-h-[50px] uppercase font-bold">
+              <svg width="18" height="18" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              <span>Confirmar Reserva VIP por WhatsApp</span>
             </button>
           </div>
 
@@ -310,170 +641,233 @@
     </div>
   </section>
 
-  <!-- 8. PRUEBA SOCIAL / RESEÑAS DE COMENSALES -->
-  <section class="py-16 bg-white border-t border-stone-200 px-4">
-    <div class="max-w-6xl mx-auto">
+  <!-- ==========================================
+       7. HISTORIA Y FILOSOFÍA CULINARIA
+       ========================================== -->
+  <section id="nosotros" class="py-24 px-4 sm:px-8 bg-[#0a0807] border-t border-stone-800/80">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-amber-800 font-bold text-xs uppercase tracking-widest">Experiencias de Comensales</span>
-        <h2 class="serif-toscana text-3xl sm:text-4xl font-bold text-stone-900 mt-1">Lo Que Dicen Quienes Nos Visitan</h2>
+      <div class="lg:col-span-6 grid grid-cols-2 gap-4 relative">
+        <div class="space-y-4">
+          <div class="rounded-2xl overflow-hidden border border-[#c5a880]/30 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=80" alt="Atmósfera de Sala" class="w-full h-48 object-cover">
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-[#c5a880]/30 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Brasas de Encina" class="w-full h-64 object-cover">
+          </div>
+        </div>
+        <div class="space-y-4 pt-8">
+          <div class="rounded-2xl overflow-hidden border border-[#c5a880]/30 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=700&q=80" alt="Bodega Subterránea" class="w-full h-64 object-cover">
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-[#c5a880]/30 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=700&q=80" alt="Pasta Artesanal" class="w-full h-48 object-cover">
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="lg:col-span-6 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="h-[1px] w-8 bg-[#c5a880]"></span>
+          <span class="text-xs uppercase tracking-[0.35em] text-[#dfbe82] font-semibold">TRADICIÓN &amp; VANGUARDIA</span>
+        </div>
+        <h2 class="font-serif-luxury text-3xl sm:text-5xl font-bold text-white uppercase leading-tight">
+          Cada plato cuenta el origen de una tierra
+        </h2>
+        <p class="text-stone-300 text-xs sm:text-sm leading-relaxed font-light">
+          En {{NOMBRE_NEGOCIO}}, el fuego no es solo un método de cocción, es el corazón de nuestra identidad. Cada pieza cárnica reposa durante semanas en nuestras cámaras de sal del Himalaya antes de tocar las brasas vivas de carbón de encina y leña de roble.
+        </p>
+        <p class="text-stone-400 text-xs sm:text-sm leading-relaxed font-light">
+          Nuestra sala ha sido concebida bajo un estándar de hospitalidad sin fisuras: acústica estudiada, iluminación cálida a la luz de las velas y un sumiller dedicado a elevar cada momento en {{DIRECCION}}.
+        </p>
         
-        <div class="bg-[#FDFBF7] border border-stone-200 p-6 rounded-2xl flex flex-col justify-between">
+        <div class="pt-2 border-t border-stone-800/80 flex items-center gap-6">
           <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4">
-              "Platos exquisitos, sabor auténtico y un trato inmejorable. La carta y la atención superaron todas nuestras expectativas."
-            </p>
+            <span class="font-cinzel text-2xl text-[#dfbe82] font-bold">45</span>
+            <span class="block text-[10px] text-stone-400 uppercase tracking-widest mt-0.5">Días de Maduración</span>
           </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-stone-200">
-            <div class="w-8 h-8 rounded-full bg-amber-800 text-amber-100 font-bold flex items-center justify-center text-xs">SV</div>
-            <div>
-              <h4 class="font-bold text-stone-900 text-xs">Sergio Valero</h4>
-              <span class="text-[11px] text-stone-500">Cena en Pareja</span>
-            </div>
+          <div class="h-8 w-[1px] bg-stone-800"></div>
+          <div>
+            <span class="font-cinzel text-2xl text-[#dfbe82] font-bold">120+</span>
+            <span class="block text-[10px] text-stone-400 uppercase tracking-widest mt-0.5">Referencias de Vino</span>
+          </div>
+          <div class="h-8 w-[1px] bg-stone-800"></div>
+          <div>
+            <span class="font-cinzel text-2xl text-[#dfbe82] font-bold">100%</span>
+            <span class="block text-[10px] text-stone-400 uppercase tracking-widest mt-0.5">Pasta Amasada Diaria</span>
           </div>
         </div>
-
-        <div class="bg-[#FDFBF7] border border-stone-200 p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4">
-              "Los postres y platos estrella son una maravilla. Auténtica dedicación culinaria en un ambiente acogedor. Repetiremos sin duda."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-stone-200">
-            <div class="w-8 h-8 rounded-full bg-amber-800 text-amber-100 font-bold flex items-center justify-center text-xs">MP</div>
-            <div>
-              <h4 class="font-bold text-stone-900 text-xs">Marta Puig</h4>
-              <span class="text-[11px] text-stone-500">Almuerzo Familiar</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-[#FDFBF7] border border-stone-200 p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4">
-              "Hicimos la reserva online rapidísimo. Al llegar nuestra mesa estaba lista y la atención fue de diez."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-stone-200">
-            <div class="w-8 h-8 rounded-full bg-amber-800 text-amber-100 font-bold flex items-center justify-center text-xs">AL</div>
-            <div>
-              <h4 class="font-bold text-stone-900 text-xs">Andrés Lucas</h4>
-              <span class="text-[11px] text-stone-500">Cena con Amigos</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </div>
   </section>
 
-  <!-- 9. UBICACIÓN, HORARIOS Y CONTACTO -->
-  <section class="py-16 px-4 max-w-6xl mx-auto">
-    <div class="bg-[#1C130E] text-stone-300 rounded-3xl p-8 sm:p-12 border border-stone-800 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+  <!-- ==========================================
+       8. CONTACTO, HORARIOS Y UBICACIÓN
+       ========================================== -->
+  <section id="contacto" class="py-20 px-4 sm:px-8 bg-[#070605] border-t border-stone-800/80 text-xs sm:text-sm text-stone-300">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <div>
-        <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Encuéntranos Fácilmente</span>
-        <h2 class="serif-toscana text-2xl sm:text-3xl font-bold text-white mt-1 mb-4">Ubicación y Horarios de Cocina</h2>
-        <p class="text-stone-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
-          Situados en una zona accesible y con encanto en {{DIRECCION}}. Recomendamos reservar mesa con antelación para garantizar disponibilidad.
-        </p>
-
-        <div class="space-y-4 text-xs sm:text-sm text-stone-300">
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <p class="font-bold text-white">Dirección del Restaurante:</p>
-              <p class="text-stone-400">{{DIRECCION}}</p>
-            </div>
+      <div class="p-8 rounded-3xl bg-[#110e0c] border border-stone-800/80 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#dfbe82] mb-4">
+            <svg width="18" height="18" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <div>
-              <p class="font-bold text-white">Horarios de Cocina:</p>
-              <p class="text-stone-400">Martes a Domingo: 13:00 a 16:00 y 20:00 a 23:30 (Lunes cerrado)</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div>
-              <p class="font-bold text-white">Teléfono de Información y Reservas:</p>
-              <p class="text-amber-400 font-extrabold"><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></p>
-            </div>
-          </div>
+          <h4 class="font-cinzel text-white font-bold text-sm uppercase tracking-wider mb-2">Ubicación de Sala</h4>
+          <p class="text-stone-400 font-light leading-relaxed">{{DIRECCION}}</p>
         </div>
       </div>
 
-      <div class="bg-stone-900 p-6 rounded-2xl border border-stone-800 text-center">
-        <h3 class="serif-toscana font-bold text-white text-lg mb-2">¿Prefieres reservar mesa por WhatsApp?</h3>
-        <p class="text-stone-300 text-xs sm:text-sm mb-6 leading-relaxed">
-          Escríbenos directamente indicando día, hora y número de personas. Te confirmamos la disponibilidad en minutos.
-        </p>
-        <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-700 to-amber-800 hover:from-amber-800 text-white font-black text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-lg transition min-h-[48px] w-full">
-          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>Reservar por WhatsApp</span>
-        </a>
+      <div class="p-8 rounded-3xl bg-[#110e0c] border border-stone-800/80 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#dfbe82] mb-4">
+            <svg width="18" height="18" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4 class="font-cinzel text-white font-bold text-sm uppercase tracking-wider mb-2">Turnos de Servicio</h4>
+          <p class="text-stone-400 font-light">Almuerzos: 13:00 a 16:30</p>
+          <p class="text-stone-400 font-light">Cenas: 20:00 a 23:45 (Cerrado Lunes)</p>
+        </div>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#110e0c] border border-stone-800/80 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#dfbe82] mb-4">
+            <svg width="18" height="18" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h4 class="font-cinzel text-white font-bold text-sm uppercase tracking-wider mb-2">Línea Concierge</h4>
+          <p class="text-[#dfbe82] font-bold text-base"><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></p>
+          <p class="text-stone-500 text-xs mt-1">Confirmación directa por WhatsApp</p>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- 10. CTA FINAL DE CIERRE -->
-  <section class="py-14 bg-gradient-to-r from-amber-700 to-amber-800 text-white text-center px-4">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="serif-toscana text-3xl sm:text-4xl font-bold mb-3">Una experiencia gastronómica inolvidable</h2>
-      <p class="text-amber-100 text-sm sm:text-base font-light mb-6 max-w-xl mx-auto">
-        Ven a saborear la auténtica gastronomía en {{NOMBRE_NEGOCIO}}.
-      </p>
-      <a href="#reserva" class="inline-flex items-center gap-2 bg-white text-stone-950 font-black text-sm px-8 py-4 rounded-full shadow-2xl transition transform hover:scale-105 min-h-[48px]">
-        <svg width="20" height="20" class="w-5 h-5 text-amber-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-        <span>Reservar Mesa Ahora</span>
-      </a>
+  <!-- ==========================================
+       9. PIE DE PÁGINA
+       ========================================== -->
+  <footer class="bg-[#040302] text-stone-500 py-10 px-4 border-t border-stone-900 text-xs text-center">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="font-medium text-stone-400">© 2026 {{NOMBRE_NEGOCIO}} • Alta Gastronomía &amp; Brasas. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-6 text-stone-400 tracking-wider uppercase text-[11px]">
+        <a href="#inicio" class="hover:text-[#dfbe82] transition">Inicio</a>
+        <a href="#bento-section" class="hover:text-[#dfbe82] transition">Bento Carta</a>
+        <a href="#reserva" class="hover:text-[#dfbe82] transition">Reservas VIP</a>
+        <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="hover:text-[#dfbe82] transition text-[#dfbe82]">WhatsApp Oficial</a>
+      </div>
     </div>
-  </section>
-
-  <!-- 11. PIE DE PÁGINA CORPORATIVO -->
-  <footer class="bg-[#140D09] text-stone-500 py-8 px-4 text-center text-xs border-t border-stone-800">
-    <p class="serif-toscana font-bold text-amber-200 text-sm">{{NOMBRE_NEGOCIO}} • Restaurante &amp; Gastronomía</p>
-    <p class="text-stone-400 mt-1">{{DIRECCION}} | Reservas: <a href="tel:{{TELEFONO}}" class="text-amber-300 hover:underline">{{TELEFONO}}</a></p>
-    <p class="mt-2 text-stone-500">© 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- 12. BOTÓN FLOTANTE MÓVIL DE WHATSAPP -->
-  <a href="{{ENLACE_WHATSAPP}}" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 transition transform hover:scale-110 active:scale-95" aria-label="Contactar por WhatsApp">
+  <!-- ==========================================
+       10. BOTÓN FLOTANTE DISCRETO DE WHATSAPP
+       ========================================== -->
+  <a href="{{ENLACE_WHATSAPP}}" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-[0_10px_25px_rgba(16,185,129,0.40)] transition-transform hover:scale-110 active:scale-95" aria-label="Reservar por WhatsApp">
     <svg width="28" height="28" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
   </a>
 
-  <!-- SCRIPT DE ENVÍO DE RESERVA -->
+  <!-- ==========================================
+       11. JAVASCRIPT DE ALTO RENDIMIENTO (GUGGENHEIM ENGINE)
+       ========================================== -->
   <script>
+    // 1. SCROLL PROGRESS BAR (GUGGENHEIM STYLE)
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      const progressBar = document.getElementById('scroll-progress');
+      if (progressBar) progressBar.style.width = scrolled + '%';
+    });
+
+    // 3. BUSCADOR INSTANTÁNEO EN TIEMPO REAL
+    function buscarPlatoEnVivo() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const dishes = document.querySelectorAll('.dish-item');
+
+      dishes.forEach(dish => {
+        const title = (dish.getAttribute('data-title') || dish.innerText).toLowerCase();
+        const desc = (dish.getAttribute('data-desc') || '').toLowerCase();
+        const match = title.includes(query) || desc.includes(query);
+        dish.style.display = match ? 'flex' : 'none';
+      });
+    }
+
+    // 4. FILTRO DE CATEGORÍAS
+    function filtrarCategoria(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const dishes = document.querySelectorAll('.dish-item');
+      dishes.forEach(dish => {
+        const dishCat = dish.getAttribute('data-category') || 'carnes';
+        if (cat === 'todas' || dishCat === cat) {
+          dish.style.display = 'flex';
+        } else {
+          dish.style.display = 'none';
+        }
+      });
+    }
+
+    // 5. SELECTOR DE ESPACIO VIP (TARJETAS INTERACTIVAS)
+    function seleccionarEspacio(nombreEspacio, element) {
+      document.querySelectorAll('.space-card').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      document.getElementById('espacio_seleccionado').value = nombreEspacio;
+    }
+
+    // 6. MODAL INTERACTIVO GOURMET
+    let platoSeleccionadoActual = "";
+
+    function abrirModalGourmet(dishCard) {
+      if (!dishCard) return;
+      const title = dishCard.getAttribute('data-title') || "Creación del Chef";
+      const desc = dishCard.getAttribute('data-desc') || "Elaboración artesanal con productos nobles de temporada.";
+      const price = dishCard.getAttribute('data-price') || "32,00€";
+      const pair = dishCard.getAttribute('data-pair') || "Selección de la Casa";
+      const img = dishCard.getAttribute('data-img') || "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80";
+
+      platoSeleccionadoActual = title;
+
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-desc').innerText = desc;
+      document.getElementById('modal-price').innerText = price;
+      document.getElementById('modal-pair').innerText = pair;
+      document.getElementById('modal-img').src = img;
+
+      const modal = document.getElementById('modal-gourmet');
+      modal.classList.add('modal-active');
+      document.getElementById('modal-box').classList.remove('scale-95');
+      document.getElementById('modal-box').classList.add('scale-100');
+    }
+
+    function cerrarModalGourmet() {
+      const modal = document.getElementById('modal-gourmet');
+      modal.classList.remove('modal-active');
+      document.getElementById('modal-box').classList.remove('scale-100');
+      document.getElementById('modal-box').classList.add('scale-95');
+    }
+
+    function anadirPlatoAReserva() {
+      if (platoSeleccionadoActual) {
+        const notas = document.getElementById('notas_reserva');
+        if (notas) {
+          const actual = notas.value.trim();
+          notas.value = actual ? (actual + ` | Plato seleccionado: ${platoSeleccionadoActual}`) : `Deseo degustar: ${platoSeleccionadoActual}`;
+        }
+      }
+      cerrarModalGourmet();
+      const reservaSec = document.getElementById('reserva');
+      if (reservaSec) reservaSec.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Cerrar modal al presionar escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarModalGourmet();
+    });
+
+    // 7. ENVÍO DE RESERVA VIP CONCIERGE A WHATSAPP
     function enviarReservaRestaurante(e) {
       e.preventDefault();
+      const espacio = document.getElementById('espacio_seleccionado').value;
       const nombre = document.getElementById('nombre_reserva').value.trim();
       const tel = document.getElementById('telefono_reserva').value.trim();
       const personas = document.getElementById('personas_reserva').value;
@@ -481,15 +875,16 @@
       const turno = document.getElementById('turno_reserva').value;
       const notas = document.getElementById('notas_reserva').value.trim();
 
-      const mensaje = `*SOLICITUD DE RESERVA DE MESA - {{NOMBRE_NEGOCIO}}*
+      const mensaje = `*SOLICITUD DE RESERVA VIP - {{NOMBRE_NEGOCIO}}*
 
-👤 *Cliente:* ${nombre}
+🏛️ *Ambiente Seleccionado:* ${espacio}
+👤 *Comensal:* ${nombre}
 📞 *Teléfono:* ${tel}
-👥 *Comensales:* ${personas}
+👥 *Número de Personas:* ${personas}
 📅 *Fecha:* ${fecha}
-⏰ *Turno / Horario:* ${turno}
-${notas ? `📝 *Observaciones / Alergias:* "${notas}"\n` : ''}
-_Enviado desde la web del restaurante._`;
+⏰ *Turno de Sala:* ${turno}
+${notas ? `📝 *Petición Especial / Platos:* "${notas}"\n` : ''}
+_Enviado desde el portal de Alta Gastronomía de {{NOMBRE_NEGOCIO}}._`;
 
       const url = `{{ENLACE_WHATSAPP}}?text=${encodeURIComponent(mensaje)}`;
       window.open(url, '_blank');

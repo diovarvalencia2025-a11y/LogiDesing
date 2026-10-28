@@ -36,7 +36,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".PreviewActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize" />
     </application>
 

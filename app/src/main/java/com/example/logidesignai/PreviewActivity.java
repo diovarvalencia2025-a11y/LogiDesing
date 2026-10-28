@@ -136,7 +136,9 @@ public class PreviewActivity extends AppCompatActivity {
 
     private String mapearCarpetaNicho(String input) {
         String lower = input.toLowerCase();
-        if (lower.contains("restauran") || lower.contains("bar") || lower.contains("comida")) {
+        if (lower.contains("burdina") || lower.contains("asador")) {
+            return "burdina";
+        } else if (lower.contains("restauran") || lower.contains("bar") || lower.contains("comida")) {
             return "restaurantes";
         } else if (lower.contains("dental") || lower.contains("dentist") || lower.contains("diente")) {
             return "dental";
@@ -302,7 +304,7 @@ public class PreviewActivity extends AppCompatActivity {
                         "    </div>\n" +
                         "  </div>\n" +
                         "  <div class=\"px-6 pb-6 pt-2 border-t border-slate-100\">\n" +
-                        "    <a href=\"#presupuesto\" class=\"text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1\">\n" +
+                        "    <a href=\"#presupuesto\" class=\"text-orange-600 hover:text-orange-700 font-bold text-xs flex items-center gap-1\">\n" +
                         "      Consultar reforma de cocina →\n" +
                         "    </a>\n" +
                         "  </div>\n" +
@@ -319,7 +321,7 @@ public class PreviewActivity extends AppCompatActivity {
                         "    </div>\n" +
                         "  </div>\n" +
                         "  <div class=\"px-6 pb-6 pt-2 border-t border-slate-100\">\n" +
-                        "    <a href=\"#presupuesto\" class=\"text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1\">\n" +
+                        "    <a href=\"#presupuesto\" class=\"text-orange-600 hover:text-orange-700 font-bold text-xs flex items-center gap-1\">\n" +
                         "      Consultar reforma de baño →\n" +
                         "    </a>\n" +
                         "  </div>\n" +
@@ -336,7 +338,7 @@ public class PreviewActivity extends AppCompatActivity {
                         "    </div>\n" +
                         "  </div>\n" +
                         "  <div class=\"px-6 pb-6 pt-2 border-t border-slate-100\">\n" +
-                        "    <a href=\"#presupuesto\" class=\"text-amber-600 hover:text-amber-700 font-bold text-xs flex items-center gap-1\">\n" +
+                        "    <a href=\"#presupuesto\" class=\"text-orange-600 hover:text-orange-700 font-bold text-xs flex items-center gap-1\">\n" +
                         "      Consultar reforma integral →\n" +
                         "    </a>\n" +
                         "  </div>\n" +
@@ -473,65 +475,36 @@ public class PreviewActivity extends AppCompatActivity {
 
             case "restaurantes":
             default: {
-                String res1 = (servicios != null && !servicios.trim().isEmpty()) ? servicios.trim() : "Asados y Especialidades al Horno";
-                return "<!-- PLATO 1: ESPECIALIDAD / ASADOS CON FOTO REAL DE COMIDA -->\n" +
-                        "<div class=\"bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition\">\n" +
-                        "  <div>\n" +
-                        "    <img src=\"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80\" alt=\"" + res1 + "\" class=\"w-full h-52 object-cover\">\n" +
-                        "    <div class=\"p-6\">\n" +
-                        "      <div class=\"flex justify-between items-baseline mb-2\">\n" +
-                        "        <h3 class=\"serif-toscana font-bold text-xl text-stone-900\">" + res1 + "</h3>\n" +
-                        "        <span class=\"text-amber-800 font-extrabold text-lg\">Plato Estrella</span>\n" +
-                        "      </div>\n" +
-                        "      <p class=\"text-stone-600 text-xs sm:text-sm leading-relaxed\">\n" +
-                        "        Elaborados al momento con las mejores carnes seleccionadas, punto exacto de brasa y el auténtico sabor tradicional de nuestra cocina.\n" +
-                        "      </p>\n" +
+                String res1 = (servicios != null && !servicios.trim().isEmpty()) ? servicios.trim() : "Chuletón Tomahawk Madurado a la Brasa";
+                return "<!-- BENTO HERO CARD (2 COLUMNAS): LA OBRA MAESTRA DEL CHEF / SERVICIO DEL CLIENTE -->\n" +
+                        "<div class=\"md:col-span-2 bento-card rounded-3xl overflow-hidden flex flex-col justify-between group dish-item\" data-category=\"carnes\" data-title=\"" + res1 + "\" data-desc=\"Corte noble seleccionado a mano con maduración artesanal de 45 días en cámara propia. Sellado a fuego vivo sobre carbón de encina y leña de roble con mantequilla trufada y flor de sal del Himalaya.\" data-price=\"42,00€\" data-pair=\"Ribera del Duero Gran Reserva 2018\" data-img=\"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85\">\n" +
+                        "  <div class=\"overflow-hidden h-64 sm:h-72 relative\">\n" +
+                        "    <img src=\"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85\" alt=\"" + res1 + "\" class=\"w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out\">\n" +
+                        "    <div class=\"absolute inset-0 bg-gradient-to-t from-[#110e0c] via-transparent to-black/30\"></div>\n" +
+                        "    <div class=\"absolute top-4 left-4 flex gap-2\">\n" +
+                        "      <span class=\"bg-[#070605]/85 backdrop-blur-md border border-[#dfbe82]/50 px-3 py-1 rounded-full text-[10px] text-[#dfbe82] font-bold uppercase tracking-widest\">★ Obra Maestra del Chef</span>\n" +
+                        "      <span class=\"bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-stone-300 font-medium uppercase tracking-wider hidden sm:inline-block\">Maduración 45 Días</span>\n" +
+                        "    </div>\n" +
+                        "    <div class=\"absolute bottom-4 right-4 bg-[#070605]/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#dfbe82]/40\">\n" +
+                        "      <span class=\"font-cinzel text-[#dfbe82] font-bold text-lg\">42,00€</span>\n" +
                         "    </div>\n" +
                         "  </div>\n" +
-                        "  <div class=\"px-6 pb-6 pt-2 border-t border-stone-100\">\n" +
-                        "    <a href=\"#reserva\" class=\"text-amber-800 hover:text-amber-900 font-bold text-xs flex items-center gap-1\">\n" +
-                        "      Reservar y degustar →\n" +
-                        "    </a>\n" +
-                        "  </div>\n" +
-                        "</div>\n\n" +
-                        "<!-- PLATO 2: CARNES Y BRASA CON FOTO REAL DE COMIDA -->\n" +
-                        "<div class=\"bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition\">\n" +
-                        "  <div>\n" +
-                        "    <img src=\"https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80\" alt=\"Parrillada Gourmet\" class=\"w-full h-52 object-cover\">\n" +
-                        "    <div class=\"p-6\">\n" +
-                        "      <div class=\"flex justify-between items-baseline mb-2\">\n" +
-                        "        <h3 class=\"serif-toscana font-bold text-xl text-stone-900\">Parrillada &amp; Carnes Selectas</h3>\n" +
-                        "        <span class=\"text-amber-800 font-extrabold text-lg\">Especialidad</span>\n" +
-                        "      </div>\n" +
-                        "      <p class=\"text-stone-600 text-xs sm:text-sm leading-relaxed\">\n" +
-                        "        Cortes nobles madurados a la brasa con guarnición de patatas rústicas, verduras de temporada al carbón y chimichurri casero.\n" +
+                        "  <div class=\"p-6 sm:p-8 flex flex-col justify-between flex-1\">\n" +
+                        "    <div>\n" +
+                        "      <h3 class=\"font-serif-luxury font-bold text-2xl sm:text-3xl text-white mb-2 leading-tight\">" + res1 + "</h3>\n" +
+                        "      <p class=\"text-stone-300 text-xs sm:text-sm leading-relaxed font-light mb-4\">\n" +
+                        "        Corte noble seleccionado a mano con maduración artesanal de 45 días en cámara propia. Sellado a fuego vivo sobre carbón de encina y leña de roble con mantequilla trufada y flor de sal del Himalaya.\n" +
                         "      </p>\n" +
                         "    </div>\n" +
-                        "  </div>\n" +
-                        "  <div class=\"px-6 pb-6 pt-2 border-t border-stone-100\">\n" +
-                        "    <a href=\"#reserva\" class=\"text-amber-800 hover:text-amber-900 font-bold text-xs flex items-center gap-1\">\n" +
-                        "      Reservar y degustar →\n" +
-                        "    </a>\n" +
-                        "  </div>\n" +
-                        "</div>\n\n" +
-                        "<!-- PLATO 3: MENÚ DEGUSTACIÓN Y POSTRES CON FOTO REAL -->\n" +
-                        "<div class=\"bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition\">\n" +
-                        "  <div>\n" +
-                        "    <img src=\"https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=600&q=80\" alt=\"Platos de la Casa\" class=\"w-full h-52 object-cover\">\n" +
-                        "    <div class=\"p-6\">\n" +
-                        "      <div class=\"flex justify-between items-baseline mb-2\">\n" +
-                        "        <h3 class=\"serif-toscana font-bold text-xl text-stone-900\">Menú Degustación &amp; Eventos</h3>\n" +
-                        "        <span class=\"text-amber-800 font-extrabold text-lg\">Bodas &amp; Celebraciones</span>\n" +
-                        "      </div>\n" +
-                        "      <p class=\"text-stone-600 text-xs sm:text-sm leading-relaxed\">\n" +
-                        "        Propuestas gastronómicas completas ideales para grupos, celebraciones familiares y momentos inolvidables con atención personalizada.\n" +
-                        "      </p>\n" +
+                        "    <div class=\"pt-4 border-t border-stone-800/80 flex flex-wrap items-center justify-between gap-3\">\n" +
+                        "      <button onclick=\"abrirModalGourmet(this.closest('.dish-item'))\" class=\"text-xs text-[#dfbe82] hover:text-white font-semibold tracking-wider uppercase flex items-center gap-1.5 transition\">\n" +
+                        "        <span>Ver Ficha de Cata &amp; Maridaje</span>\n" +
+                        "        <span>+</span>\n" +
+                        "      </button>\n" +
+                        "      <a href=\"#reserva\" class=\"btn-luxury-outline px-6 py-2 rounded-full text-[11px] uppercase tracking-wider font-semibold\">\n" +
+                        "        Reservar esta Creación ⟶\n" +
+                        "      </a>\n" +
                         "    </div>\n" +
-                        "  </div>\n" +
-                        "  <div class=\"px-6 pb-6 pt-2 border-t border-stone-100\">\n" +
-                        "    <a href=\"#reserva\" class=\"text-amber-800 hover:text-amber-900 font-bold text-xs flex items-center gap-1\">\n" +
-                        "      Reservar y degustar →\n" +
-                        "    </a>\n" +
                         "  </div>\n" +
                         "</div>";
             }

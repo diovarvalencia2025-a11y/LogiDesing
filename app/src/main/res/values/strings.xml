@@ -7,6 +7,7 @@
     <string name="desc_select">Seleccionar</string>
     <string name="hint_search">Buscar</string>
     <string name="desc_search_icon">Buscar</string>
+    <string name="desc_message_icon">Mensaje</string>
     <string name="empty_chats_hint">Sin conversaciones recientes</string>
     <string name="new_chat">Nuevo chat</string>
     <string name="desc_add">Añadir</string>

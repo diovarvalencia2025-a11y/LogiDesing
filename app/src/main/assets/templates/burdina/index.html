@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BURDINA • Asador Premium | Bilbao</title>
+  <meta name="description" content="BURDINA — Asador Premium en Bilbao. Fuego, Origen, Maestría. El arte ancestral del asador vasco elevado a su máxima expresión.">
+
+  <!-- Tailwind CSS & Google Fonts Oficiales de Burdina -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+    :root {
+      --burdina-gold: #c8a165;
+      --burdina-gold-light: #e0be88;
+      --burdina-gold-dim: rgba(200, 161, 101, 0.4);
+      --burdina-black: #080706;
+      --burdina-dark: #0f0d0b;
+      --burdina-card: #14110e;
+    }
+
+    body {
+      background-color: var(--burdina-black);
+      color: #eae5dc;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+
+    .text-gold {
+      color: var(--burdina-gold);
+    }
+
+    .btn-reservar {
+      background-color: var(--burdina-gold);
+      color: #080706;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .btn-reservar:hover {
+      background-color: var(--burdina-gold-light);
+      box-shadow: 0 0 25px rgba(200, 161, 101, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* Video Hero con integración de brasa y humo */
+    .hero-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.65) contrast(1.1);
+    }
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(8,7,6,0.2) 0%, rgba(8,7,6,0.75) 70%, rgba(8,7,6,0.98) 100%);
+      z-index: 1;
+    }
+
+    /* Scroll Down Indicator */
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: var(--burdina-gold);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+    .scroll-indicator:hover {
+      opacity: 1;
+    }
+    .scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(180deg, var(--burdina-gold) 0%, rgba(200,161,101,0) 100%);
+    }
+
+    /* Tarjetas de carnes */
+    .meat-card {
+      background: var(--burdina-card);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .meat-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 161, 101, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+    .meat-card img {
+      transition: transform 0.6s ease;
+    }
+    .meat-card:hover img {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER / NAVBAR OFICIAL BURDINA
+       ========================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#080706]/85 backdrop-blur-md border-b border-white/5 transition-all">
+    <div class="max-w-7xl mx-auto px-6 sm:px-12 h-24 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex flex-col group">
+        <span class="font-cinzel text-2xl sm:text-3xl font-bold tracking-[0.28em] text-[#eae5dc] group-hover:text-white transition">
+          BURDINA
+        </span>
+        <span class="font-serif-luxury italic text-xs tracking-[0.25em] text-[#c8a165] -mt-0.5">
+          Asador Premium · Bilbao
+        </span>
+      </a>
+
+      <!-- Menu Links -->
+      <nav class="hidden md:flex items-center gap-10 text-[11px] font-medium tracking-[0.28em] text-stone-300 uppercase">
+        <a href="#carta" class="hover:text-[#c8a165] transition">La Carta</a>
+        <a href="#filosofia" class="hover:text-[#c8a165] transition">Filosofía</a>
+        <a href="#bodega" class="hover:text-[#c8a165] transition">Bodega</a>
+        <a href="#ubicacion" class="hover:text-[#c8a165] transition">Ubicación</a>
+      </nav>
+
+      <!-- Botón Reservar Mesa -->
+      <a href="#ubicacion" class="btn-reservar">
+        Reservar Mesa
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO PRINCIPAL (RESTAURANTE EN BRASAS)
+       ========================================== -->
+  <section id="hero" class="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    
+    <!-- Video Player en Brasas (KlingAI 3.0) -->
+    <div class="hero-video-container">
+      <video autoplay muted loop playsinline poster="assets/burdina-carnes.png">
+        <source src="assets/burdina-video.mp4" type="video/mp4">
+      </video>
+      <div class="hero-vignette"></div>
+    </div>
+
+    <!-- Contenido Central del Hero -->
+    <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center pt-16">
+      
+      <!-- Subtítulo Superior -->
+      <span class="text-[11px] sm:text-xs tracking-[0.35em] text-stone-300 uppercase font-light mb-6">
+        Bilbao · País Vasco · Desde 2018
+      </span>
+
+      <!-- Título Monumental BURDINA -->
+      <h1 class="font-serif-luxury text-6xl sm:text-8xl md:text-9xl font-light tracking-[0.18em] text-white uppercase leading-none mb-4">
+        BURDINA
+      </h1>
+
+      <!-- Lema Dorado Italic -->
+      <div class="font-serif-luxury italic text-3xl sm:text-5xl text-[#c8a165] font-normal tracking-wide mb-8">
+        Fuego · Origen · Maestría
+      </div>
+
+      <!-- Párrafo Descriptivo -->
+      <p class="font-light text-stone-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-16">
+        El arte ancestral del asador vasco, elevado a su máxima expresión.
+      </p>
+
+      <!-- Scroll Indicator -->
+      <a href="#carta" class="scroll-indicator">
+        <span>Descubrir</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: LA CARTA (3 CORTES NOBLES)
+       ========================================== -->
+  <section id="carta" class="py-32 px-6 sm:px-12 bg-[#080706]">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+
+        <!-- CARD 1: TXULETA DE BUEY -->
+        <div class="meat-card rounded-sm overflow-hidden flex flex-col">
+          <div class="h-96 sm:h-[420px] overflow-hidden bg-black">
+            <img src="assets/txuleta.jpg" alt="Txuleta de Buey" class="w-full h-full object-cover">
+          </div>
+          <div class="p-8 flex flex-col justify-between flex-1">
+            <div>
+              <span class="font-serif-luxury text-sm text-[#c8a165] block mb-1">01</span>
+              <h3 class="font-serif-luxury text-3xl font-normal text-white mb-2">Txuleta de Buey</h3>
+              <p class="font-serif-luxury italic text-sm text-stone-400 mb-6">
+                Maduración 45 días · Buey Vasco
+              </p>
+            </div>
+            <div class="font-serif-luxury text-xl text-[#c8a165]">
+              desde 95€ <span class="text-xs text-stone-500 font-sans tracking-normal">/ kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: CHULETÓN DE VACA MAYOR -->
+        <div class="meat-card rounded-sm overflow-hidden flex flex-col">
+          <div class="h-96 sm:h-[420px] overflow-hidden bg-black">
+            <img src="assets/chuleton.jpg" alt="Chuletón de Vaca Mayor" class="w-full h-full object-cover">
+          </div>
+          <div class="p-8 flex flex-col justify-between flex-1">
+            <div>
+              <span class="font-serif-luxury text-sm text-[#c8a165] block mb-1">02</span>
+              <h3 class="font-serif-luxury text-3xl font-normal text-white mb-2">Chuletón de Vaca Mayor</h3>
+              <p class="font-serif-luxury italic text-sm text-stone-400 mb-6">
+                Maduración 30 días · Galicia
+              </p>
+            </div>
+            <div class="font-serif-luxury text-xl text-[#c8a165]">
+              desde 65€ <span class="text-xs text-stone-500 font-sans tracking-normal">/ kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: ENTRECOT DRY-AGED -->
+        <div class="meat-card rounded-sm overflow-hidden flex flex-col">
+          <div class="h-96 sm:h-[420px] overflow-hidden bg-black">
+            <img src="assets/entrecot.jpg" alt="Entrecot Dry-Aged" class="w-full h-full object-cover">
+          </div>
+          <div class="p-8 flex flex-col justify-between flex-1">
+            <div>
+              <span class="font-serif-luxury text-sm text-[#c8a165] block mb-1">03</span>
+              <h3 class="font-serif-luxury text-3xl font-normal text-white mb-2">Entrecot Dry-Aged</h3>
+              <p class="font-serif-luxury italic text-sm text-stone-400 mb-6">
+                Maduración 60 días · Selección propia
+              </p>
+            </div>
+            <div class="font-serif-luxury text-xl text-[#c8a165]">
+              desde 55€ <span class="text-xs text-stone-500 font-sans tracking-normal">/ unidad</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: NUESTRA FILOSOFÍA
+       ========================================== -->
+  <section id="filosofia" class="relative py-32 px-6 sm:px-12 bg-[#0c0a08] overflow-hidden border-t border-white/5">
+    
+    <!-- Imagen de fondo oscura del asador -->
+    <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('assets/filosofia-restaurante.jpg');"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-16">
+      
+      <div class="lg:w-2/3">
+        <span class="text-[10px] uppercase tracking-[0.35em] text-[#c8a165] font-semibold block mb-6">
+          Nuestra Filosofía
+        </span>
+        
+        <h2 class="font-serif-luxury text-5xl sm:text-7xl font-light text-white leading-tight mb-8">
+          El fuego como<br>
+          lenguaje<br>
+          <span class="italic text-[#c8a165]">ancestral</span>
+        </h2>
+
+        <p class="font-light text-stone-300 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
+          La brasa de encina alcanza los 800°C en nuestro asador de piedra vasco. Sellamos, respetamos, esperamos. El tiempo no se negocia cuando se busca la perfección.
+        </p>
+
+        <p class="font-light text-stone-400 text-sm sm:text-base leading-relaxed mb-16 max-w-2xl">
+          Trabajamos únicamente con ganaderos del País Vasco, Galicia y Navarra, con los que mantenemos relaciones de décadas. Conocemos el nombre de cada animal.
+        </p>
+
+        <div class="flex gap-16">
+          <div>
+            <span class="font-serif-luxury text-5xl font-light text-white block">45<sup class="text-2xl text-[#c8a165]">+</sup></span>
+            <span class="text-[10px] tracking-[0.25em] text-stone-400 uppercase mt-1 block">Días de Maduración</span>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-5xl font-light text-white block">6</span>
+            <span class="text-[10px] tracking-[0.25em] text-stone-400 uppercase mt-1 block">Ganaderos Exclusivos</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: LA BODEGA
+       ========================================== -->
+  <section id="bodega" class="py-32 px-6 sm:px-12 bg-[#080706] border-t border-white/5">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+      
+      <!-- Foto de Copas de Vino Brindando -->
+      <div class="lg:w-1/2 w-full h-[540px] overflow-hidden bg-black rounded-sm">
+        <img src="assets/bodega-vino.jpg" alt="Brindis con vino en Burdina" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Textos y Carta de Vinos -->
+      <div class="lg:w-1/2 w-full">
+        <span class="text-[10px] uppercase tracking-[0.35em] text-[#c8a165] font-semibold block mb-4">
+          La Bodega
+        </span>
+
+        <h2 class="font-serif-luxury text-5xl sm:text-6xl font-light text-white mb-6">
+          Vinos que<br>
+          <span class="italic text-[#c8a165]">honran la tierra</span>
+        </h2>
+
+        <p class="font-light text-stone-300 text-sm leading-relaxed mb-4">
+          Más de 300 referencias cuidadosamente seleccionadas. Rioja Alavesa, Ribera del Duero, Txakoli de Getaria. El vino que merece cada corte.
+        </p>
+
+        <p class="font-light text-stone-400 text-sm leading-relaxed mb-12">
+          Nuestro sumiller, con más de 15 años de experiencia, guía cada maridaje con el mismo respeto que ponemos en el fuego.
+        </p>
+
+        <!-- Lista de Vinos -->
+        <div class="space-y-6 border-t border-white/10 pt-8">
+          
+          <div class="flex justify-between items-baseline border-b border-white/5 pb-4">
+            <div>
+              <h4 class="font-serif-luxury text-xl text-white">Remírez de Ganuza Reserva</h4>
+              <span class="text-xs text-stone-500 italic">Rioja Alavesa · 2018</span>
+            </div>
+            <span class="font-serif-luxury text-xl text-[#c8a165]">85€</span>
+          </div>
+
+          <div class="flex justify-between items-baseline border-b border-white/5 pb-4">
+            <div>
+              <h4 class="font-serif-luxury text-xl text-white">Vega Sicilia Único</h4>
+              <span class="text-xs text-stone-500 italic">Ribera del Duero · 2015</span>
+            </div>
+            <span class="font-serif-luxury text-xl text-[#c8a165]">380€</span>
+          </div>
+
+          <div class="flex justify-between items-baseline border-b border-white/5 pb-4">
+            <div>
+              <h4 class="font-serif-luxury text-xl text-white">Txakoli Itsasmendi Nº7</h4>
+              <span class="text-xs text-stone-500 italic">Getaria · 2022</span>
+            </div>
+            <span class="font-serif-luxury text-xl text-[#c8a165]">42€</span>
+          </div>
+
+          <div class="flex justify-between items-baseline pb-2">
+            <div>
+              <h4 class="font-serif-luxury text-xl text-white">Artadi Viñas de Gain</h4>
+              <span class="text-xs text-stone-500 italic">Rioja · 2019</span>
+            </div>
+            <span class="font-serif-luxury text-xl text-[#c8a165]">65€</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECCIÓN: UBICACIÓN & CONTACTO
+       ========================================== -->
+  <section id="ubicacion" class="py-32 px-6 sm:px-12 bg-[#0c0a08] border-t border-white/5">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+      
+      <!-- Datos de contacto -->
+      <div class="lg:w-1/2">
+        <h2 class="font-serif-luxury text-5xl sm:text-6xl font-light text-white mb-10 leading-tight">
+          En el corazón<br>
+          <span class="italic text-[#c8a165]">del Casco Viejo</span>
+        </h2>
+
+        <div class="space-y-8 text-sm">
+          <div>
+            <span class="text-[10px] tracking-[0.25em] text-[#c8a165] uppercase block mb-1.5 font-semibold">Dirección</span>
+            <p class="font-light text-stone-300">Calle Somera, 12</p>
+            <p class="font-light text-stone-300">48005 Bilbao, País Vasco</p>
+          </div>
+
+          <div>
+            <span class="text-[10px] tracking-[0.25em] text-[#c8a165] uppercase block mb-1.5 font-semibold">Horario</span>
+            <p class="font-light text-stone-300">Mar – Jue: 13:30–15:30 / 20:30–23:00</p>
+            <p class="font-light text-stone-300">Vie – Sáb: 13:30–16:00 / 20:30–23:30</p>
+            <p class="font-light text-stone-300">Domingo: 13:30–16:00</p>
+            <p class="font-light text-stone-500">Lunes: Cerrado</p>
+          </div>
+
+          <div>
+            <span class="text-[10px] tracking-[0.25em] text-[#c8a165] uppercase block mb-1.5 font-semibold">Reservas</span>
+            <p class="font-light text-stone-300">+34 944 123 456</p>
+            <p class="font-light text-stone-300">reservas@burdina.es</p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <a href="tel:+34944123456" class="btn-reservar">
+            Llamar para Reservar
+          </a>
+        </div>
+      </div>
+
+      <!-- Mapa interactivo de Bilbao / Casco Viejo -->
+      <div class="lg:w-1/2 w-full h-[460px] rounded-sm overflow-hidden border border-white/10 bg-[#12100e]">
+        <iframe 
+          title="Ubicación Burdina Casco Viejo Bilbao"
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          scrolling="no" 
+          marginheight="0" 
+          marginwidth="0" 
+          style="filter: invert(90%) hue-rotate(180deg) contrast(1.1);"
+          src="https://maps.google.com/maps?q=Calle%20Somera%2012,%2048005%20Bilbao&t=&z=16&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="bg-[#050403] border-t border-white/5 py-16 px-6 sm:px-12 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-stone-400">
+      
+      <div class="md:col-span-2">
+        <span class="font-cinzel text-2xl font-bold tracking-[0.25em] text-white block mb-1">
+          BURDINA
+        </span>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-[#c8a165] block mb-4">
+          Asador Premium · Bilbao
+        </span>
+        <p class="font-light text-stone-500 max-w-sm leading-relaxed">
+          El arte ancestral del asador vasco en el Casco Viejo de Bilbao.
+        </p>
+      </div>
+
+      <div>
+        <span class="text-[10px] tracking-[0.25em] text-[#c8a165] uppercase block mb-4 font-semibold">Carta</span>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="#carta" class="hover:text-white transition">Txuleta de Buey</a></li>
+          <li><a href="#carta" class="hover:text-white transition">Chuletones</a></li>
+          <li><a href="#carta" class="hover:text-white transition">Entrantes</a></li>
+          <li><a href="#bodega" class="hover:text-white transition">Bodega</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="text-[10px] tracking-[0.25em] text-[#c8a165] uppercase block mb-4 font-semibold">Contacto</span>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="#ubicacion" class="hover:text-white transition">Reservar Mesa</a></li>
+          <li><span>+34 944 123 456</span></li>
+          <li><span>reservas@burdina.es</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-stone-600 gap-4">
+      <p>© 2026 BURDINA Asador Premium. Todos los derechos reservados.</p>
+      <a href="#hero" class="text-[#c8a165] hover:underline uppercase tracking-widest text-[10px]">Volver Arriba ⭡</a>
+    </div>
+  </footer>
+
+</body>
+</html>

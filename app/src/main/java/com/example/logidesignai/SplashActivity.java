@@ -20,12 +20,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Desactivado temporalmente para pasar directo al chat principal.
-        // Para activar el video de entrada en la presentación final: borrar la siguiente línea y descomentar el bloque inferior.
-        navigateToMainChat();
-
-        /*
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
 
@@ -37,22 +31,23 @@ public class SplashActivity extends AppCompatActivity {
 
         videoViewSplash = findViewById(R.id.videoViewSplash);
         playSplashVideo();
-        */
     }
 
-    /*
     private void playSplashVideo() {
         try {
             Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash_video);
             videoViewSplash.setVideoURI(videoUri);
 
+            // Al terminar la reproducción del video, saltar al chat principal
             videoViewSplash.setOnCompletionListener(mp -> navigateToMainChat());
 
+            // Si ocurre algún problema con el códec o video, pasar al chat sin trabar la app
             videoViewSplash.setOnErrorListener((mp, what, extra) -> {
                 navigateToMainChat();
                 return true;
             });
 
+            // Permitir al usuario tocar la pantalla para saltar el video inmediatamente
             findViewById(R.id.splashContainer).setOnClickListener(v -> navigateToMainChat());
 
             videoViewSplash.setOnPreparedListener(mp -> {
@@ -64,7 +59,6 @@ public class SplashActivity extends AppCompatActivity {
             navigateToMainChat();
         }
     }
-    */
 
     private synchronized void navigateToMainChat() {
         if (isNavigating) return;
@@ -76,3 +70,4 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 }
+

@@ -2,6 +2,8 @@ package com.example.logidesignai;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,9 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.logidesignai.data.HistorialDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Chat extends AppCompatActivity {
+public class Chat extends AppCompatActivity implements ConversationAdapter.OnConversationClickListener {
 
     private ImageButton btnMenuChats;
     private ImageButton btnFilterChats;
@@ -32,6 +35,7 @@ public class Chat extends AppCompatActivity {
     private RecyclerView rvHistoryChats;
     private TextView tvEmptyChatsHint;
     private HistorialDao historialDao;
+    private ConversationAdapter conversationAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,20 +73,21 @@ public class Chat extends AppCompatActivity {
         tvEmptyChatsHint = findViewById(R.id.tvEmptyChatsHint);
 
         historialDao = new HistorialDao(this);
+        rvHistoryChats.setLayoutManager(new LinearLayoutManager(this));
+        conversationAdapter = new ConversationAdapter(new ArrayList<>(), this);
+        rvHistoryChats.setAdapter(conversationAdapter);
     }
 
     private void cargarHistorial() {
         if (historialDao == null) return;
-        List<ChatMessage> mensajes = historialDao.obtenerHistorial();
-        if (mensajes == null || mensajes.isEmpty()) {
+        List<ConversationItem> conversaciones = historialDao.obtenerConversaciones(null);
+        if (conversaciones == null || conversaciones.isEmpty()) {
             tvEmptyChatsHint.setVisibility(View.VISIBLE);
             rvHistoryChats.setVisibility(View.GONE);
         } else {
             tvEmptyChatsHint.setVisibility(View.GONE);
             rvHistoryChats.setVisibility(View.VISIBLE);
-            rvHistoryChats.setLayoutManager(new LinearLayoutManager(this));
-            rvHistoryChats.setAdapter(new ChatAdapter(mensajes));
-            rvHistoryChats.scrollToPosition(mensajes.size() - 1);
+            conversationAdapter.actualizarDatos(conversaciones);
         }
     }
 
@@ -95,9 +100,9 @@ public class Chat extends AppCompatActivity {
 
         btnSelectChats.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Historial")
-                    .setMessage("¿Deseas vaciar todo el historial?")
-                    .setPositiveButton("Vaciar", (dialog, which) -> {
+                    .setTitle("Historial de conversaciones")
+                    .setMessage("¿Deseas vaciar todas las conversaciones?")
+                    .setPositiveButton("Vaciar todo", (dialog, which) -> {
                         historialDao.borrarHistorial();
                         cargarHistorial();
                         Toast.makeText(this, "Historial vaciado", Toast.LENGTH_SHORT).show();
@@ -106,13 +111,55 @@ public class Chat extends AppCompatActivity {
                     .show();
         });
 
+        // Búsqueda en tiempo real
+        etSearchChats.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (conversationAdapter != null) {
+                    conversationAdapter.filtrar(s != null ? s.toString() : "");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        // Botón nuevo chat
         fabNewChat.setOnClickListener(v -> {
-            Toast.makeText(this, "Iniciando nuevo chat...", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("EXTRA_NUEVO_CHAT", true);
+            intent.putExtra("EXTRA_CONVERSACION_ID", -1L);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
         });
+    }
+
+    @Override
+    public void onConversationClick(ConversationItem item) {
+        // Abrir conversación seleccionada
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("EXTRA_CONVERSACION_ID", item.getId());
+        intent.putExtra("EXTRA_NUEVO_CHAT", false);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onConversationLongClick(ConversationItem item) {
+        new AlertDialog.Builder(this)
+                .setTitle(item.getTitle())
+                .setItems(new String[]{"Eliminar conversación", "Cancelar"}, (dialog, which) -> {
+                    if (which == 0) {
+                        historialDao.borrarConversacion(item.getId());
+                        cargarHistorial();
+                        Toast.makeText(this, "Conversación eliminada", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show();
     }
 }

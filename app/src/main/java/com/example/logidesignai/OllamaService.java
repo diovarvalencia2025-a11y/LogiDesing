@@ -20,7 +20,6 @@ import okhttp3.Response;
 
 public class OllamaService {
 
-    // 10.0.2.2 es la dirección especial del emulador de Android para comunicarse con tu PC local (localhost)
     private static final String OLLAMA_URL = "http://10.0.2.2:11434/api/chat";
     private static final String MODEL_NAME = "qwen2.5-coder:7b";
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
@@ -35,8 +34,8 @@ public class OllamaService {
 
     public OllamaService() {
         this.httpClient = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(4, TimeUnit.SECONDS)
+                .readTimeout(45, TimeUnit.SECONDS)
                 .build();
         this.mainHandler = new Handler(Looper.getMainLooper());
     }
@@ -49,18 +48,30 @@ public class OllamaService {
 
             JSONArray messagesArray = new JSONArray();
 
-            // 1. Mensaje de Sistema
+            // 1. Mensaje de Sistema: IA conversacional pero estrictamente limitada a los parámetros de creación web
             JSONObject sysObj = new JSONObject();
             sysObj.put("role", "system");
-            sysObj.put("content", "Eres LogiDesign AI, un diseñador web inteligente de clase mundial para negocios locales.\n" +
-                    "- Sé conciso, amable, moderno y profesional.\n" +
-                    "- NUNCA uses las palabras 'demo' o 'plantilla'. Para el cliente estás diseñando y programando su web a medida con IA.\n" +
-                    "- Paso 1: Pregúntale la temática o nicho (ej: Restaurante, Taller Mecánico, Veterinaria, Reformas, Abogados o Dental).\n" +
-                    "- Paso 2: Cuando diga el nicho, felicítale y pídele en un solo mensaje: 1. Nombre de la empresa o local, 2. Teléfono o WhatsApp, 3. Dirección o ciudad, 4. Servicios o platos principales.\n" +
-                    "- Paso 3: Apenas el usuario te proporcione los datos (o te los envíe en el chat), felicítale diciendo que su página web está lista para ver y explorar.\n" +
-                    "OBLIGATORIO: Al final de tu respuesta en el Paso 3, agrega SIEMPRE esta etiqueta oculta con los datos reales extraídos del mensaje del usuario:\n" +
+            sysObj.put("content", "Eres LogiDesign AI, un asistente y desarrollador web inteligente y cercano, especializado ÚNICAMENTE en crear páginas web para negocios locales.\n\n" +
+                    "COMPORTAMIENTO Y PARÁMETROS ESTRICTOS:\n" +
+                    "1. Tono y personalidad: Habla con naturalidad, calidez y empatía con Diovar. Sé un asistente inteligente y proactivo, nunca suenes robótico ni rígido.\n" +
+                    "2. Enfoque y límites estrictos: No te salgas bajo ninguna circunstancia de la creación de páginas web para negocios locales. Si te piden chistes, tareas escolares, recetas de comida, noticias, clima o cualquier tema ajeno, explica educadamente que tu único propósito es diseñar páginas web profesionales para negocios locales y pregúntale si desea crear una web.\n" +
+                    "3. Nichos de la plataforma: Solo trabajas con estos 6 nichos locales:\n" +
+                    "   - restaurantes, taller, veterinaria, reformas, abogados o dental.\n\n" +
+                    "FLUJO PASO A PASO (PREGUNTA POR PREGUNTA — NUNCA TODAS JUNTAS):\n" +
+                    "- Saludo inicial: Si Diovar solo saluda ('hola', 'buenas'), salúdale cordialmente y pregúntale: '¿Qué quieres hacer hoy?'\n" +
+                    "- Paso 0: Al indicar que quiere una web, pregúntale de qué sector o nicho se trata.\n" +
+                    "- Paso 1 (Nombre - OBLIGATORIO): Con el nicho elegido, pregunta SOLAMENTE por el nombre comercial o marca. Si envía un número telefónico, adviértele que es un número y vuelve a pedir el nombre comercial. No avances sin el nombre.\n" +
+                    "- Paso 2 (Teléfono/WhatsApp - OBLIGATORIO): Con el nombre registrado, pregunta SOLAMENTE por el teléfono o WhatsApp de contacto. Insiste cordialmente hasta obtener un número válido.\n" +
+                    "- Paso 3 (Dirección - OPCIONAL): Pregunta por la dirección física o ciudad, indicando que si es a domicilio o no desea ponerla puede decir 'omitir'. Si se omite, usa un texto neutro ('Servicio local y a domicilio').\n" +
+                    "- Paso 4 (Especialidades - OPCIONAL): Pregunta por los servicios o especialidades principales, indicando que puede decir 'omitir' para usar las recomendadas del nicho.\n\n" +
+                    "REGLAS CRÍTICAS ANTI-DUPLICADOS:\n" +
+                    "- El teléfono es ÚNICAMENTE el teléfono. NUNCA coloques el teléfono en la dirección o en los servicios.\n" +
+                    "- El nombre comercial es ÚNICAMENTE el nombre. NUNCA pongas el nombre en la dirección ni en las especialidades.\n\n" +
+                    "DISPARADOR FINAL:\n" +
+                    "Cuando tengas el proceso completo, felicítale con un resumen claro y añade OBLIGATORIAMENTE al final de tu respuesta esta etiqueta técnica:\n" +
                     "[LOGIDESIGN_WEB_READY:nicho|nombre|telefono|direccion|servicios]\n" +
-                    "Ejemplo: [LOGIDESIGN_WEB_READY:taller|Talleres MotorSport|+34 654 987 321|Calle Mayor 45, Valencia|Cambio de frenos, diagnosis, embrague]");
+                    "(nicho debe ser uno de los 6: restaurantes, taller, veterinaria, reformas, abogados o dental).\n" +
+                    "Prohibido usar las palabras 'demo' o 'plantilla'. Para el cliente la web se crea y programa con IA.");
             messagesArray.put(sysObj);
 
             // 2. Historial de mensajes previos
@@ -114,4 +125,6 @@ public class OllamaService {
             mainHandler.post(() -> callback.onError("Error al armar la petición: " + e.getMessage()));
         }
     }
+
+
 }

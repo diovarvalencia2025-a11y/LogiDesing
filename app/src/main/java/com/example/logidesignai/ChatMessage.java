@@ -4,8 +4,11 @@ public class ChatMessage {
     public static final int TYPE_USER = 1;
     public static final int TYPE_AI = 2;
 
+    private long id = 0;
+    private long conversationId = 0;
     private String text;
     private int type;
+    private long timestamp = System.currentTimeMillis();
     private boolean isWebsiteReady = false;
     private String niche;
     private String businessName;
@@ -16,6 +19,38 @@ public class ChatMessage {
     public ChatMessage(String text, int type) {
         this.text = text;
         this.type = type;
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public ChatMessage(long conversationId, String text, int type) {
+        this.conversationId = conversationId;
+        this.text = text;
+        this.type = type;
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getConversationId() {
+        return conversationId;
+    }
+
+    public void setConversationId(long conversationId) {
+        this.conversationId = conversationId;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public boolean isWebsiteReady() {

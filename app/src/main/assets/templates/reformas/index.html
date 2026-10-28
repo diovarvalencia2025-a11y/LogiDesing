@@ -1,406 +1,869 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{NOMBRE_NEGOCIO}} • Obras Integrales, Cocinas y Baños | Presupuesto Cerrado</title>
-  <meta name="description" content="{{NOMBRE_NEGOCIO}} — Especialistas en reformas integrales, cocinas y baños en {{DIRECCION}}. Presupuesto cerrado y garantía por escrito.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-    
-    :root {
-      --brand-amber: #f59e0b;
-      --brand-amber-dark: #d97706;
-      --slate-deep: #0f172a;
-    }
-
-    body { 
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background-color: #f8fafc;
-      color: #0f172a;
-    }
-
-    .hero-reformas {
-      background: linear-gradient(rgba(15, 23, 42, 0.84), rgba(15, 23, 42, 0.90)), 
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover;
-    }
+  <title>{{NOMBRE_NEGOCIO}} | Reformas Integrales, Cocinas y Baños en {{DIRECCION}}</title>
+  <meta name="description" content="{{NOMBRE_NEGOCIO}} en {{DIRECCION}}. Especialistas en reformas integrales, cocinas y baños. Presupuesto sin compromiso, calidad garantizada y cumplimiento de plazos.">
+  <!-- Blindaje de Privacidad: Evita indexación en Google para maquetas privadas -->
+  <meta name="robots" content="noindex, nofollow">
   
-    /* 🛡️ BLINDAJE ANTI-DESBORDAMIENTO DE ICONOS SVG EN MÓVILES */
-    svg {
-      max-width: 100%;
-      box-sizing: border-box;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    svg.w-3\.5 { width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; }
-    svg.w-4 { width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; }
-    svg.w-5 { width: 20px !important; height: 20px !important; min-width: 20px !important; max-width: 20px !important; }
-    svg.w-6 { width: 24px !important; height: 24px !important; min-width: 24px !important; max-width: 24px !important; }
-    svg.w-7 { width: 28px !important; height: 28px !important; min-width: 28px !important; max-width: 28px !important; }
-    svg.w-8 { width: 32px !important; height: 32px !important; min-width: 32px !important; max-width: 32px !important; }
-    svg.w-9 { width: 36px !important; height: 36px !important; min-width: 36px !important; max-width: 36px !important; }
-    svg.w-10 { width: 40px !important; height: 40px !important; min-width: 40px !important; max-width: 40px !important; }
-    svg.w-12 { width: 48px !important; height: 48px !important; min-width: 48px !important; max-width: 48px !important; }
-    svg.w-14 { width: 56px !important; height: 56px !important; min-width: 56px !important; max-width: 56px !important; }
-    svg.w-16 { width: 64px !important; height: 64px !important; min-width: 64px !important; max-width: 64px !important; }
-    svg:not([class*="w-"]) { max-width: 24px !important; max-height: 24px !important; }
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter / Plus Jakarta Sans & Caveat / Playfair para el toque de autor -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Swiper CSS para el carrusel moderno -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            handwriting: ['"Caveat"', 'cursive'],
+          },
+          colors: {
+            navy: {
+              800: '#0f172a',
+              900: '#0b132b',
+              950: '#070c1d',
+            },
+            gold: {
+              400: '#f0c775',
+              500: '#dca456',
+              600: '#c58b3c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Swiper Coverflow 3D & Stories Style */
+    .myProjectsSwiper {
+      padding-top: 20px;
+      padding-bottom: 50px;
+      overflow: visible !important;
+    }
+    .myProjectsSwiper .swiper-slide {
+      opacity: 0.50;
+      transform: scale(0.88);
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: blur(0.6px);
+    }
+    .myProjectsSwiper .swiper-slide-active {
+      opacity: 1 !important;
+      transform: scale(1.05) !important;
+      z-index: 20 !important;
+      filter: blur(0px) !important;
+    }
+    .custom-bullet-active {
+      background-color: #dca456 !important;
+      width: 24px !important;
+      border-radius: 9999px !important;
+    }
+
+    /* =========================================
+       MICRO-INTERACCIONES LUXURY NAVBAR (10.000€)
+       ========================================= */
+    /* 1. Entrada suave con carácter */
+    @keyframes navDrop {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .animate-nav-drop {
+      animation: navDrop 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInItem {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-logo { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+    .fade-link-1 { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+    .fade-link-2 { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both; }
+    .fade-link-3 { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.39s both; }
+    .fade-link-4 { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both; }
+    .fade-link-5 { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.53s both; }
+    .fade-actions { animation: fadeInItem 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.60s both; }
+
+    /* 2. Destello dorado elegante (Shimmer continuo discreto cada 6s) */
+    .btn-gold-shimmer {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .btn-gold-shimmer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -130%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        transparent 100%
+      );
+      transform: skewX(-20deg);
+      animation: shimmerGlance 6.5s infinite ease-in-out;
+      pointer-events: none;
+    }
+    @keyframes shimmerGlance {
+      0%, 75% {
+        left: -130%;
+      }
+      85%, 100% {
+        left: 220%;
+      }
+    }
+    .btn-gold-shimmer:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 6px 20px -2px rgba(220, 164, 86, 0.45);
+      filter: brightness(1.05);
+    }
+    .btn-gold-shimmer:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    /* 3. Enlaces con línea expansiva desde el centro */
+    .nav-link-glow {
+      position: relative;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      transition: color 0.25s ease;
+    }
+    .nav-link-glow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: #dca456;
+      transform: translateX(-50%);
+      transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      border-radius: 9999px;
+    }
+    .nav-link-glow:hover {
+      color: #ffffff;
+    }
+    .nav-link-glow:hover::after {
+      width: 100%;
+    }
+    .nav-link-glow.active {
+      color: #ffffff;
+    }
+    .nav-link-glow.active::after {
+      width: 100%;
+    }
+
+    /* 4. Fondo que evoluciona: gradiente sutil interactivo con el cursor */
+    #mainHeader {
+      background-color: rgba(11, 19, 43, 0.98);
+      background-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(220, 164, 86, 0.05), transparent 70%);
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #mainHeader.scrolled {
+      background-color: rgba(7, 12, 30, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.7);
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-gold-500 selection:text-navy-950">
 
-  <!-- 1. BARRA SUPERIOR DE CONTACTO Y COBERTURA -->
-  <div class="bg-slate-950 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-        <span class="flex items-center gap-1.5 text-slate-300">
-          <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          Área de Cobertura: {{DIRECCION}} y Alrededores
-        </span>
-        <span class="hidden md:flex items-center gap-1.5 text-slate-400">
-          <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Horario Técnico: Lun - Sáb de 8:00 a 20:00
-        </span>
-      </div>
-      <div class="flex items-center gap-3">
-        <span class="text-amber-400 font-bold flex items-center gap-1 text-[11px] sm:text-xs">
-          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          5.0 en Opiniones de Clientes
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. NAVEGACIÓN PRINCIPAL -->
-  <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
-      
-      <!-- LOGO / IDENTIDAD -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-md shadow-amber-500/20">
-          <svg width="24" height="24" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/>
-          </svg>
-        </div>
-        <div>
-          <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight block leading-tight">{{NOMBRE_NEGOCIO}}</span>
-          <span class="text-[10px] text-amber-700 font-extrabold uppercase tracking-widest block">Obras &amp; Reformas</span>
-        </div>
-      </div>
-
-      <!-- BOTONES DE CONTACTO -->
-      <div class="flex items-center gap-3">
-        <a href="tel:{{TELEFONO}}" class="hidden sm:inline-flex items-center gap-2 text-slate-700 hover:text-slate-950 font-bold text-xs px-3 py-2 rounded-lg transition">
-          <svg width="16" height="16" class="w-4 h-4 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>Llamar: {{TELEFONO}}</span>
-        </a>
-
-        <a href="#presupuesto" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/25 flex items-center gap-2 transition transform active:scale-95 min-h-[44px]">
-          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
-          <span>Pedir Presupuesto</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- 3. HERO PRINCIPAL -->
-  <section class="hero-reformas text-white py-16 sm:py-26 px-4 relative overflow-hidden">
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-      
-      <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 border border-amber-400/40 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-        <svg width="14" height="14" class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Garantía por Escrito • Plazos y Precios Cerrados
-      </div>
-
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none mb-6">
-        Reformas Integrales de Viviendas con <span class="text-amber-400">Presupuesto Cerrado</span> y Sin Sorpresas.
-      </h1>
-
-      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
-        En <strong class="text-white font-bold">{{NOMBRE_NEGOCIO}}</strong> transformamos tu cocina, baño o vivienda completa con materiales de primera calidad, dirección técnica continua y cumplimiento estricto de plazos en {{DIRECCION}}.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
-        <a href="#presupuesto" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-8 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 shadow-xl shadow-amber-500/30 transition transform hover:-translate-y-0.5 min-h-[48px]">
-          <svg width="20" height="20" class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
-          <span>Solicitar Presupuesto Gratis</span>
-        </a>
-
-        <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="w-full sm:w-auto bg-slate-900/90 hover:bg-slate-800 text-white border border-slate-700 font-bold px-6 py-4 rounded-xl text-base flex items-center justify-center gap-2.5 transition min-h-[48px]">
-          <svg width="20" height="20" class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>WhatsApp Directo</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 4. PILARES DE CONFIANZA Y GARANTÍAS -->
-  <section class="py-10 bg-white border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- ==============================================
+       HEADER / NAVBAR (ANIMACIÓN EDITORIAL, DESTELLO Y LÍNEA VIVA)
+       ============================================== -->
+  <header id="mainHeader" class="sticky top-0 z-50 animate-nav-drop border-b border-white/10 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
         
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <!-- 1. Logo Oficial que sobresale del Nav y se combina con el Hero -->
+        <a href="#inicio" class="relative z-30 flex items-center -mb-8 sm:-mb-10 fade-logo group" style="top: 10px;">
+          <div class="bg-black border-2 border-white/25 p-1.5 shadow-2xl transition-all duration-300 group-hover:scale-105 rounded-b-lg flex items-center gap-2">
+            <img src="imagenes/logo.png" alt="{{NOMBRE_NEGOCIO}}" class="h-16 sm:h-20 w-auto object-contain block drop-shadow-lg" onerror="this.src='imagenes/Logo%20reformista%20con%20herramientas%20y%20cami%C3%B3n.png';">
           </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Presupuesto 100% Cerrado</h3>
-            <p class="text-slate-600 text-xs mt-0.5">El importe presupuestado es el final. Sin sobrecostes imprevistos.</p>
-          </div>
+        </a>
+
+        <!-- 3. Navegación con Líneas que se Dibujan desde el Centro -->
+        <nav class="hidden md:flex items-center space-x-9 text-sm font-medium tracking-wide">
+          <a href="#inicio" class="nav-link-glow active fade-link-1 text-white">
+            Inicio
+          </a>
+          <a href="#servicios" class="nav-link-glow fade-link-2 text-slate-300">
+            Servicios
+          </a>
+          <a href="#galeria" class="nav-link-glow fade-link-3 text-slate-300">
+            Galería
+          </a>
+          <a href="#opiniones" class="nav-link-glow fade-link-4 text-slate-300">
+            Opiniones
+          </a>
+          <a href="#contacto" class="nav-link-glow fade-link-5 text-slate-300">
+            Contacto
+          </a>
+        </nav>
+
+        <!-- 2. Bloque Derecho con Destello Dorado Sutil en el Botón -->
+        <div class="hidden sm:flex items-center space-x-6 fade-actions">
+          <a href="https://www.instagram.com" target="_blank" class="text-slate-300 hover:text-[#dca456] text-xl transition-all duration-300 hover:scale-110" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#contacto" class="btn-gold-shimmer inline-flex items-center justify-center bg-[#dca456] text-[#070c1e] font-bold text-xs uppercase tracking-wider px-6 py-2.5 rounded-full shadow-md">
+            Solicitar presupuesto
+          </a>
         </div>
 
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Plazos Garantizados</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Fecha de inicio y fin pactadas por contrato para tu tranquilidad.</p>
-          </div>
+        <!-- Botón Menú Móvil -->
+        <div class="md:hidden flex items-center">
+          <button id="mobileMenuBtn" class="text-white hover:text-[#dca456] p-2 focus:outline-none transition">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
         </div>
-
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Acabados Profesionales</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Supervisión técnica de cada oficio y entrega de obra limpia.</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Garantía por Escrito</h3>
-            <p class="text-slate-600 text-xs mt-0.5">Garantía total de ejecución e instalaciones según normativa.</p>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
 
-  <!-- 5. ESPECIALIDADES Y SERVICIOS DE REFORMA -->
-  <section class="py-16 px-4 max-w-6xl mx-auto" id="servicios">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Lo Que Hacemos</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Especialistas en Obras y Reformas</h2>
-      <p class="text-slate-600 text-sm sm:text-base mt-2">Soluciones integrales de albañilería, fontanería, electricidad y carpintería con {{NOMBRE_NEGOCIO}}.</p>
-    </div>
-
-    <!-- Cuadrícula de Servicios -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {{SERVICIOS}}
-    </div>
-  </section>
-
-  <!-- 6. PROCESO DE REFORMA EN 4 PASOS -->
-  <section class="py-16 bg-slate-900 text-white px-4 border-y border-slate-800">
-    <div class="max-w-6xl mx-auto">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Sin Complicaciones</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">Cómo Desarrollamos Tu Obra</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-2">Un método transparente para que disfrutes de la reforma sin estrés.</p>
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#070c1e] border-t border-white/10 px-6 py-6 space-y-4 text-sm font-medium text-slate-300">
+      <a href="#inicio" class="block text-[#dca456] py-1">Inicio</a>
+      <a href="#servicios" class="block hover:text-[#dca456] py-1">Servicios</a>
+      <a href="#galeria" class="block hover:text-[#dca456] py-1">Galería</a>
+      <a href="#opiniones" class="block hover:text-[#dca456] py-1">Opiniones</a>
+      <a href="#contacto" class="block hover:text-[#dca456] py-1">Contacto</a>
+      <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+        <a href="#contacto" class="w-full text-center bg-[#dca456] text-[#070c1e] font-bold py-3 rounded-full text-xs uppercase tracking-wider">
+          Solicitar presupuesto
+        </a>
       </div>
+    </div>
+  </header>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- ==============================================
+       SECCIÓN 1: HERO (EXACTO A LA MAQUETA DE REFERENCIA)
+       ============================================== -->
+  <section id="inicio" class="relative bg-navy-950 text-white min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden">
+    <!-- Imagen de Fondo Hero con Gradiente Suave a la Izquierda -->
+    <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('imagenes/hero.png');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/80 to-transparent z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 1</span>
-          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Visita &amp; Medición</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Acudimos a tu vivienda para tomar medidas exactas, entender tus necesidades y asesorarte sobre la mejor distribución.
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- Tag superior -->
+          <div class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-gold-500">
+            <span class="w-6 h-0.5 bg-gold-500"></span>
+            <span>{{NOMBRE_NEGOCIO}}</span>
+          </div>
+
+          <!-- Titular principal -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
+            Transforma tu espacio <br class="hidden sm:inline">
+            con <span class="text-gold-400">nosotros</span>
+          </h1>
+
+          <!-- Párrafo descriptivo -->
+          <p class="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
+            En <strong>{{NOMBRE_NEGOCIO}}</strong>, nos especializamos en remodelar y construir nuevos espacios para tu hogar en {{DIRECCION}}. Nuestro equipo está siempre comprometido en brindarte seguridad, calidad y satisfacción garantizada en cada proyecto.
           </p>
+
+          <!-- Botones de Acción -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#contacto" class="inline-flex items-center justify-center gap-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-full shadow-xl transition transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-calculator text-sm"></i> Solicitar presupuesto
+            </a>
+            <a href="#servicios" class="inline-flex items-center justify-center gap-2.5 bg-navy-900/80 hover:bg-navy-900 text-white font-semibold text-xs uppercase tracking-wider px-7 py-4 rounded-full border border-white/20 transition">
+              Conoce nuestros servicios <i class="fa-solid fa-arrow-right text-[10px] text-gold-400"></i>
+            </a>
+          </div>
+
+          <!-- 3 Badges de Confianza con Iconos Delgados -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 text-xs text-slate-300">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-users text-gold-400 text-lg"></i>
+              <span>Experiencia y profesionalidad</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-gem text-gold-400 text-lg"></i>
+              <span>Materiales de alta calidad</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-handshake text-gold-400 text-lg"></i>
+              <span>Compromiso con tu satisfacción</span>
+            </div>
+          </div>
+
         </div>
 
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 2</span>
-          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Presupuesto Cerrado</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Te entregamos una memoria de calidades detallada partida por partida, con precio final garantizado por contrato.
-          </p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 3</span>
-          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Ejecución &amp; Control</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Nuestros propios operarios cualificados realizan la obra con un jefe de obra que coordina cada oficio y te mantiene informado.
-          </p>
-        </div>
-
-        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative">
-          <span class="text-[11px] font-black text-amber-400 bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full uppercase">Paso 4</span>
-          <h3 class="font-extrabold text-white text-base sm:text-lg mt-4 mb-2">Entrega Limpia</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Revisión final conjunta de cada detalle, limpieza exhaustiva y entrega de llaves lista para entrar a vivir con garantía.
-          </p>
+        <!-- Texto decorativo en cursiva / autor al pie del Hero -->
+        <div class="lg:col-span-4 hidden lg:flex justify-end items-end self-end pb-4">
+          <span class="font-handwriting text-3xl sm:text-4xl text-white/90 drop-shadow-lg transform -rotate-3 select-none">
+            Tu proyecto, <br>
+            <span class="text-gold-400">nuestra prioridad</span>
+          </span>
         </div>
 
       </div>
-
     </div>
   </section>
 
-  <!-- 7. FORMULARIO DE PRESUPUESTO RÁPIDO ONLINE -->
-  <section class="py-16 bg-white border-t border-slate-200 px-4" id="presupuesto">
-    <div class="max-w-4xl mx-auto">
+  <!-- ==============================================
+       SECCIÓN 2: NUESTROS SERVICIOS
+       (CON CUADROS EN LUGAR DE CÍRCULOS SEGÚN LO SOLICITADO)
+       ============================================== -->
+  <section id="servicios" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Valoración Sin Compromiso</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Solicita Tu Presupuesto de Reforma</h2>
-        <p class="text-slate-600 text-sm mt-2">
-          Completa el formulario y te contactaremos en menos de 24 horas para coordinar la visita técnica gratuita.
+      <!-- Encabezado de Sección -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-600">
+          <span class="w-6 h-0.5 bg-gold-500"></span>
+          <span>NUESTROS SERVICIOS</span>
+          <span class="w-6 h-0.5 bg-gold-500"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-950 tracking-tight">
+          Especialistas en reformas integrales
+        </h2>
+        <p class="text-slate-600 text-sm leading-relaxed max-w-2xl mx-auto">
+          Ofrecemos soluciones completas para transformar cualquier espacio, desde pequeñas renovaciones hasta proyectos de gran envergadura. Nos adaptamos a tus necesidades, con un enfoque en la calidad, el diseño y la funcionalidad.
         </p>
       </div>
 
-      <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
-        <form id="form_reformas" onsubmit="enviarPresupuestoReformas(event);" class="space-y-4 text-xs sm:text-sm">
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="nombre_reforma" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
-                Tu Nombre y Apellidos <span class="text-amber-600">*</span>
-              </label>
-              <input type="text" id="nombre_reforma" required placeholder="Ej. Francisco Navarro" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
-            </div>
-
-            <div>
-              <label for="telefono_reforma" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
-                Teléfono de Contacto <span class="text-amber-600">*</span>
-              </label>
-              <input type="tel" id="telefono_reforma" required placeholder="Ej. 612 345 678" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="tipo_obra" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
-                Tipo de Reforma <span class="text-amber-600">*</span>
-              </label>
-              <select id="tipo_obra" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
-                <option value="Reforma Integral de Piso">Reforma Integral de Vivienda / Piso</option>
-                <option value="Reforma de Cocina">Reforma de Cocina</option>
-                <option value="Reforma de Baño / Cambio de Bañera">Reforma de Baño / Cambio de Bañera</option>
-                <option value="Carpintería y Suelos">Carpintería, Puertas y Suelos</option>
-                <option value="Local Comercial u Oficina">Local Comercial u Oficina</option>
-                <option value="Otra Reforma Parcial">Otra Reforma Parcial</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="metros_obra" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
-                Metros Cuadrados Aprox. <span class="text-slate-400 font-normal text-[11px]">(Opcional)</span>
-              </label>
-              <input type="text" id="metros_obra" placeholder="Ej. 85 m²" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition min-h-[48px]">
-            </div>
-          </div>
-
+      <!-- Grid de 3 Servicios (Imágenes en Cuadros / Tarjetas Rectangulares Modernas) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        
+        <!-- Servicio 1: Reformas Integrales -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between group">
           <div>
-            <label for="detalles_obra" class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">
-              Cuéntanos qué tienes en mente <span class="text-slate-400 font-normal text-[11px]">(Opcional)</span>
-            </label>
-            <textarea id="detalles_obra" rows="2" placeholder="Ej. Queremos abrir la cocina al salón, cambiar suelo por tarima y renovar los dos baños..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:border-amber-500 focus:outline-none transition"></textarea>
+            <!-- IMAGEN EN CUADRO RECTANGULAR MODERNO CON ESQUINAS SUAVES -->
+            <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm mb-6 bg-slate-100">
+              <img src="imagenes/reformas-integrales.avif" alt="Reformas Integrales en {{DIRECCION}}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='imagenes/Reformas Integrales.avif';">
+            </div>
+
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gold-50 text-gold-600 text-xl mx-auto mb-4 group-hover:bg-gold-500 group-hover:text-white transition">
+              <i class="fa-solid fa-house"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-center text-navy-950 mb-3">
+              Reformas Integrales
+            </h3>
+
+            <!-- Texto real del cliente -->
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed text-center">
+              Profesionales con años de experiencia en servicios de remodelaciones, pintado, bricolaje, fontanería, pladurista, reformas integrales, reformas con/sin obras y/o lavados de cara con precios regulados.
+            </p>
           </div>
 
-          <div class="pt-2">
-            <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-sm py-4 px-6 rounded-xl shadow-xl shadow-amber-500/25 transition transform active:scale-95 flex items-center justify-center gap-2 min-h-[48px]">
-              <svg width="20" height="20" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
-              <span>Enviar Solicitud de Presupuesto por WhatsApp</span>
-            </button>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+            <a href="#contacto" class="text-xs font-bold text-gold-600 hover:text-navy-950 uppercase tracking-wider inline-flex items-center gap-1 transition">
+              Pedir información <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicio 2: Reforma de Cocinas -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm mb-6 bg-slate-100">
+              <img src="imagenes/reforma-cocinas.avif" alt="Reforma de Cocinas en {{DIRECCION}}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='imagenes/Reforma de Cocinas.avif';">
+            </div>
+
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gold-50 text-gold-600 text-xl mx-auto mb-4 group-hover:bg-gold-500 group-hover:text-white transition">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-center text-navy-950 mb-3">
+              Reforma de Cocinas
+            </h3>
+
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed text-center">
+              Nos dedicamos a reformar las cocinas desde el planteamiento del diseño de interior, a la obra en sí como por ejemplo, conectar salón con la cocina, hasta la instalación y montaje del nuevo mobiliario, electrodomésticos, fontanería y parte eléctrica. Damos asesoría tanto de materiales y del mobiliario para satisfacer los gustos y preferencias.
+            </p>
           </div>
 
-        </form>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+            <a href="#contacto" class="text-xs font-bold text-gold-600 hover:text-navy-950 uppercase tracking-wider inline-flex items-center gap-1 transition">
+              Pedir información <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicio 3: Reforma de Baños -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm mb-6 bg-slate-100">
+              <img src="imagenes/reforma-banos.avif" alt="Reforma de Baños en {{DIRECCION}}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='imagenes/Reforma de Baños.avif';">
+            </div>
+
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gold-50 text-gold-600 text-xl mx-auto mb-4 group-hover:bg-gold-500 group-hover:text-white transition">
+              <i class="fa-solid fa-bath"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-center text-navy-950 mb-3">
+              Reforma de Baños
+            </h3>
+
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed text-center">
+              Realizamos diseño de interior como propuesta inicial del baño que ayuda a crear estilos modernos dentro de los espacios deseados. Ofrecemos asesoría profesional en la selección con temas de colores, materiales, mobiliarios y demás detalles que generan optimización.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+            <a href="#contacto" class="text-xs font-bold text-gold-600 hover:text-navy-950 uppercase tracking-wider inline-flex items-center gap-1 transition">
+              Pedir información <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- 8. PRUEBA SOCIAL / RESEÑAS DE CLIENTES -->
-  <section class="py-16 bg-slate-900 text-white px-4">
-    <div class="max-w-6xl mx-auto">
+  <!-- ==============================================
+       SECCIÓN 3: GALERÍA CON CARRUSEL MODERNO (SWIPER)
+       (Muestra carrusel1.webp hasta carrusel9.webp)
+       ============================================== -->
+  <section id="galeria" class="py-24 bg-navy-950 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3.5 py-1 rounded-full text-xs font-semibold mb-3">
-          <svg width="14" height="14" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Opiniones de Propietarios
+      <!-- Encabezado de Galería Centrado y Equilibrado (Cero espacio vacío) -->
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-500">
+          <span class="w-6 h-0.5 bg-gold-500"></span>
+          <span>GALERÍA</span>
+          <span class="w-6 h-0.5 bg-gold-500"></span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold">Lo Que Opinan Quienes Han Reformado Con Nosotros</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Nuestros trabajos, hablan por <span class="text-gold-400">nosotros</span>
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed max-w-xl mx-auto">
+          Descubre algunos de nuestros proyectos realizados en {{DIRECCION}} y alrededores. Cada espacio es único, igual que cada cliente.
+        </p>
+      </div>
+
+      <!-- Contenedor del Carrusel con Controles a los Costados Estilo Stories 3D -->
+      <div class="relative px-2 sm:px-6">
+        <!-- Flecha Anterior -->
+        <button id="swiperPrevBtn" class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-gold-500 hover:text-navy-950 text-white backdrop-blur-md border border-white/20 shadow-2xl flex items-center justify-center transition duration-300 focus:outline-none" title="Anterior">
+          <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+
+        <!-- SWIPER CONTAINER COVERFLOW 3D -->
+        <div class="swiper myProjectsSwiper overflow-visible pb-14">
+        <div class="swiper-wrapper">
+          
+          <!-- Slide 1 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel1.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Cocina con Isla</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Acabados en Mármol & Madera</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel2.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Baño Suite</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Ducha Encastrada & Espejo LED</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel3.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Salón Contemporáneo</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Pared de Piedra & Iluminación</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel4.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Reforma Integral</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Espacios Abiertos & Luminosidad</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel5.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Zona de Ducha</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Plato Extraplano Antideslizante</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel6.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Terraza y Exterior</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Revestimiento en Madera & Pérgola</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel7.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 7" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Detalles Constructivos</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Grifería Empotrada y Cerámica</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 8 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel8.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 8" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Cocina Equipada</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Columnas Integradas</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 9 -->
+          <div class="swiper-slide !w-[270px] sm:!w-[310px] md:!w-[340px]">
+            <div class="relative rounded-3xl overflow-hidden aspect-[9/14] bg-navy-900 border border-white/10 shadow-2xl group transition-all duration-300">
+              <div class="absolute top-0 inset-x-0 z-10 p-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-black border border-white/40 flex items-center justify-center p-0.5 shadow-md">
+                    <img src="imagenes/logo.png" alt="RC" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-white font-bold text-xs block leading-tight">{{NOMBRE_NEGOCIO}}</span>
+                    <span class="text-white/70 text-[9px] block">{{DIRECCION}} • Obra real</span>
+                  </div>
+                </div>
+                <a href="https://www.instagram.com" target="_blank" class="text-white/80 hover:text-gold-400 text-sm transition">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+              <img src="imagenes/carrusel9.webp" alt="Proyecto {{NOMBRE_NEGOCIO}} 9" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 z-10 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                <span class="text-gold-400 text-[10px] uppercase font-bold tracking-wider block mb-0.5">Piso Completo</span>
+                <h4 class="font-bold text-sm text-white leading-snug">Pavimento Porcelánico</h4>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Paginación con Puntos Personalizados -->
+        <div class="swiper-pagination mt-8"></div>
+      </div>
+
+      <!-- Flecha Siguiente -->
+      <button id="swiperNextBtn" class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-gold-500 hover:text-navy-950 text-white backdrop-blur-md border border-white/20 shadow-2xl flex items-center justify-center transition duration-300 focus:outline-none" title="Siguiente">
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+      </button>
+    </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN 4: ¿POR QUÉ ELEGIRNOS?
+       (5 CARACTERÍSTICAS HORIZONTALES CON LÍNEAS DIVISORIAS)
+       ============================================== -->
+  <section class="py-24 bg-white border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+        <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-600">
+          <span class="w-6 h-0.5 bg-gold-500"></span>
+          <span>¿POR QUÉ ELEGIRNOS?</span>
+          <span class="w-6 h-0.5 bg-gold-500"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-950 tracking-tight">
+          Tu proyecto en manos de profesionales
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+        
+        <!-- Característica 1 -->
+        <div class="py-6 md:py-0 md:px-6 text-center space-y-3">
+          <div class="text-2xl text-gold-500">
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <h4 class="font-bold text-navy-950 text-sm">Calidad garantizada</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">Trabajamos con materiales de primera calidad y acabados profesionales.</p>
+        </div>
+
+        <!-- Característica 2 -->
+        <div class="py-6 md:py-0 md:px-6 text-center space-y-3">
+          <div class="text-2xl text-gold-500">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h4 class="font-bold text-navy-950 text-sm">Cumplimos plazos</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">Nos comprometemos con los tiempos de entrega acordados.</p>
+        </div>
+
+        <!-- Característica 3 -->
+        <div class="py-6 md:py-0 md:px-6 text-center space-y-3">
+          <div class="text-2xl text-gold-500">
+            <i class="fa-solid fa-people-group"></i>
+          </div>
+          <h4 class="font-bold text-navy-950 text-sm">Equipo especializado</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">Contamos con un equipo de profesionales en cada área de trabajo.</p>
+        </div>
+
+        <!-- Característica 4 -->
+        <div class="py-6 md:py-0 md:px-6 text-center space-y-3">
+          <div class="text-2xl text-gold-500">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <h4 class="font-bold text-navy-950 text-sm">Atención en {{DIRECCION}}</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">Damos servicio profesional en toda la zona de {{DIRECCION}} y alrededores.</p>
+        </div>
+
+        <!-- Característica 5 -->
+        <div class="py-6 md:py-0 md:px-6 text-center space-y-3">
+          <div class="text-2xl text-gold-500">
+            <i class="fa-solid fa-handshake-angle"></i>
+          </div>
+          <h4 class="font-bold text-navy-950 text-sm">Trato cercano</h4>
+          <p class="text-xs text-slate-500 leading-relaxed">Escuchamos tus ideas y te acompañamos en todo el proceso.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN 5: OPINIONES (FONDO REAL DE TARRAGONA Y TESTIMONIOS)
+       ============================================== -->
+  <section id="opiniones" class="py-24 bg-navy-950 text-white relative overflow-hidden">
+    <!-- Imagen real de fondo de Tarragona colocada por el usuario -->
+    <div class="absolute inset-0 z-0 bg-cover bg-right opacity-40" style="background-image: url('imagenes/fondo-resenas.png'), url('imagenes/fondo%20rese%C3%B1as.png');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/40 z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-14">
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-500 mb-2">
+          <span class="w-6 h-0.5 bg-gold-500"></span>
+          <span>OPINIONES</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Lo que dicen nuestros clientes
+        </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-400 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <!-- Opinión 1 -->
+        <div class="bg-navy-900/80 backdrop-blur-md p-7 rounded-2xl border border-white/10 shadow-xl space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-sm">
+              LM
             </div>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              "Hicieron la reforma de nuestra cocina y el baño principal. Cumplieron con los días pactados y la atención fue impecable en todo momento. Totalmente recomendados."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-700/60">
-            <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs">MG</div>
             <div>
-              <h4 class="font-bold text-white text-xs">María González</h4>
-              <span class="text-[11px] text-slate-400">Reforma de Cocina &amp; Baño</span>
+              <h4 class="font-bold text-sm text-white">Laura Martínez</h4>
+              <div class="flex text-gold-400 text-xs gap-1 mt-0.5">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
             </div>
           </div>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed italic">
+            "Un trabajo impecable. Transformaron completamente nuestra cocina y el resultado ha superado nuestras expectativas. Muy profesionales y cercanos en todo momento."
+          </p>
         </div>
 
-        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-400 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <!-- Opinión 2 -->
+        <div class="bg-navy-900/80 backdrop-blur-md p-7 rounded-2xl border border-white/10 shadow-xl space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-sm">
+              JR
             </div>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              "Presupuesto claro desde el primer minuto. Ninguna sorpresa desagradable. Cumplieron con la fecha de entrega y dejaron todo impecable."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-700/60">
-            <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs">CR</div>
             <div>
-              <h4 class="font-bold text-white text-xs">Carlos Ramos</h4>
-              <span class="text-[11px] text-slate-400">Reforma Integral de Piso</span>
+              <h4 class="font-bold text-sm text-white">Javier R.</h4>
+              <div class="flex text-gold-400 text-xs gap-1 mt-0.5">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
             </div>
           </div>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed italic">
+            "Reformaron nuestro baño y no podemos estar más contentos. Cumplieron los plazos, la calidad es excelente y el trato fue de 10."
+          </p>
         </div>
 
-        <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-400 mb-3">
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <svg width="16" height="16" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <!-- Opinión 3 -->
+        <div class="bg-navy-900/80 backdrop-blur-md p-7 rounded-2xl border border-white/10 shadow-xl space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-sm">
+              SL
             </div>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              "Muy satisfechos con el cambio de bañera a plato de ducha y la renovación de suelo y puertas. Rápidos, limpios y muy detallistas."
-            </p>
-          </div>
-          <div class="flex items-center gap-3 pt-3 border-t border-slate-700/60">
-            <div class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs">EP</div>
             <div>
-              <h4 class="font-bold text-white text-xs">Elena Pascual</h4>
-              <span class="text-[11px] text-slate-400">Cambio de Bañera &amp; Suelos</span>
+              <h4 class="font-bold text-sm text-white">Sandra López</h4>
+              <div class="flex text-gold-400 text-xs gap-1 mt-0.5">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
             </div>
           </div>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed italic">
+            "Nos hicieron la reforma integral de la vivienda y fue una experiencia muy positiva. Siempre atentos y resolviendo cualquier duda. Sin duda, los recomendamos."
+          </p>
         </div>
 
       </div>
@@ -408,106 +871,238 @@
     </div>
   </section>
 
-  <!-- 9. UBICACIÓN, HORARIOS Y CONTACTO -->
-  <section class="py-16 px-4 max-w-6xl mx-auto">
-    <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+  <!-- ==============================================
+       SECCIÓN 6: CONTACTO CON FORMULARIO Y MAPA
+       ============================================== -->
+  <section id="contacto" class="py-24 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div>
-        <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Encuéntranos Fácilmente</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-4">Oficina Técnica y Cobertura</h2>
-        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-          Realizamos visitas técnicas sin coste para evaluar tu proyecto in situ y facilitarte una propuesta con precio cerrado.
-        </p>
-
-        <div class="space-y-4 text-xs sm:text-sm text-slate-300">
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <p class="font-bold text-white">Oficina Central &amp; Cobertura:</p>
-              <p class="text-slate-400">{{DIRECCION}}</p>
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Columna Izquierda: Información de Contacto Directa -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold-600">
+            <span class="w-6 h-0.5 bg-gold-500"></span>
+            <span>CONTACTO</span>
           </div>
+          <h2 class="text-3xl font-extrabold text-navy-950 tracking-tight">
+            Cuéntanos tu proyecto
+          </h2>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Estamos aquí para ayudarte. Solicita tu presupuesto sin compromiso y da el primer paso hacia el espacio que imaginas.
+          </p>
 
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <div>
-              <p class="font-bold text-white">Horario de Atención:</p>
-              <p class="text-slate-400">Lunes a Viernes: 8:00 a 19:30 | Sábados: 9:00 a 13:30</p>
+          <div class="space-y-4 pt-4 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <a href="tel:{{TELEFONO}}" class="hover:text-gold-600 font-semibold transition">{{TELEFONO}}</a>
             </div>
-          </div>
 
-          <div class="flex items-start gap-3">
-            <svg width="20" height="20" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div>
-              <p class="font-bold text-white">Teléfono de Atención Directa:</p>
-              <p class="text-amber-400 font-extrabold"><a href="tel:{{TELEFONO}}">{{TELEFONO}}</a></p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center shrink-0">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </div>
+              <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="hover:text-gold-600 font-semibold transition">Atención por WhatsApp</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-gold-100 text-gold-600 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <span class="font-semibold">{{DIRECCION}}</span>
             </div>
           </div>
         </div>
+
+        <!-- Columna Central: Formulario de Contacto -->
+        <div class="lg:col-span-5 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <form onsubmit="event.preventDefault(); alert('¡Gracias! Tu solicitud de presupuesto ha sido registrada correctamente.');" class="space-y-4 text-xs">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Nombre completo *</label>
+                <input type="text" required placeholder="Tu nombre" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-gold-500">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Teléfono *</label>
+                <input type="tel" required placeholder="Teléfono" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-gold-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Email *</label>
+                <input type="email" required placeholder="Correo electrónico" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-gold-500">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Tipo de reforma</label>
+                <select class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-gold-500">
+                  <option>Reforma Integral</option>
+                  <option>Reforma de Cocina</option>
+                  <option>Reforma de Baño</option>
+                  <option>Otro servicio</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Mensaje *</label>
+              <textarea rows="4" required placeholder="Cuéntanos sobre tu proyecto..." class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-1 focus:ring-gold-500"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold uppercase tracking-wider py-3.5 rounded-lg shadow-md transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane text-xs"></i> Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+        <!-- Columna Derecha: Tarjeta de Mapa de Tarragona -->
+        <div class="lg:col-span-3 rounded-2xl overflow-hidden shadow-sm border border-slate-200 bg-white flex flex-col h-full min-h-[300px]">
+          <div class="relative flex-grow">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48074.45524623709!2d1.2185254924765365!3d41.12590214690747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a3fcd0c1c4f529%3A0x6b4db921448b3b3a!2s43001%20Tarragona%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
+              width="100%" 
+              height="100%" 
+              style="border:0; min-height: 220px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="bg-navy-950 text-white p-4 flex items-center gap-3">
+            <i class="fa-solid fa-location-dot text-gold-400 text-lg"></i>
+            <div>
+              <div class="font-bold text-xs">{{DIRECCION}}</div>
+              <div class="text-[11px] text-slate-400">Estamos cerca de ti</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 text-center">
-        <h3 class="font-extrabold text-white text-lg mb-2">¿Quieres consultar tu reforma por WhatsApp?</h3>
-        <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
-          Envíanos fotos o la idea de lo que quieres reformar y te damos una primera orientación estimada sin coste.
-        </p>
-        <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 text-slate-950 font-black text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg transition min-h-[48px] w-full">
-          <svg width="16" height="16" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-          <span>Consultar por WhatsApp</span>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       FOOTER
+       ============================================== -->
+  <footer class="bg-navy-950 text-slate-400 text-xs py-12 border-t border-navy-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-navy-800">
+        <!-- Logo en Footer con Presencia y Tamaño Prominente -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="bg-black border border-white/20 p-1.5 shadow-xl rounded-md transition-all duration-300 group-hover:scale-105">
+            <img src="imagenes/logo.png" alt="{{NOMBRE_NEGOCIO}}" class="h-16 sm:h-20 w-auto object-contain block drop-shadow-md" onerror="this.src='imagenes/Logo%20reformista%20con%20herramientas%20y%20cami%C3%B3n.png';">
+          </div>
         </a>
+
+        <!-- Links -->
+        <nav class="flex flex-wrap justify-center gap-7 sm:gap-9 text-slate-300 text-sm font-medium">
+          <a href="#inicio" class="hover:text-gold-400 transition">Inicio</a>
+          <a href="#servicios" class="hover:text-gold-400 transition">Servicios</a>
+          <a href="#galeria" class="hover:text-gold-400 transition">Galería</a>
+          <a href="#opiniones" class="hover:text-gold-400 transition">Opiniones</a>
+          <a href="#contacto" class="hover:text-gold-400 transition">Contacto</a>
+        </nav>
+
+        <!-- Right action -->
+        <div class="flex items-center space-x-6">
+          <a href="https://www.instagram.com" target="_blank" class="text-slate-300 hover:text-gold-400 transition text-xl" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#contacto" class="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold text-xs uppercase tracking-wider px-6 py-2.5 rounded-full shadow-md transition">
+            Solicitar presupuesto
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-slate-500">
+        <div>
+          © 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.
+        </div>
+        <div>
+          Reformas en {{DIRECCION}} • Calidad • Confianza • Tu hogar, nuestro compromiso
+        </div>
       </div>
 
     </div>
-  </section>
-
-  <!-- 10. CTA FINAL DE CIERRE -->
-  <section class="py-14 bg-amber-500 text-slate-950 text-center px-4">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl sm:text-4xl font-black mb-3">Haz realidad la reforma de tu hogar con total garantía</h2>
-      <p class="text-slate-900 text-sm sm:text-base font-semibold mb-6 max-w-xl mx-auto">
-        Pide tu presupuesto sin compromiso y comprueba la diferencia de trabajar con profesionales en {{DIRECCION}}.
-      </p>
-      <a href="#presupuesto" class="inline-flex items-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-black text-sm px-8 py-4 rounded-xl shadow-2xl transition transform hover:scale-105 min-h-[48px]">
-        <svg width="20" height="20" class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
-        <span>Pedir Presupuesto Gratis Ahora</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- 11. PIE DE PÁGINA CORPORATIVO -->
-  <footer class="bg-slate-950 text-slate-500 py-8 px-4 text-center text-xs border-t border-slate-800">
-    <p class="font-bold text-slate-400">{{NOMBRE_NEGOCIO}} • Obras, Cocinas, Baños &amp; Interiorismo</p>
-    <p class="text-slate-400 mt-1">Ubicación y Cobertura: {{DIRECCION}} | Teléfono: <a href="tel:{{TELEFONO}}" class="text-amber-400 hover:underline">{{TELEFONO}}</a></p>
-    <p class="mt-2 text-slate-600">© 2026 {{NOMBRE_NEGOCIO}}. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- 12. BOTÓN FLOTANTE MÓVIL DE WHATSAPP -->
-  <a href="{{ENLACE_WHATSAPP}}" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 transition transform hover:scale-110 active:scale-95" aria-label="Contactar por WhatsApp">
-    <svg width="28" height="28" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.152-.533-1.637-.679-2.69-2.347-2.772-2.457-.08-.11-1.11-1.477-1.11-2.813 0-1.336.702-1.993.95-2.257.248-.264.542-.33.723-.33.18 0 .361.002.519.01.168.008.393-.064.614.469.23.555.786 1.917.854 2.057.069.14.116.305.023.49-.092.186-.139.303-.275.467-.136.165-.286.368-.409.495-.136.14-.278.293-.12.565.158.272.702 1.16 1.507 1.877 1.036.924 1.91 1.209 2.182 1.346.272.137.432.119.593-.066.162-.186.69-.806.874-1.082.184-.275.368-.231.614-.141.246.09 1.559.734 1.826.868.267.134.446.2.512.311.066.111.066.643-.078 1.048z"/></svg>
-  </a>
+  <!-- BOTÓN FLOTANTE PERMANENTE DE WHATSAPP -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <a href="{{ENLACE_WHATSAPP}}" target="_blank" class="w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl transition transform hover:scale-110 relative" title="Hablar por WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
 
-  <!-- SCRIPT DE ENVÍO DE PRESUPUESTO -->
+  <!-- Swiper JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Script Inicialización Swiper & Menú Móvil -->
   <script>
-    function enviarPresupuestoReformas(e) {
-      e.preventDefault();
-      const nombre = document.getElementById('nombre_reforma').value.trim();
-      const tel = document.getElementById('telefono_reforma').value.trim();
-      const tipo = document.getElementById('tipo_obra').value;
-      const metros = document.getElementById('metros_obra').value.trim();
-      const detalles = document.getElementById('detalles_obra').value.trim();
+    // Menú móvil
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Cerrar menú móvil al hacer clic en cualquier enlace
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
 
-      const mensaje = `*SOLICITUD DE PRESUPUESTO - {{NOMBRE_NEGOCIO}}*
+    // Swiper Carousel 3D Coverflow estilo Stories / Tarjetas Verticales
+    const swiper = new Swiper('.myProjectsSwiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      spaceBetween: 15,
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 110,
+        modifier: 1.8,
+        slideShadows: false,
+      },
+      autoplay: {
+        delay: 3800,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        bulletActiveClass: 'custom-bullet-active',
+      },
+      navigation: {
+        nextEl: '#swiperNextBtn',
+        prevEl: '#swiperPrevBtn',
+      },
+    });
 
-👤 *Cliente:* ${nombre}
-📞 *Teléfono:* ${tel}
-🔨 *Tipo de Obra:* ${tipo}
-${metros ? `📐 *Metros Aprox.:* ${metros}\n` : ''}${detalles ? `📝 *Detalles del Proyecto:* "${detalles}"\n` : ''}
-_Enviado desde el formulario web._`;
+    // 4. Fondo interactivo del header: evolución al scroll y al mover el cursor
+    const mainNavHeader = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        mainNavHeader.classList.add('scrolled');
+      } else {
+        mainNavHeader.classList.remove('scrolled');
+      }
+    });
 
-      const url = `{{ENLACE_WHATSAPP}}?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, '_blank');
-    }
+    mainNavHeader.addEventListener('mousemove', (e) => {
+      const rect = mainNavHeader.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      mainNavHeader.style.setProperty('--mouse-x', `${x}%`);
+      mainNavHeader.style.setProperty('--mouse-y', `${y}%`);
+    });
   </script>
-
 </body>
 </html>

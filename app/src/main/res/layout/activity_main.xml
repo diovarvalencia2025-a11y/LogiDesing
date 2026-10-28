@@ -41,6 +41,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+
         <LinearLayout
             android:id="@+id/centerHeroLayout"
             android:layout_width="0dp"
@@ -242,6 +244,8 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
+
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -302,13 +306,13 @@
             app:itemTextColor="@color/text_primary"
             app:menu="@menu/nav_drawer_menu" />
 
-        <!-- Separator -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#EDF2F7" />
 
-        <!-- Bottom User Initial Section -->
+
         <LinearLayout
             android:id="@+id/layoutUserFooter"
             android:layout_width="match_parent"

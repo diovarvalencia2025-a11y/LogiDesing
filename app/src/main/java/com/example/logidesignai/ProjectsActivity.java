@@ -56,6 +56,8 @@ public class ProjectsActivity extends AppCompatActivity {
         fabNewProject.setOnClickListener(v -> {
             Toast.makeText(this, "Creando nuevo proyecto web...", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("EXTRA_NUEVO_CHAT", true);
+            intent.putExtra("EXTRA_CONVERSACION_ID", -1L);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
