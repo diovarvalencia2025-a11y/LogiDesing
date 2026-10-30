@@ -101,7 +101,7 @@ public class Chat extends AppCompatActivity implements ConversationAdapter.OnCon
         btnSelectChats.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
                     .setTitle("Historial de conversaciones")
-                    .setMessage("¿Deseas vaciar todas las conversaciones?")
+                    .setMessage("Deseas vaciar todas las conversaciones?")
                     .setPositiveButton("Vaciar todo", (dialog, which) -> {
                         historialDao.borrarHistorial();
                         cargarHistorial();
@@ -111,7 +111,7 @@ public class Chat extends AppCompatActivity implements ConversationAdapter.OnCon
                     .show();
         });
 
-        // Búsqueda en tiempo real
+        // Busqueda en tiempo real
         etSearchChats.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -127,7 +127,7 @@ public class Chat extends AppCompatActivity implements ConversationAdapter.OnCon
             public void afterTextChanged(Editable s) {}
         });
 
-        // Botón nuevo chat
+        // Boton nuevo chat
         fabNewChat.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("EXTRA_NUEVO_CHAT", true);
@@ -140,7 +140,7 @@ public class Chat extends AppCompatActivity implements ConversationAdapter.OnCon
 
     @Override
     public void onConversationClick(ConversationItem item) {
-        // Abrir conversación seleccionada
+        // Abrir conversacion seleccionada
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("EXTRA_CONVERSACION_ID", item.getId());
         intent.putExtra("EXTRA_NUEVO_CHAT", false);
@@ -153,11 +153,11 @@ public class Chat extends AppCompatActivity implements ConversationAdapter.OnCon
     public void onConversationLongClick(ConversationItem item) {
         new AlertDialog.Builder(this)
                 .setTitle(item.getTitle())
-                .setItems(new String[]{"Eliminar conversación", "Cancelar"}, (dialog, which) -> {
+                .setItems(new String[]{"Eliminar conversacion", "Cancelar"}, (dialog, which) -> {
                     if (which == 0) {
                         historialDao.borrarConversacion(item.getId());
                         cargarHistorial();
-                        Toast.makeText(this, "Conversación eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Conversacion eliminada", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .show();

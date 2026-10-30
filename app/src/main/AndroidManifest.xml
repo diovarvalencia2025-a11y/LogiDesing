@@ -16,6 +16,7 @@
         android:theme="@style/Theme.LogiDesignAI">
         <activity
             android:name=".SplashActivity"
+            android:theme="@style/Theme.LogiDesignAI.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Chat"
@@ -36,7 +37,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".PreviewActivity"
-            android:exported="true"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
 

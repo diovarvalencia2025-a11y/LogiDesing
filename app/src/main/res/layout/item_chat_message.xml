@@ -83,7 +83,7 @@
                 android:lineSpacingExtra="3dp"
                 android:text="Respuesta de LogiDesign" />
 
-            <!-- BOTÓN ACCIÓN CUANDO LA WEB ESTÁ LISTA -->
+            <!-- BOTON ACCION CUANDO LA WEB ESTA LISTA -->
             <LinearLayout
                 android:id="@+id/layoutBtnOpenWebsite"
                 android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                     android:id="@+id/tvBtnOpenWebsiteText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🚀 Ver Mi Página Web y Código"
+                    android:text="  Ver Mi Pagina Web y Codigo"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:textSize="14sp" />

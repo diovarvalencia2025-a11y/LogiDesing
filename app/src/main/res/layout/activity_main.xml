@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="¿Qué web crearemos hoy, Diovar?"
+                android:text="Que web crearemos hoy, Diovar?"
                 android:textColor="@color/text_primary"
                 android:textSize="23sp"
                 android:textAlignment="center" />
@@ -116,7 +116,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- CONTENEDOR DE LA CONVERSACIÓN DEL CHAT -->
+        <!-- CONTENEDOR DE LA CONVERSACION DEL CHAT -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvChatMessages"
             android:layout_width="0dp"
@@ -172,7 +172,7 @@
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="Consigue más con LogiDesign Pro"
+                        android:text="Consigue mas con LogiDesign Pro"
                         android:textColor="@color/banner_text"
                         android:textSize="13sp" />
 
@@ -186,12 +186,88 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
+                                <!-- Botones de Respuesta Rapida (Quick Chips) -->
+                <HorizontalScrollView
+                    android:id="@+id/scrollQuickChips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="2dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/layoutQuickChips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+
+                                <!-- Vista previa de archivo / imagen adjunta -->
+                <LinearLayout
+                    android:id="@+id/layoutAttachmentPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="4dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/ivAttachmentThumbnail"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:scaleType="centerCrop"
+                        android:background="#E2E8F0"
+                        android:contentDescription="Vista previa adjunto" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="10dp">
+
+                        <TextView
+                            android:id="@+id/tvAttachmentName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Imagen adjunta"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lista para analizar y disenar"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btnRemoveAttachment"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:contentDescription="Quitar adjunto" />
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/etMessagePrompt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="Describe tu web o diseño para LogiDesign..."
+                    android:hint="Describe tu web o diseno para LogiDesign..."
                     android:textColorHint="@color/text_placeholder"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
@@ -203,9 +279,9 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:cursorVisible="true"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:imeOptions="actionNone"
-                    android:maxLines="6" />
+                    android:inputType="textCapSentences"
+                    android:imeOptions="actionSend"
+                    android:maxLines="4" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -99,7 +99,7 @@
                 android:textSize="15sp" />
         </LinearLayout>
 
-        <!-- 3. ÁREA DE LISTA DE CHATS -->
+        <!-- 3. AREA DE LISTA DE CHATS -->
         <FrameLayout
             android:id="@+id/emptyStateChats"
             android:layout_width="match_parent"
@@ -130,7 +130,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 4. BOTÓN FLOTANTE PÍLDORA NEGRA: [+ Nuevo chat] (Touch Target >= 48dp) -->
+    <!-- 4. BOTON FLOTANTE PILDORA NEGRA: [+ Nuevo chat] (Touch Target >= 48dp) -->
     <LinearLayout
         android:id="@+id/fabNewChat"
         android:layout_width="wrap_content"

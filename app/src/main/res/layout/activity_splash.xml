@@ -1,18 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splashContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#D7DAE0"
     tools:context=".SplashActivity">
-
 
     <VideoView
         android:id="@+id/videoViewSplash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center" />
+
+    <!-- Cubierta del mismo tono del video para ocultar el destello negro inicial de SurfaceView -->
+    <View
+        android:id="@+id/videoCoverView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D7DAE0" />
 
 </FrameLayout>

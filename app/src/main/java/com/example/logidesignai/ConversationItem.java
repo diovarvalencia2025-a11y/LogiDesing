@@ -29,7 +29,7 @@ public class ConversationItem {
     }
 
     public String getTitle() {
-        return title != null && !title.isEmpty() ? title : "Nueva conversación";
+        return title != null && !title.isEmpty() ? title : "Nueva conversacion";
     }
 
     public void setTitle(String title) {
@@ -80,7 +80,7 @@ public class ConversationItem {
         } else if (days == 1) {
             return "Ayer";
         } else if (days < 7) {
-            return "Hace " + days + " días";
+            return "Hace " + days + " dias";
         } else {
             SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy", new Locale("es", "ES"));
             return sdf.format(new Date(timestamp));

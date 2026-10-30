@@ -15,6 +15,7 @@ public class ChatMessage {
     private String phone;
     private String address;
     private String services;
+    private String imageUri;
 
     public ChatMessage(String text, int type) {
         this.text = text;
@@ -116,4 +117,13 @@ public class ChatMessage {
     public void setType(int type) {
         this.type = type;
     }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
 }

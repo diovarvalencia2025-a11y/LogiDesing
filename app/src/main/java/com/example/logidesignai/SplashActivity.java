@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
 import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,7 +18,9 @@ import androidx.core.view.WindowInsetsCompat;
 public class SplashActivity extends AppCompatActivity {
 
     private VideoView videoViewSplash;
+    private View videoCoverView;
     private boolean isNavigating = false;
+    private final Handler splashHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,17 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         videoViewSplash = findViewById(R.id.videoViewSplash);
+        videoCoverView = findViewById(R.id.videoCoverView);
+
+        // Click en cualquier parte para navegar de inmediato
+        View container = findViewById(R.id.splashContainer);
+        if (container != null) container.setOnClickListener(v -> navigateToMainChat());
+        if (videoCoverView != null) videoCoverView.setOnClickListener(v -> navigateToMainChat());
+        if (videoViewSplash != null) videoViewSplash.setOnClickListener(v -> navigateToMainChat());
+
+        // Temporizador de seguridad de 3 segundos para garantizar transicion
+        splashHandler.postDelayed(this::navigateToMainChat, 3000);
+
         playSplashVideo();
     }
 
@@ -38,21 +54,34 @@ public class SplashActivity extends AppCompatActivity {
             Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash_video);
             videoViewSplash.setVideoURI(videoUri);
 
-            // Al terminar la reproducción del video, saltar al chat principal
+            // Desvanecer la cubierta unicamente cuando el primer fotograma del video ya este dibujado
+            videoViewSplash.setOnInfoListener((mp, what, extra) -> {
+                if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+                    desvanecerCubierta();
+                    return true;
+                }
+                return false;
+            });
+
+            // Respaldo tras 1200ms por si el evento no fuera emitido por el hardware
+            splashHandler.postDelayed(this::desvanecerCubierta, 1200);
+
+            // Al terminar el video saltar al chat principal
             videoViewSplash.setOnCompletionListener(mp -> navigateToMainChat());
 
-            // Si ocurre algún problema con el códec o video, pasar al chat sin trabar la app
+            // En caso de error en el video, pasar al chat
             videoViewSplash.setOnErrorListener((mp, what, extra) -> {
                 navigateToMainChat();
                 return true;
             });
 
-            // Permitir al usuario tocar la pantalla para saltar el video inmediatamente
-            findViewById(R.id.splashContainer).setOnClickListener(v -> navigateToMainChat());
-
             videoViewSplash.setOnPreparedListener(mp -> {
-                mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
-                videoViewSplash.start();
+                try {
+                    mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
+                    videoViewSplash.start();
+                } catch (Exception ignored) {
+                    videoViewSplash.start();
+                }
             });
 
         } catch (Exception e) {
@@ -60,14 +89,32 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    private void desvanecerCubierta() {
+        if (videoCoverView != null && videoCoverView.getVisibility() == View.VISIBLE) {
+            videoCoverView.animate()
+                    .alpha(0f)
+                    .setDuration(180)
+                    .withEndAction(() -> videoCoverView.setVisibility(View.GONE))
+                    .start();
+        }
+    }
+
     private synchronized void navigateToMainChat() {
         if (isNavigating) return;
         isNavigating = true;
 
+        splashHandler.removeCallbacksAndMessages(null);
+
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        // Transicion sin destello negro: fade in de MainActivity sin fundido a negro de salida
+        overridePendingTransition(android.R.anim.fade_in, 0);
         finish();
     }
-}
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        splashHandler.removeCallbacksAndMessages(null);
+    }
+}

@@ -23,7 +23,7 @@
         android:src="@drawable/ic_chat_bubble"
         app:tint="#52525B" />
 
-    <!-- Textos: Título de conversación y fecha relativa -->
+    <!-- Textos: Titulo de conversacion y fecha relativa -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:textColor="#09090B"
             android:textSize="15sp"
             android:textStyle="normal"
-            tools:text="Lavadora atascada con botón rojo" />
+            tools:text="Lavadora atascada con boton rojo" />
 
         <TextView
             android:id="@+id/tvConversationTime"

@@ -19,11 +19,11 @@ public class HistorialDao {
         this.dbHelper = new BD_Helper(context);
     }
 
-    // Gestión de conversaciones
+    // Gestion de conversaciones
     public long crearConversacion(String titulo, String nicho) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(Estructura_BD.EntryConversacion.COLUMN_TITULO, (titulo != null && !titulo.isEmpty()) ? titulo : "Nueva conversación");
+        values.put(Estructura_BD.EntryConversacion.COLUMN_TITULO, (titulo != null && !titulo.isEmpty()) ? titulo : "Nueva conversacion");
         values.put(Estructura_BD.EntryConversacion.COLUMN_FECHA, System.currentTimeMillis());
         values.put(Estructura_BD.EntryConversacion.COLUMN_NICHO, nicho);
         values.put(Estructura_BD.EntryConversacion.COLUMN_WEB_READY, 0);
@@ -103,7 +103,7 @@ public class HistorialDao {
                 long fecha = cursor.getLong(fecIdx);
                 String nicho = cursor.getString(nicIdx);
 
-                // Obtener el último mensaje de la conversación para previsualizar si se desea
+                // Obtener el ultimo mensaje de la conversacion para previsualizar si se desea
                 lista.add(new ConversationItem(id, titulo, fecha, nicho, ""));
             }
             cursor.close();
@@ -151,7 +151,7 @@ public class HistorialDao {
         db.close();
     }
 
-    // Gestión de mensajes
+    // Gestion de mensajes
     public long insertarMensaje(long conversacionId, ChatMessage mensaje) {
         if (conversacionId <= 0) {
             String primerTitulo = (mensaje.getText() != null && mensaje.getText().length() > 30)
@@ -175,7 +175,7 @@ public class HistorialDao {
 
         long nuevoId = db.insert(Estructura_BD.EntryMensaje.TABLE_NAME, null, values);
 
-        // Actualizar fecha de la conversación
+        // Actualizar fecha de la conversacion
         ContentValues updateConv = new ContentValues();
         updateConv.put(Estructura_BD.EntryConversacion.COLUMN_FECHA, System.currentTimeMillis());
         if (mensaje.isWebsiteReady()) {
@@ -274,7 +274,7 @@ public class HistorialDao {
         return id;
     }
 
-    // Métodos de compatibilidad
+    // Metodos de compatibilidad
     public long insertarMensaje(ChatMessage mensaje) {
         long convId = mensaje.getConversationId();
         if (convId <= 0) {

@@ -11,4 +11,12 @@
     </style>
 
     <style name="Theme.LogiDesignAI" parent="Base.Theme.LogiDesignAI" />
+
+    <style name="Theme.LogiDesignAI.Splash" parent="Theme.LogiDesignAI">
+        <item name="android:windowBackground">#D7DAE0</item>
+        <item name="android:statusBarColor">#D7DAE0</item>
+        <item name="android:navigationBarColor">#D7DAE0</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+    </style>
 </resources>
